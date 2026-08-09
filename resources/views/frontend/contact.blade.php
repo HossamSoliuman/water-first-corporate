@@ -1,66 +1,6 @@
 @extends('layouts.app')
+
 @section('content')
-    <section class="bg-navy-900 relative overflow-hidden texture py-28">
-        <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-teal-900/40"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <x-breadcrumbs :items="[['name' => 'Contact Us']]" />
-            <div class="mt-8">
-                <p class="text-xs font-semibold uppercase tracking-widest text-teal-400 mb-4">Get in Touch</p>
-                <h1 class="text-5xl md:text-6xl font-heading text-white leading-tight mb-4">Let's Build<br><em
-                        class="font-display not-italic text-brown-300">Something Together</em></h1>
-                <p class="text-lg text-slate-300">Tell us about your project and our global engineering team will be in
-                    touch.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-3 gap-12">
-
-                <div class="space-y-6 reveal-left">
-                    <div>
-                        <h2 class="text-2xl font-heading text-navy-900 mb-6">Contact Information</h2>
-                        <div class="space-y-4">
-                            @foreach ([
-            ['map-pin', 'USA Headquarters', $settings->get('address', 'United States')],
-            ['phone', 'Phone', $settings->get('phone', '—')],
-            [
-                'building-office',
-                'India HUB',
-                'Tower B1,Level 2,office No-211, Symphony IT Park,
-                     Nanded City ,Pune -411068',
-            ],
-            ['envelope', 'Email', $settings->get('contact_email', 'info@alada.com')],
-            
-        ] as [$icon, $label, $val])
-                                <div class="flex gap-4">
-                                    <div
-                                        class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center text-teal-600 shrink-0">
-                                        <x-icon name="{{ $icon }}" class="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide">
-                                            {{ $label }}</p>
-                                        <p class="text-sm text-navy-800 mt-0.5">{{ $val }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <div class="bg-navy-900 rounded-2xl p-6 text-white">
-                        <p class="font-display italic text-lg text-slate-300 mb-2">"Growing With Time"</p>
-                        <p class="text-sm text-slate-400">Alada delivers engineering excellence with Global standards across
-                            every continent.</p>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-100 p-8 md:p-10 reveal-right">
-                    <h2 class="text-2xl font-heading text-navy-900 mb-8">Send a Message</h2>
-                    @include('frontend.partials.contact-form')
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="interior-hero flow-lines py-20 md:py-28"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Contact']]" /><div class="mt-12 grid gap-10 lg:grid-cols-12"><div class="lg:col-span-3"><p class="section-kicker">01 — Contact</p></div><div class="lg:col-span-8"><h1 class="text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">Start with the water problem.</h1><p class="mt-7 max-w-3xl text-lg leading-8 text-ink-500">Share the project stage, capacity, water source or discharge requirement. Our Bangalore engineering team will respond with the right next questions.</p></div></div></div></section>
+    <section class="bg-surface py-20"><div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8"><aside class="lg:col-span-4"><div class="sticky-label space-y-6"><div class="technical-rule bg-white p-6"><p class="font-mono text-[10px] uppercase tracking-[.16em] text-primary-600">Registered office</p><p class="mt-4 text-sm leading-7 text-ink-700">{{ $settings->get('address_india', 'Bangalore, Karnataka, India') }}</p></div><div class="border border-ink-200 bg-white p-6"><div class="grid gap-5">@if ($settings->get('contact_email'))<div><p class="font-mono text-[9px] uppercase tracking-wider text-ink-400">Email</p><a href="mailto:{{ $settings->get('contact_email') }}" class="mt-1 block break-all text-sm font-semibold text-primary-600">{{ $settings->get('contact_email') }}</a></div>@endif @if ($settings->get('phone'))<div class="border-t border-ink-100 pt-4"><p class="font-mono text-[9px] uppercase tracking-wider text-ink-400">Phone</p><a href="tel:{{ $settings->get('phone') }}" class="mt-1 block text-sm font-semibold text-primary-600">{{ $settings->get('phone') }}</a></div>@endif</div></div><div class="bg-primary-600 p-6 text-white"><p class="font-mono text-[10px] uppercase tracking-[.16em] text-accent-200">WaterFirst promise</p><p class="mt-4 font-heading text-lg font-medium leading-7">Time-bound, cost-effective and customer-focused engineering.</p></div></div></aside><div class="border border-ink-200 bg-white p-7 md:p-10 lg:col-span-8"><p class="section-kicker">02 — Project enquiry</p><h2 class="mt-6 text-3xl font-semibold text-ink-800">Tell us what needs solving.</h2><div class="mt-8">@include('frontend.partials.contact-form')</div></div></div></section>
 @endsection

@@ -1,25 +1,6 @@
-{{-- industries/show.blade.php --}}
 @extends('layouts.app')
+
 @section('content')
-<section class="bg-navy-900 relative overflow-hidden texture text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-breadcrumbs :items="[['name'=>'Industries'],['name'=>$industry->name]]"/>
-        <h1 class="text-4xl md:text-5xl font-heading font-bold mt-6 mb-4">{{ $industry->name }}</h1>
-        @if($industry->description)<p class="text-xl text-slate-300">{{ $industry->description }}</p>@endif
-    </div>
-</section>
-<section class="py-16 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        @if($caseStudies->count())
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @foreach($caseStudies as $cs)
-            @include('frontend.case-studies._card', ['cs' => $cs])
-            @endforeach
-        </div>
-        {{ $caseStudies->links() }}
-        @else
-        <p class="text-center text-slate-500 py-12">No case studies yet for this industry.</p>
-        @endif
-    </div>
-</section>
+    <section class="interior-hero flow-lines py-20 md:py-28"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Industries'], ['name' => $industry->name]]" /><div class="mt-12 grid gap-10 lg:grid-cols-12"><div class="lg:col-span-3"><p class="section-kicker">01 — Sector</p></div><div class="lg:col-span-8"><h1 class="text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">{{ $industry->name }}</h1>@if ($industry->description)<p class="mt-7 max-w-3xl text-lg leading-8 text-ink-500">{{ $industry->description }}</p>@endif</div></div></div></section>
+    <section class="bg-surface py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><p class="section-kicker">02 — Relevant projects</p>@if ($caseStudies->count())<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">@foreach ($caseStudies as $index => $caseStudy)@include('frontend.case-studies._card', ['cs' => $caseStudy, 'index' => $index + 1])@endforeach</div><div class="mt-10">{{ $caseStudies->links() }}</div>@else<div class="technical-rule mt-10 bg-white p-8 text-ink-500">Project records for this sector are being prepared.</div>@endif</div></section>
 @endsection

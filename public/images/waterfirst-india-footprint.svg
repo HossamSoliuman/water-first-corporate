@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" role="img" aria-labelledby="title desc">
+  <title id="title">WaterFirst project footprint in India</title>
+  <desc id="desc">A technical map graphic centered on India with selected WaterFirst project locations.</desc>
+  <rect width="1120" height="600" fill="#F5FBFE"/>
+  <g fill="none" stroke="#00A6A6" stroke-opacity=".14">
+    <path d="M0 100c184-66 278 85 463 14 191-74 303 65 480 1 73-27 126-22 177 2"/>
+    <path d="M0 149c184-66 278 85 463 14 191-74 303 65 480 1 73-27 126-22 177 2"/>
+    <path d="M0 198c184-66 278 85 463 14 191-74 303 65 480 1 73-27 126-22 177 2"/>
+    <path d="M0 247c184-66 278 85 463 14 191-74 303 65 480 1 73-27 126-22 177 2"/>
+    <path d="M0 296c184-66 278 85 463 14 191-74 303 65 480 1 73-27 126-22 177 2"/>
+  </g>
+  <g transform="translate(385 42)">
+    <path d="M170 8 247 40l38 58 64 42-27 48-1 63-47 50-23 78-44 98-28 52-24-39-41-43-29-70-39-58 17-61-30-56 32-46 15-69 62-16Z" fill="#FFFFFF" stroke="#07579A" stroke-width="3"/>
+    <path d="m155 490 16 38 13-42" fill="#FFFFFF" stroke="#07579A" stroke-width="3"/>
+    <g fill="#00A6A6" stroke="#FFFFFF" stroke-width="3">
+      <circle cx="161" cy="333" r="8"/><circle cx="134" cy="375" r="8"/><circle cx="194" cy="360" r="8"/>
+      <circle cx="273" cy="218" r="8"/><circle cx="100" cy="253" r="8"/><circle cx="182" cy="214" r="8"/>
+    </g>
+    <g fill="#12324A" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600">
+      <text x="176" y="337">BENGALURU</text><text x="34" y="380">KARKALA</text><text x="207" y="365">TUMAKURU</text>
+      <text x="286" y="222">KOLKATA</text><text x="22" y="247">BAGALKOTE</text><text x="195" y="208">ODISHA</text>
+    </g>
+  </g>
+  <g transform="translate(60 444)">
+    <text fill="#07579A" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600" letter-spacing="2">PROJECT FOOTPRINT / INDIA</text>
+    <text y="42" fill="#12324A" font-family="Sora,Arial,sans-serif" font-size="28" font-weight="600">Municipal &amp; industrial water infrastructure</text>
+    <text y="75" fill="#38677F" font-family="Inter,Arial,sans-serif" font-size="16">Selected locations from WaterFirst's major project portfolio</text>
+  </g>
+</svg>

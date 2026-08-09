@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Login — Alada</title>
+    <title>Admin Login — WaterFirst</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config={theme:{extend:{colors:{navy:{900:'#0d3041',950:'#081a24'},teal:{600:'#144a6a',500:'#19587f'},brown:{500:'#8e6b51',400:'#bf834e'}},fontFamily:{sans:['"DM Sans"','ui-sans-serif']}}}}</script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 
     <div class="w-full max-w-sm">
         <div class="text-center mb-8">
-            <img src="{{ asset('images/alada-logo.png') }}" alt="Alada" class="h-14 w-auto mx-auto mb-4 brightness-0 invert opacity-90">
+            <img src="{{ asset('images/waterfirst-logo.svg') }}" alt="WaterFirst" class="h-14 w-auto mx-auto mb-4 brightness-0 invert opacity-90">
             <p class="text-slate-400 text-sm tracking-widest uppercase">Admin Panel</p>
         </div>
 

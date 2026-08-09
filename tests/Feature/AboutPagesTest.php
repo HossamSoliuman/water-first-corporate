@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Database\Seeders\PageCardSeeder;
 use Database\Seeders\PageSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class AboutPagesTest extends TestCase
@@ -32,9 +33,7 @@ class AboutPagesTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider aboutRoutes
-     */
+    #[DataProvider('aboutRoutes')]
     public function test_about_pages_render(string $route): void
     {
         $this->get(route($route))
@@ -52,13 +51,13 @@ class AboutPagesTest extends TestCase
     {
         $this->get(route('why-choose-us'))
             ->assertOk()
-            ->assertSee('Experts in Building Teams That Deliver');
+            ->assertSee('Creatively deliver high-quality solutions');
     }
 
     public function test_business_models_shows_seeded_models(): void
     {
         $this->get(route('business-models'))
             ->assertOk()
-            ->assertSee('Locked-Cost Model');
+            ->assertSee('Project Management Consultancy');
     }
 }

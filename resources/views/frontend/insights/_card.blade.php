@@ -1,29 +1,14 @@
-@php $delay = $delay ?? 0; @endphp
-<a href="{{ route('insights.show', $blog->slug) }}"
-   class="group flex flex-col bg-white border border-slate-100 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-navy-900/8 hover:border-slate-200 transition-all duration-500 reveal"
-   style="transition-delay: {{ $delay }}ms">
-    @if($blog->featured_image)
-    <div class="aspect-[16/9] overflow-hidden">
-        <img src="{{ asset($blog->featured_image) }}" alt="{{ $blog->title }}" loading="lazy"
-             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-    </div>
+@php($delay = $delay ?? 0)
+<a href="{{ route('insights.show', $blog->slug) }}" class="wf-card group flex flex-col overflow-hidden reveal" style="transition-delay: {{ $delay }}ms">
+    @if ($blog->featured_image)
+        <img src="{{ asset($blog->featured_image) }}" alt="{{ $blog->title }}" class="aspect-video w-full border-b border-ink-200 object-cover" loading="lazy">
     @else
-    <div class="aspect-[16/9] bg-gradient-to-br from-navy-800 to-teal-700"></div>
+        <div class="aspect-video border-b border-ink-200 bg-primary-50 flow-lines"></div>
     @endif
-    <div class="p-6 flex flex-col flex-1">
-        @if($blog->category)
-        <span class="text-xs font-semibold text-teal-600 uppercase tracking-widest mb-3">{{ $blog->category->name }}</span>
-        @endif
-        <h3 class="font-heading text-lg text-navy-900 group-hover:text-teal-600 transition-colors leading-snug flex-1 mb-3">{{ $blog->title }}</h3>
-        @if($blog->excerpt)
-        <p class="text-sm text-slate-500 line-clamp-2 mb-4">{{ $blog->excerpt }}</p>
-        @endif
-        <div class="flex items-center justify-between text-xs text-slate-400 pt-3 border-t border-slate-50">
-            <div class="flex items-center gap-1.5">
-                @if($blog->author)<span>{{ $blog->author->name }}</span><span>·</span>@endif
-                <span>{{ $blog->published_at?->format('M d, Y') }}</span>
-            </div>
-            <span>{{ $blog->reading_time }} min read</span>
-        </div>
+    <div class="flex flex-1 flex-col p-6">
+        @if ($blog->category)<span class="font-mono text-[9px] uppercase tracking-[.14em] text-primary-600">{{ $blog->category->name }}</span>@endif
+        <h2 class="mt-4 flex-1 text-lg font-semibold leading-snug text-ink-800 group-hover:text-primary-600">{{ $blog->title }}</h2>
+        @if ($blog->excerpt)<p class="mt-3 text-sm leading-6 text-ink-500 line-clamp-2">{{ $blog->excerpt }}</p>@endif
+        <div class="mt-5 flex items-center justify-between border-t border-ink-100 pt-4 font-mono text-[9px] uppercase tracking-wider text-ink-400"><span>{{ $blog->published_at?->format('d M Y') }}</span><span>{{ $blog->reading_time }} min</span></div>
     </div>
 </a>

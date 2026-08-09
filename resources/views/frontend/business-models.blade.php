@@ -1,42 +1,17 @@
 @extends('layouts.app')
+
 @section('content')
-
-@php $sec = $page->sections ?? []; @endphp
-
-{{-- ═══ HEADER ═══ --}}
-<section class="bg-navy-900 relative overflow-hidden texture py-32">
-    @if($page->featured_image)
-    <img src="{{ asset($page->featured_image) }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30">
-    @endif
-    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/95 to-teal-900/40"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-breadcrumbs :items="[['name' => 'About Us', 'url' => route('company-overview')], ['name' => $page->title]]"/>
-        <div class="mt-8 max-w-3xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-teal-400 mb-4">Engagement Models</p>
-            <h1 class="text-5xl md:text-6xl font-heading text-white leading-tight mb-6">{{ $page->title }}</h1>
-            @if($page->subtitle)
-            <p class="text-xl text-slate-300 leading-relaxed">{{ $page->subtitle }}</p>
-            @endif
+    @php($sec = $page->sections ?? [])
+    <section class="interior-hero flow-lines py-20 md:py-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <x-breadcrumbs :items="[['name' => 'About', 'url' => route('company-overview')], ['name' => $page->title]]" />
+            <div class="mt-12 grid gap-10 lg:grid-cols-12">
+                <div class="lg:col-span-3"><p class="section-kicker">01 — Engagement</p></div>
+                <div class="lg:col-span-8"><h1 class="text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">{{ $page->title }}</h1>@if ($page->subtitle)<p class="mt-7 max-w-3xl text-lg leading-8 text-ink-500">{{ $page->subtitle }}</p>@endif</div>
+            </div>
         </div>
-    </div>
-</section>
-
-{{-- ═══ TWO-COLUMN INTRO ═══ --}}
-@include('frontend.partials.about-two-column', ['sec' => $sec])
-
-{{-- ═══ CARDS ═══ --}}
-@include('frontend.partials.about-cards', ['cards' => $cards, 'cardsLabel' => 'Flexible by Design', 'cardsHeading' => 'Our Engagement Models', 'gridCols' => 3, 'colGapOnly' => true])
-
-{{-- ═══ CTA ═══ --}}
-<section class="py-20 bg-navy-900 texture relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-navy-950/80 to-transparent"></div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-        <p class="max-w-6xl mx-auto font-medium text-3xl md:text-[52px] text-white leading-[1.05] tracking-[-0.02em] mb-8 text-center">"From fixed scope to strategic partnership a model that fits the way you work."</p>
-        <a href="{{ route('contact') }}" class="btn-glossy inline-flex items-center gap-3 text-white font-semibold px-10 py-4 rounded-xl text-lg group">
-            Discuss Your Project
-            <x-icon name="arrow-long-right" class="w-5 h-5 arrow-nudge"/>
-        </a>
-    </div>
-</section>
-
+    </section>
+    @include('frontend.partials.about-two-column', ['sec' => $sec])
+    @include('frontend.partials.about-cards', ['cards' => $cards, 'cardsLabel' => 'Flexible delivery', 'cardsHeading' => 'Engagement models'])
+    <section class="deep-band py-20"><div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8"><h2 class="max-w-4xl text-4xl font-semibold text-white md:text-5xl">A delivery model sized to the problem and accountable to the outcome.</h2><a href="{{ route('contact') }}" class="wf-btn-light">Discuss your project</a></div></section>
 @endsection

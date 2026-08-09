@@ -10,18 +10,31 @@ class IndustrySeeder extends Seeder
     public function run(): void
     {
         $industries = [
-            ['name'=>'Energy & LNG',            'icon'=>'bolt',               'description'=>'LNG facilities, refineries, pipelines and energy networks designed to global safety standards.', 'order'=>1],
-            ['name'=>'Oil & Gas',               'icon'=>'beaker',             'description'=>'Process plants, pipeline systems and industrial infrastructure for oil and gas operations.', 'order'=>2],
-            ['name'=>'Transportation',           'icon'=>'truck',              'description'=>'Roads, highways, rail corridors and transport network design for efficient mobility.', 'order'=>3],
-            ['name'=>'Water Infrastructure',     'icon'=>'globe-alt',          'description'=>'Water supply, wastewater, stormwater and hydraulic systems for communities and industry.', 'order'=>4],
-            ['name'=>'Smart Cities',             'icon'=>'map',                'description'=>'Urban master planning, GIS-driven development and digital city infrastructure.', 'order'=>5],
-            ['name'=>'Commercial Buildings',     'icon'=>'building-library',   'description'=>'Architectural design and structural engineering for commercial and institutional facilities.', 'order'=>6],
-            ['name'=>'Industrial Facilities',    'icon'=>'building-office',    'description'=>'Industrial plant design, layout engineering and MEPF integration for manufacturing and processing.', 'order'=>7],
-            ['name'=>'Renewable Energy',         'icon'=>'sparkles',           'description'=>'Solar, wind and hybrid energy infrastructure designed for performance and sustainability.', 'order'=>8],
+            ['name' => 'Municipal Water & Sewerage', 'slug' => 'municipal-water-sewerage', 'icon' => 'building-office-2', 'description' => 'Water supply, sewer networks, pumping stations, STPs and long-term O&M for cities and public agencies.'],
+            ['name' => 'Industrial Effluent & CETP', 'slug' => 'industrial-effluent-cetp', 'icon' => 'beaker', 'description' => 'ETP and CETP solutions for compliant discharge, resource recovery and fit-for-purpose reuse.'],
+            ['name' => 'Waterbody Rejuvenation', 'slug' => 'waterbody-rejuvenation', 'icon' => 'globe-alt', 'description' => 'Decentralised treatment, catchment controls and restoration strategies for lakes, rivers and urban waterbodies.'],
+            ['name' => 'Desalination', 'slug' => 'desalination', 'icon' => 'sparkles', 'description' => 'Seawater and brackish-water treatment, pretreatment, membrane processes and concentrate management.'],
+            ['name' => 'Green Hydrogen', 'slug' => 'green-hydrogen', 'icon' => 'bolt', 'description' => 'High-purity water, reuse and utility systems for green hydrogen production facilities.'],
+            ['name' => 'Pharma & Chemical', 'slug' => 'pharma-chemical', 'icon' => 'cog-6-tooth', 'description' => 'Complex effluent treatment, segregation, reuse and environmental compliance for process industries.'],
+            ['name' => 'Steel & Heavy Industry', 'slug' => 'steel-heavy-industry', 'icon' => 'building-office', 'description' => 'Water balance, process water, effluent, solids and environmental advisory for heavy industrial operations.'],
+            ['name' => 'Pulp & Paper', 'slug' => 'pulp-paper', 'icon' => 'clipboard-document-list', 'description' => 'High-load wastewater treatment, anaerobic processes, water reuse and solids management for paper production.'],
         ];
 
-        foreach ($industries as $ind) {
-            Industry::updateOrCreate(['name' => $ind['name']], array_merge($ind, ['is_active' => true]));
+        foreach ($industries as $index => $industry) {
+            Industry::updateOrCreate(
+                ['slug' => $industry['slug']],
+                array_merge($industry, ['is_active' => true, 'order' => $index + 1])
+            );
         }
+
+        Industry::query()
+            ->whereIn('name', [
+                'Energy & LNG', 'Oil & Gas', 'Transportation', 'Water Infrastructure',
+                'Smart Cities', 'Commercial Buildings', 'Industrial Facilities', 'Renewable Energy',
+                'Smart Cities & Urban Development', 'Transportation & Infrastructure', 'Water Infrastructure',
+                'Oil & Gas Infrastructure', 'Renewable Energy System', 'Residential & Commercial Buildings',
+                'BIM & GIS Services',
+            ])
+            ->update(['is_active' => false]);
     }
 }

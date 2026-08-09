@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login — Alada</title>
+    <title>Admin Login — WaterFirst</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -177,7 +177,7 @@
 
     <div class="wrap">
         <div class="logo-area">
-            <img src="{{ asset('images/alada-logo.png') }}" alt="Alada">
+            <img src="{{ asset('images/waterfirst-logo.svg') }}" alt="WaterFirst">
             <p>Admin Panel</p>
         </div>
 

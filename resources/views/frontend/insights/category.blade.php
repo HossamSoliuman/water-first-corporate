@@ -1,25 +1,5 @@
-{{-- blog/category.blade.php --}}
 @extends('layouts.app')
 @section('content')
-<section class="bg-navy-900 relative overflow-hidden texture text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-breadcrumbs :items="[['name'=>'Insights','url'=>route('insights.index')],['name'=>$category->name]]"/>
-        <h1 class="text-4xl font-heading font-bold mt-6 mb-4">{{ $category->name }}</h1>
-        @if($category->description)<p class="text-xl text-slate-300">{{ $category->description }}</p>@endif
-    </div>
-</section>
-<section class="py-16 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        @if($blogs->count())
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($blogs as $blog)
-            @include('frontend.insights._card', ['blog' => $blog])
-            @endforeach
-        </div>
-        <div class="mt-10">{{ $blogs->links() }}</div>
-        @else
-        <p class="text-center text-slate-500 py-16">No posts in this category yet.</p>
-        @endif
-    </div>
-</section>
+    <section class="interior-hero flow-lines py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Insights', 'url' => route('insights.index')], ['name' => $category->name]]" /><p class="section-kicker mt-10">01 — Category</p><h1 class="mt-6 text-5xl font-semibold text-ink-800">{{ $category->name }}</h1>@if ($category->description)<p class="mt-5 text-lg text-ink-500">{{ $category->description }}</p>@endif</div></section>
+    <section class="bg-surface py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">@if ($blogs->count())<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">@foreach ($blogs as $blog)@include('frontend.insights._card', ['blog' => $blog])@endforeach</div><div class="mt-10">{{ $blogs->links() }}</div>@else<div class="technical-rule bg-white p-8 text-ink-500">No published insights in this category yet.</div>@endif</div></section>
 @endsection

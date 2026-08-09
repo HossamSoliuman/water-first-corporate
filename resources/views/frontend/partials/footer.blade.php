@@ -1,102 +1,59 @@
-<footer class="bg-white text-[#19587F] border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<footer class="border-t border-primary-700 bg-primary-600 text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
+            <div class="lg:col-span-4">
+                <img src="{{ asset('images/waterfirst-logo-white.svg') }}" alt="WaterFirst" class="h-12 w-auto">
+                <p class="mt-5 max-w-sm text-sm leading-7 text-primary-100">Water-led engineering consultancy delivering sustainable, regulatory-compliant infrastructure from concept through operations.</p>
+                <p class="mt-6 font-mono text-[11px] uppercase tracking-[.18em] text-accent-200">Engineering water, sustainably</p>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-20 border-b border-white/10">
-
-            <div class="lg:col-span-1">
-                <img src="{{ asset('images/alada-logo.png') }}" alt="Alada" class="h-14 w-auto">
-                <p class="font-display italic text-white/90 text-lg mb-2">Growing With Time</p>
-                <p class="text-[#19587F] text-sm leading-relaxed mb-6">Global engineering, infrastructure & energy solutions delivered with U.S. standards and worldwide reach.</p>
-
-                <div class="flex gap-3">
-                    @foreach(['linkedin','twitter','facebook','instagram'] as $s)
-                    @if($settings->get("social_{$s}"))
-                    <a href="{{ $settings->get("social_{$s}") }}" target="_blank" rel="noopener"
-                       class="w-9 h-9 rounded-lg bg-white/15 hover:bg-white/30 flex items-center justify-center transition-all duration-200 group">
-                        @if($s === 'linkedin')
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        @elseif($s === 'twitter')
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        @else
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        @endif
-                    </a>
-                    @endif
+            <div class="lg:col-span-3">
+                <h2 class="font-mono text-[11px] uppercase tracking-[.18em] text-accent-200">Expertise</h2>
+                <ul class="mt-5 grid gap-3">
+                    @foreach ($footerServices->take(6) as $service)
+                        <li><a href="{{ route('expertise.show', $service->slug) }}" class="text-sm text-primary-100 transition-colors hover:text-white">{{ $service->name }}</a></li>
                     @endforeach
+                </ul>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h2 class="font-mono text-[11px] uppercase tracking-[.18em] text-accent-200">Navigate</h2>
+                <ul class="mt-5 grid gap-3">
+                    @foreach ([['company-overview', 'Company'], ['expertise.index', 'Expertise'], ['case-studies.index', 'Projects'], ['insights.index', 'Insights'], ['careers', 'Careers'], ['contact', 'Contact']] as [$routeName, $label])
+                        <li><a href="{{ route($routeName) }}" class="text-sm text-primary-100 transition-colors hover:text-white">{{ $label }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div class="lg:col-span-3">
+                <h2 class="font-mono text-[11px] uppercase tracking-[.18em] text-accent-200">Bangalore office</h2>
+                <div class="mt-5 grid gap-4 text-sm leading-6 text-primary-100">
+                    <p>{{ $settings->get('address_india', 'Bangalore, Karnataka, India') }}</p>
+                    @if ($settings->get('contact_email'))
+                        <a href="mailto:{{ $settings->get('contact_email') }}" class="break-all hover:text-white">{{ $settings->get('contact_email') }}</a>
+                    @endif
+                    @if ($settings->get('phone'))
+                        <a href="tel:{{ $settings->get('phone') }}" class="hover:text-white">{{ $settings->get('phone') }}</a>
+                    @endif
                 </div>
-            </div>
-
-            <div>
-                <h4 class="text-xs font-semibold uppercase tracking-widest text-[#19587F] mb-5">Services</h4>
-                <ul class="space-y-2.5">
-                    @foreach($footerServices as $svc)
-                    <li>
-                        <a href="{{ route('expertise.show',$svc->slug) }}"
-                           class="text-sm text-[#19587F]/80 hover:text-[#19587F]">
-                            <span class="w-1 h-1 rounded-full bg-[#19587F]/50 group-hover:bg-white transition-colors"></span>
-                            {{ $svc->name }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-xs font-semibold uppercase tracking-widest text-[#19587F] mb-5">Company</h4>
-                <ul class="space-y-2.5">
-                    @foreach([['company-overview','Company Overview'],['our-team','Our Team'],['why-choose-us','Why Choose Us'],['business-models','Business Models'],['expertise.index','Our Expertise'],['case-studies.index','Projects'],['insights.index','Insights'],['contact','Contact Us'],['page.show','Careers']] as $link)
-                    <li>
-                        <a href="{{ $link[0] === 'page.show' ? route($link[0], 'careers') : route($link[0]) }}"
-                           class="text-sm text-[#19587F]/80 hover:text-[#19587F]">
-                            <span class="w-1 h-1 rounded-full bg-[#19587F]/50 group-hover:bg-[#19587F] transition-colors"></span>
-                            {{ $link[1] }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-xs font-semibold uppercase tracking-widest text-[#19587F] mb-5">Offices</h4>
-                <div class="space-y-5 text-sm text-[#19587F]/80">
-                    <div>
-                        <p class="font-semibold text-[#19587F] mb-1.5">USA HEADQUARTERS</p>
-                        @if($settings->get('address'))
-                        <p class="leading-relaxed">{{ $settings->get('address') }}</p>
-                        @else
-                        <p class="leading-relaxed">United States</p>
+                <div class="mt-6 flex gap-3">
+                    @foreach (['linkedin', 'twitter', 'facebook', 'instagram'] as $social)
+                        @if ($settings->get("social_{$social}"))
+                            <a href="{{ $settings->get("social_{$social}") }}" target="_blank" rel="noopener" class="flex h-9 w-9 items-center justify-center border border-primary-400 text-xs uppercase text-white hover:border-accent-300" aria-label="{{ ucfirst($social) }}">
+                                {{ substr($social, 0, 1) }}
+                            </a>
                         @endif
-                        
-                    </div>
-                    @if($settings->get('phone'))
-                    <a href="tel:{{ $settings->get('phone') }}" class="flex items-center gap-2 hover:text-white transition-colors">
-                        <x-icon name="phone" class="w-4 h-4 text-[#19587F] shrink-0"/>
-                        {{ $settings->get('phone') }}
-                    </a>
-                    @endif
-                    <div>
-                        <p class="font-semibold text-[#19587F] mb-1.5">INDIA HUB</p>
-                        <p class="leading-relaxed">Tower B1, Level 2, Office No-211, Symphony IT Park, Nanded City, Pune -411068</p>
-                    </div>
-                    
-                    @if($settings->get('contact_email'))
-                    <a href="mailto:{{ $settings->get('contact_email') }}" class="flex items-center gap-2 hover:text-white transition-colors">
-                        <x-icon name="envelope" class="w-4 h-4 text-[#19587F] shrink-0"/>
-                        {{ $settings->get('contact_email') }}
-                    </a>
-                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 py-6">
-            <p class="text-[#19587F]/70 text-xs">
-                {!! $settings->get('footer_text', '© '.date('Y').' Alada. All rights reserved.') !!}
-            </p>
-            <div class="flex gap-5 text-xs text-white/60">
-                <a href="{{ route('page.show', 'privacy-policy') }}" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="{{ route('page.show', 'terms-conditions') }}" class="hover:text-white transition-colors">Terms & Conditions</a>
-                <a href="{{ route('sitemap') }}" class="hover:text-white transition-colors">Sitemap</a>
+        <div class="flex flex-col gap-4 border-t border-primary-500 py-6 text-xs text-primary-100 md:flex-row md:items-center md:justify-between">
+            <p>{!! $settings->get('footer_text', '© '.date('Y').' WaterFirst Engineering Consultancy Private Limited. All rights reserved.') !!}</p>
+            <div class="flex flex-wrap gap-5">
+                <a href="{{ route('page.show', 'privacy-policy') }}" class="hover:text-white">Privacy Policy</a>
+                <a href="{{ route('page.show', 'terms-conditions') }}" class="hover:text-white">Terms &amp; Conditions</a>
+                <a href="{{ route('sitemap') }}" class="hover:text-white">Sitemap</a>
             </div>
         </div>
     </div>

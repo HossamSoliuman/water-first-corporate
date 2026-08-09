@@ -1,38 +1,32 @@
-{{-- Full-width cards grid (4 per row): image + heading + description. Expects $cards + optional $cardsHeading/$cardsLabel. --}}
-@if($cards->count())
-<section class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        @if(!empty($cardsHeading ?? '') || !empty($cardsLabel ?? ''))
-        <div class="text-center mb-14 reveal">
-            @if(!empty($cardsLabel ?? ''))
-            <p class="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-4">{{ $cardsLabel }}</p>
-            @endif
-            @if(!empty($cardsHeading ?? ''))
-            <h2 class="text-3xl md:text-4xl font-heading text-navy-900">{{ $cardsHeading }}</h2>
-            @endif
-        </div>
-        @endif
-        <div class="grid grid-cols-1 sm:grid-cols-2 {{ ($gridCols ?? 4) === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4' }} {{ ($colGapOnly ?? false) ? 'gap-x-6' : 'gap-6' }}">
-            @foreach($cards as $i => $card)
-            <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 service-card reveal" style="transition-delay: {{ ($i % 4) * 100 }}ms">
-                @if($card->image)
-                <div class="aspect-[4/3] overflow-hidden bg-slate-100">
-                    <img src="{{ asset($card->image) }}" alt="{{ $card->title }}" class="w-full h-full object-cover" loading="lazy">
+@if ($cards->count())
+    <section class="border-y border-ink-200 bg-surface py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-10 lg:grid-cols-12">
+                <div class="lg:col-span-3">
+                    <div class="sticky-label">
+                        @if (! empty($cardsLabel ?? ''))
+                            <p class="section-kicker">03 — {{ $cardsLabel }}</p>
+                        @endif
+                        @if (! empty($cardsHeading ?? ''))
+                            <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800">{{ $cardsHeading }}</h2>
+                        @endif
+                    </div>
                 </div>
-                @else
-                <div class="aspect-[4/3] bg-gradient-to-br from-navy-900 to-teal-900 flex items-center justify-center">
-                    <span class="font-display text-5xl text-white/40">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                </div>
-                @endif
-                <div class="p-6">
-                    <h3 class="font-heading text-lg text-navy-900 font-semibold mb-2 leading-snug">{{ $card->title }}</h3>
-                    @if($card->description)
-                    <p class="text-sm text-slate-500 leading-relaxed">{{ $card->description }}</p>
-                    @endif
+                <div class="grid gap-5 sm:grid-cols-2 {{ ($gridCols ?? 4) === 3 ? 'xl:grid-cols-3' : '' }} lg:col-span-9">
+                    @foreach ($cards as $index => $card)
+                        <article class="wf-card p-6 reveal">
+                            <span class="section-index">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                            @if ($card->image)
+                                <img src="{{ asset($card->image) }}" alt="{{ $card->title }}" class="mt-5 aspect-[4/3] w-full object-cover" loading="lazy">
+                            @endif
+                            <h3 class="mt-7 text-lg font-semibold leading-snug text-ink-800">{{ $card->title }}</h3>
+                            @if ($card->description)
+                                <p class="mt-3 text-sm leading-6 text-ink-500">{{ $card->description }}</p>
+                            @endif
+                        </article>
+                    @endforeach
                 </div>
             </div>
-            @endforeach
         </div>
-    </div>
-</section>
+    </section>
 @endif

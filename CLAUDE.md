@@ -1,3 +1,32 @@
+# Project: WaterFirst
+
+Marketing site + CMS for **WaterFirst Engineering Consultancy Private Limited** (Bangalore, Karnataka, India) — a water, wastewater and multi-disciplinary engineering consultancy founded by Uma Upadhyay.
+
+> **Rebrand in progress.** This codebase was originally built for a brand called **Alada** and is being rebranded to WaterFirst. Public pages change; the admin panel does not. Read `docs/REBRAND-WATERFIRST-GUIDE.md` before touching any frontend view, seeder or brand asset. Any remaining "Alada" string is leftover, not intentional.
+
+## Architecture notes (non-obvious)
+
+- **The frontend does not use the Vite/Tailwind build.** `resources/views/layouts/app.blade.php` loads `https://cdn.tailwindcss.com`, configures Tailwind **inline**, and carries ~450 lines of inline `<style>`. That file is the single source of truth for public-site design tokens, custom classes and animations. Editing `tailwind.config.js` or `resources/css/app.css` alone changes nothing on the public site.
+- `resources/views/layouts/admin.blade.php` loads the Tailwind CDN with its **own independent** inline config. Frontend and admin theming cannot break each other.
+- Public pages are CMS-driven. Content lives in DB tables (`services`, `industries`, `pages` + `page_cards`, `case_studies`, `blogs`, `team_members`, `hero_slides`, `software_logos`, `job_listings`, `settings`) and is editable from `/admin`. Change content via seeders (all `updateOrCreate`, re-runnable) — not by hardcoding it into Blade.
+- "Services" is the internal model name; the public-facing term and URL is **Expertise** (`/expertise`, `expertise.index`, `expertise.show`).
+- `Service`, `CaseStudy`, `Blog` etc. use Spatie `HasSlug`, which slugs on create only. Renaming a record does **not** regenerate its slug — set slugs explicitly when a URL must change.
+- Icons come from a fixed vocabulary in `resources/views/components/icon.blade.php`. Check it before using an icon name in a seeder.
+- Frontend scroll animations use the `.reveal`, `.reveal-left`, `.reveal-right`, `.reveal-scale` + `.delay-*` classes defined in `layouts/app.blade.php`.
+
+## Brand palette (current)
+
+`primary #07579A` · `secondary #1976B8` · `accent #00A6A6` · `surface #F5FBFE` · `ink #12324A` · `white #FFFFFF`
+
+The accent teal is a highlight (rules, icons, chips, focus rings) — never a large field colour. The legacy Alada palette (`navy`/`teal`/`brown` scales, copper `#8e6b51`) and its glossy/glass system (`.card-glass`, `.btn-glossy*`, `.glass-chip`, `.texture`) are being removed — do not extend them.
+
+## Working agreements
+
+- **No new migrations for content or branding work.** The schema already models what the site needs.
+- Don't rename existing route names or public URL slugs — they're referenced across ~30 views.
+- Purge `storage/framework/views/*` after Blade edits if stale compiled views cause confusion.
+- Placeholder contact details, logo and team data are pending client input — flag them, don't invent them.
+
 <laravel-boost-guidelines>
 === foundation rules ===
 

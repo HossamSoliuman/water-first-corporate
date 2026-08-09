@@ -1,35 +1,35 @@
-{{-- Two-column intro band: left = text, right = image. Expects $sec (sections array) + $page. --}}
-@if(($sec['intro_heading'] ?? '') || ($sec['intro_body'] ?? '') || ($sec['side_image'] ?? ''))
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="reveal-left">
-                @if($sec['intro_label'] ?? '')
-                <p class="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-4">{{ $sec['intro_label'] }}</p>
-                @endif
-                @if($sec['intro_heading'] ?? '')
-                <h2 class="text-3xl md:text-4xl font-heading text-navy-900 mb-6 leading-snug">{{ $sec['intro_heading'] }}</h2>
-                @endif
-                @if($sec['intro_body'] ?? '')
-                <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-4">
-                    @foreach(preg_split('/\r\n\r\n|\n\n/', trim($sec['intro_body'])) as $para)
-                    <p>{{ $para }}</p>
-                    @endforeach
+@if (($sec['intro_heading'] ?? '') || ($sec['intro_body'] ?? '') || ($sec['side_image'] ?? ''))
+    <section class="bg-white py-20">
+        <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+            <div class="lg:col-span-3">
+                <div class="sticky-label">
+                    <p class="section-kicker">02 — {{ $sec['intro_label'] ?? 'Overview' }}</p>
                 </div>
-                @endif
             </div>
-            <div class="reveal-right">
-                @if($sec['side_image'] ?? '')
-                <div class="rounded-3xl overflow-hidden shadow-xl shadow-navy-900/10">
-                    <img src="{{ asset($sec['side_image']) }}" alt="{{ $page->title }}" class="w-full h-full object-cover" loading="lazy">
+            <div class="grid gap-10 lg:col-span-9 xl:grid-cols-5">
+                <div class="reveal-left xl:col-span-3">
+                    @if ($sec['intro_heading'] ?? '')
+                        <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">{{ $sec['intro_heading'] }}</h2>
+                    @endif
+                    @if ($sec['intro_body'] ?? '')
+                        <div class="mt-7 grid gap-5 text-base leading-8 text-ink-500">
+                            @foreach (preg_split('/\r\n\r\n|\n\n/', trim($sec['intro_body'])) as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
-                @else
-                <div class="rounded-3xl aspect-[4/3] bg-gradient-to-br from-navy-900 to-teal-900 flex items-center justify-center">
-                    <x-icon name="building-office-2" class="w-20 h-20 text-white/30"/>
+                <div class="reveal-right xl:col-span-2">
+                    @if ($sec['side_image'] ?? '')
+                        <img src="{{ asset($sec['side_image']) }}" alt="{{ $page->title }}" class="aspect-[4/5] w-full border border-ink-200 object-cover" loading="lazy">
+                    @else
+                        <div class="technical-rule bg-surface p-7">
+                            <p class="font-mono text-xs uppercase tracking-[.16em] text-primary-600">WaterFirst standard</p>
+                            <p class="mt-5 font-heading text-xl font-medium leading-8 text-ink-800">Practical engineering, direct collaboration and accountable delivery.</p>
+                        </div>
+                    @endif
                 </div>
-                @endif
             </div>
         </div>
-    </div>
-</section>
+    </section>
 @endif

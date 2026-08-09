@@ -1,24 +1,5 @@
-{{-- blog/tag.blade.php --}}
 @extends('layouts.app')
 @section('content')
-<section class="bg-navy-900 relative overflow-hidden texture text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-breadcrumbs :items="[['name'=>'Insights','url'=>route('insights.index')],['name'=>'#'.$tag->name]]"/>
-        <h1 class="text-4xl font-heading font-bold mt-6 mb-4">#{{ $tag->name }}</h1>
-    </div>
-</section>
-<section class="py-16 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        @if($blogs->count())
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($blogs as $blog)
-            @include('frontend.insights._card', ['blog' => $blog])
-            @endforeach
-        </div>
-        <div class="mt-10">{{ $blogs->links() }}</div>
-        @else
-        <p class="text-center text-slate-500 py-16">No posts with this tag yet.</p>
-        @endif
-    </div>
-</section>
+    <section class="interior-hero flow-lines py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Insights', 'url' => route('insights.index')], ['name' => '#'.$tag->name]]" /><p class="section-kicker mt-10">01 — Topic</p><h1 class="mt-6 text-5xl font-semibold text-ink-800">#{{ $tag->name }}</h1></div></section>
+    <section class="bg-surface py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">@if ($blogs->count())<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">@foreach ($blogs as $blog)@include('frontend.insights._card', ['blog' => $blog])@endforeach</div><div class="mt-10">{{ $blogs->links() }}</div>@else<div class="technical-rule bg-white p-8 text-ink-500">No published insights use this topic yet.</div>@endif</div></section>
 @endsection

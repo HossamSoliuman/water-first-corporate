@@ -1,34 +1,6 @@
-{{-- industries/index.blade.php --}}
 @extends('layouts.app')
+
 @section('content')
-<section class="bg-navy-900 relative overflow-hidden texture text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-breadcrumbs :items="[['name'=>'Industries']]"/>
-        <h1 class="text-4xl md:text-5xl font-heading font-bold mt-6 mb-4">Industries We Serve</h1>
-        <p class="text-xl text-slate-300">Deep domain expertise across key sectors.</p>
-    </div>
-</section>
-<section class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            @foreach($industries as $industry)
-            @php
-                $iconName = $industry->icon ?: 'building';
-                $iconClass = \Illuminate\Support\Str::startsWith($iconName, 'fa-') ? $iconName : 'fa-' . $iconName;
-            @endphp
-            <a href="{{ route('industries.show', $industry->slug) }}"
-               class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg border border-slate-100 hover:border-teal-200 transition-all duration-300 text-center">
-                @if($industry->featured_image)
-                <img src="{{ asset($industry->featured_image) }}" alt="{{ $industry->name }}" loading="lazy" class="w-full h-32 object-cover rounded-xl mb-4 not-prose">
-                @endif
-                <div class="text-3xl mb-3 text-teal-600"><i class="fa-solid {{ $iconClass }}"></i></div>
-                <h3 class="font-semibold text-navy-900 group-hover:text-teal-600 transition-colors mb-2">{{ $industry->name }}</h3>
-                @if($industry->case_studies_count ?? false)
-                <p class="text-xs text-slate-400">{{ $industry->case_studies_count }} case {{ Str::plural('study', $industry->case_studies_count) }}</p>
-                @endif
-            </a>
-            @endforeach
-        </div>
-    </div>
-</section>
+    <section class="interior-hero flow-lines py-20 md:py-28"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Industries']]" /><div class="mt-12 grid gap-10 lg:grid-cols-12"><div class="lg:col-span-3"><p class="section-kicker">01 — Sectors</p></div><div class="lg:col-span-8"><h1 class="text-5xl font-semibold text-ink-800 md:text-7xl">Industries we serve</h1><p class="mt-7 text-lg leading-8 text-ink-500">Water-critical sectors where technical precision and compliance shape project performance.</p></div></div></div></section>
+    <section class="bg-surface py-20"><div class="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">@foreach ($industries as $index => $industry)<a href="{{ route('industries.show', $industry->slug) }}" class="wf-card group p-6"><span class="section-index">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span><h2 class="mt-7 text-lg font-semibold text-ink-800 group-hover:text-primary-600">{{ $industry->name }}</h2><p class="mt-3 text-sm leading-6 text-ink-500">{{ $industry->description }}</p></a>@endforeach</div></section>
 @endsection

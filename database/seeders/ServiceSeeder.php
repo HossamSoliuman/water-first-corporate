@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\SeoMeta;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Cache;
 
 class ServiceSeeder extends Seeder
 {
@@ -11,86 +13,114 @@ class ServiceSeeder extends Seeder
     {
         $services = [
             [
-                'name'              => 'Infrastructure & Societal Development Engineering',
-                'icon'              => 'building-office-2',
-                'short_description' => 'Comprehensive infrastructure engineering across the full lifecycle of societal and civil development projects.',
-                'description'       => '<p>Alada provides comprehensive infrastructure engineering services covering the full lifecycle of societal and civil development projects. The company specialises in transforming conceptual ideas into fully functional infrastructure systems through integrated planning, design, and execution methodologies.</p><p>The scope includes land development, site grading, utility coordination, and infrastructure network planning, ensuring that all components — from roads and drainage to utilities — are seamlessly integrated. Alada\'s engineering approach emphasises efficiency, durability, and long-term performance.</p>',
-                'is_featured'       => true,  'order' => 1,
+                'name' => 'Water, Wastewater & Drainage Engineering',
+                'slug' => 'water-wastewater-drainage-engineering',
+                'icon' => 'beaker',
+                'short_description' => 'Process and infrastructure engineering for water supply, sewerage, effluent treatment, reuse, desalination and drainage.',
+                'description' => '<h2>Water-led engineering from source to reuse</h2><p>WaterFirst delivers concept design, FEED, detailed engineering, DPRs, tender documentation, procurement support, PMC and O&amp;M for municipal and industrial water systems across India.</p><h3>Treatment and reuse</h3><ul><li>STP, ETP and CETP process design, including anaerobic digestion, biogas, power generation and CBG</li><li>Drinking water treatment, desalination and direct or indirect potable reuse</li><li>Wastewater reuse to industrial and potable standards</li><li>Sludge handling, beneficial reuse and solids management</li></ul><h3>Networks and delivery</h3><ul><li>Water supply, trunk sewer, pumping station and stormwater drainage design</li><li>PFD, P&amp;ID, GAD, BOQ, costing and technical bid evaluation</li><li>Hydraulic modelling using WaterGEMS, SewerGEMS, StormCAD and EPANET</li><li>Onsite troubleshooting, manpower training and long-term plant operations</li></ul><p>Designs are developed with project-specific attention to NGT standards and applicable MoEF&amp;CC and CPCB requirements.</p>',
             ],
             [
-                'name'              => 'Architectural Design Services',
-                'icon'              => 'building-library',
-                'short_description' => 'High-quality architectural services combining modern design principles with engineering precision and BIM-driven visualisation.',
-                'description'       => '<p>Alada delivers high-quality architectural services combining modern design principles with engineering precision. The focus is on creating structures that are not only aesthetically appealing but also technically efficient and sustainable.</p><p>The design process integrates space planning, environmental considerations, structural coordination, and BIM-driven visualisation, enabling accurate representation and optimisation of building performance. Alada ensures that all designs meet international standards and client requirements.</p>',
-                'is_featured'       => true,  'order' => 2,
+                'name' => 'Environmental Engineering & Hydrogeology',
+                'slug' => 'environmental-engineering-hydrogeology',
+                'icon' => 'globe-alt',
+                'short_description' => 'Environmental assessment, hydrogeology, sustainability disclosure, water audits and compliance support for Indian projects.',
+                'description' => '<h2>Environmental performance with defensible evidence</h2><p>Our environmental practice supports projects from baseline studies through approvals, implementation and operational assurance.</p><ul><li>EIA, ESA, EHS and customer audits</li><li>Groundwater studies, water audits and water-neutrality assessments</li><li>ESG and BRSR sustainability reporting</li><li>Carbon footprinting, climate disclosure and supply-chain decarbonisation</li><li>Zero-waste-to-landfill assessment and waterbody rejuvenation planning</li></ul><p>Recommendations are practical, region-specific and framed around applicable NGT, MoEF&amp;CC and CPCB expectations.</p>',
             ],
             [
-                'name'              => 'Urban Planning & Smart City Development',
-                'icon'              => 'map',
-                'short_description' => 'Advanced urban planning solutions integrating land-use, transportation, environmental and digital infrastructure into cohesive city models.',
-                'description'       => '<p>Alada provides advanced urban planning solutions focused on developing smart, sustainable, and future-ready urban environments. The company integrates land-use planning, transportation systems, environmental considerations, and digital infrastructure into cohesive city development models.</p><p>Using advanced tools such as GIS mapping, urban simulation, and data-driven planning, Alada creates master plans that optimise mobility, sustainability, and livability.</p>',
-                'is_featured'       => true,  'order' => 3,
+                'name' => 'Transportation Infrastructure Engineering',
+                'slug' => 'transportation-infrastructure-engineering',
+                'icon' => 'truck',
+                'short_description' => 'Corridor, roadway and transport infrastructure design coordinated with drainage, utilities and environmental requirements.',
+                'description' => '<h2>Transport infrastructure coordinated below and above ground</h2><p>WaterFirst integrates alignment, grading, pavement, drainage and utility engineering so transport assets perform as complete systems.</p><ul><li>Road and corridor geometry</li><li>Stormwater, cross-drainage and utility coordination</li><li>Terrain modelling, quantities and tender documentation</li><li>Construction-stage technical support and as-built coordination</li></ul>',
             ],
             [
-                'name'              => 'Transportation Infrastructure Engineering',
-                'icon'              => 'truck',
-                'short_description' => 'Roads, highways, and rail infrastructure design with advanced corridor optimisation, traffic analysis, and terrain modelling.',
-                'description'       => '<p>Alada specialises in designing and optimising transport systems, including roads, highways, and rail infrastructure. The company focuses on enhancing mobility, safety, and efficiency through advanced engineering techniques.</p><p>Services include corridor design, alignment optimisation, traffic analysis, and pavement engineering, supported by terrain modelling and infrastructure simulation tools.</p>',
-                'is_featured'       => true,  'order' => 4,
+                'name' => 'Structural Engineering',
+                'slug' => 'structural-engineering',
+                'icon' => 'building-office',
+                'short_description' => 'Durable structural systems for treatment plants, pumping facilities, industrial assets and public infrastructure.',
+                'description' => '<h2>Structures designed for demanding operating environments</h2><p>We engineer reinforced concrete and steel structures with attention to process loads, equipment interfaces, durability, constructability and lifecycle maintenance.</p><ul><li>Treatment tanks, buildings and equipment foundations</li><li>Pumping stations and industrial structures</li><li>Structural analysis, detailing and quantity take-offs</li><li>Multidisciplinary design coordination and site support</li></ul>',
             ],
             [
-                'name'              => 'Water, Wastewater & Drainage Engineering',
-                'icon'              => 'beaker',
-                'short_description' => 'Technically advanced water management systems — supply networks, sewer systems, stormwater drainage, and hydraulic infrastructure.',
-                'description'       => '<p>Alada delivers technically advanced water management systems, ensuring efficient and sustainable utilisation of water resources.</p><p>The company designs water supply networks, sewer systems, stormwater drainage, and hydraulic infrastructure, supported by advanced modelling tools to optimise flow efficiency and performance.</p>',
-                'is_featured'       => true,  'order' => 5,
+                'name' => 'Architectural Design Services',
+                'slug' => 'architectural-design-services',
+                'icon' => 'building-library',
+                'short_description' => 'Functional, climate-aware architecture for utility, institutional, industrial and infrastructure facilities.',
+                'description' => '<h2>Architecture that works with engineering</h2><p>Our architectural design is coordinated from the outset with process, structure, MEPF, access, safety and operational workflows.</p><ul><li>Space planning and code-aware design</li><li>Utility and industrial facility architecture</li><li>Material, envelope and climate-response studies</li><li>BIM-based multidisciplinary coordination</li></ul>',
             ],
             [
-                'name'              => 'Environmental Engineering & Hydrogeology',
-                'icon'              => 'globe-alt',
-                'short_description' => 'Environmental consultancy addressing soil, water, and ecological conditions with contamination analysis and impact assessments.',
-                'description'       => '<p>Alada provides environmental consultancy services addressing soil, water, and ecological conditions, ensuring regulatory compliance and sustainable development.</p><p>Services include contamination analysis, groundwater studies, environmental impact assessments, and sustainable infrastructure planning.</p>',
-                'is_featured'       => true,  'order' => 6,
+                'name' => 'Urban & Infrastructure Development Engineering',
+                'slug' => 'urban-infrastructure-development-engineering',
+                'icon' => 'building-office-2',
+                'short_description' => 'Integrated urban infrastructure planning for water, sewerage, drainage, utilities, public realm and resilient growth.',
+                'description' => '<h2>Infrastructure planned as one connected system</h2><p>WaterFirst combines land development, utility, water, sewerage, drainage, transport and environmental inputs into coordinated urban programmes.</p><ul><li>Infrastructure master planning and feasibility</li><li>Land development, grading and utility corridors</li><li>DPR, BOQ, costing and tender documentation</li><li>Stakeholder, statutory and construction coordination</li></ul>',
             ],
             [
-                'name'              => 'Structural Engineering',
-                'icon'              => 'building-office',
-                'short_description' => 'Structural design for complex buildings, bridges, and industrial facilities using advanced analysis tools and global engineering standards.',
-                'description'       => '<p>Alada provides structural design services for complex infrastructure projects including buildings, bridges, and industrial facilities.</p><p>The company ensures structural integrity, safety, and durability, using advanced analysis tools and global engineering standards.</p>',
-                'is_featured'       => false, 'order' => 7,
+                'name' => 'Surveying, GIS & Geospatial Engineering Services',
+                'slug' => 'surveying-gis-geospatial-engineering-services',
+                'icon' => 'map',
+                'short_description' => 'Survey, GIS and geospatial data workflows that make infrastructure planning and asset decisions traceable.',
+                'description' => '<h2>Reliable spatial data for better engineering decisions</h2><p>We organise survey, terrain, network and asset information into coordinated engineering inputs and useful operational records.</p><ul><li>Topographic and utility survey coordination</li><li>GIS mapping, spatial analysis and corridor studies</li><li>Terrain and surface models</li><li>Asset registers and geospatial handover datasets</li></ul>',
             ],
             [
-                'name'              => 'BIM & Digital Engineering',
-                'icon'              => 'cpu-chip',
-                'short_description' => 'Advanced BIM technologies for project coordination, 3D modelling, clash detection, and real-time collaboration.',
-                'description'       => '<p>Alada utilises advanced BIM technologies to enhance project coordination, reduce errors, and improve efficiency across all disciplines.</p><p>The use of 3D modelling, clash detection, and simulation enables real-time collaboration and precise engineering outputs, reducing rework and accelerating delivery timelines.</p>',
-                'is_featured'       => false, 'order' => 8,
+                'name' => 'Industrial, LNG, Oil & Gas & Energy Engineering',
+                'slug' => 'industrial-lng-oil-gas-energy-engineering',
+                'icon' => 'bolt',
+                'short_description' => 'Multidisciplinary industrial and energy engineering with particular strength in process water, effluent and utilities.',
+                'description' => '<h2>Industrial systems with water and environmental performance built in</h2><p>Our teams coordinate process utilities, pipelines, structures, electrical systems, instrumentation and environmental controls for industrial and energy facilities.</p><ul><li>Concept design, FEED and detailed engineering</li><li>Process water, effluent and utility networks</li><li>PFD, P&amp;ID, equipment layout and BOQ</li><li>Procurement, bid evaluation, PMC and commissioning support</li></ul>',
             ],
             [
-                'name'              => 'Project & Construction Management',
-                'icon'              => 'chart-bar',
-                'short_description' => 'Complete project management services ensuring on-time, on-budget delivery with planning, cost control, and on-site supervision.',
-                'description'       => '<p>Alada provides complete management services ensuring projects are delivered on time, within budget, and with high quality.</p><p>This includes planning, cost control, scheduling, and on-site supervision — ensuring seamless coordination between all project stakeholders from inception to handover.</p>',
-                'is_featured'       => false, 'order' => 9,
+                'name' => 'BIM & Digital Engineering',
+                'slug' => 'bim-digital-engineering',
+                'icon' => 'cpu-chip',
+                'short_description' => 'Coordinated digital delivery using BIM, GIS, 3D plant design, clash detection and structured asset information.',
+                'description' => '<h2>Digital coordination that reduces field uncertainty</h2><p>WaterFirst uses fit-for-purpose digital workflows to coordinate multidisciplinary design and produce reliable construction and handover information.</p><ul><li>BIM execution planning and model coordination</li><li>Revit, Civil 3D and Plant 3D delivery</li><li>Clash detection, quantities and drawing production</li><li>GIS integration and structured asset data</li></ul>',
             ],
             [
-                'name'              => 'Industrial, LNG, Oil & Gas & Energy Engineering',
-                'icon'              => 'bolt',
-                'short_description' => 'Specialised energy and industrial infrastructure including LNG facilities, oil refineries, power plants, and renewable energy solutions.',
-                'description'       => '<p>Alada offers specialised services in energy and industrial infrastructure, including LNG facilities, oil refineries, power plants, and renewable energy solutions.</p><p>The company designs pipeline systems, process plants, energy networks, and solar infrastructure, ensuring efficiency, safety, and sustainability across all energy project types.</p>',
-                'is_featured'       => false, 'order' => 10,
-            ],
-            [
-                'name'              => 'MEPF Engineering Services',
-                'icon'              => 'cog-6-tooth',
-                'short_description' => 'Integrated mechanical, electrical, plumbing, and fire protection systems designed using BIM for seamless building integration.',
-                'description'       => '<p>Alada delivers integrated MEPF services covering mechanical, electrical, plumbing, and fire protection systems.</p><p>These systems are designed using BIM to ensure seamless integration with building and industrial infrastructure, improving coordination, reducing clashes, and ensuring regulatory compliance.</p>',
-                'is_featured'       => false, 'order' => 11,
+                'name' => 'MEPF Engineering Services',
+                'slug' => 'mepf-engineering-services',
+                'icon' => 'cog-6-tooth',
+                'short_description' => 'Mechanical, electrical, plumbing and fire systems coordinated for safe, efficient and maintainable facilities.',
+                'description' => '<h2>Building services integrated with process and operations</h2><p>We design and coordinate MEPF systems for treatment, industrial, institutional and infrastructure facilities.</p><ul><li>Mechanical ventilation and utility systems</li><li>Electrical distribution, lighting and backup power</li><li>Plumbing, drainage and fire protection</li><li>Instrumentation, PLC and automation coordination</li></ul>',
             ],
         ];
 
-        foreach ($services as $svc) {
-            Service::updateOrCreate(['name' => $svc['name']], array_merge($svc, ['is_active' => true]));
+        foreach ($services as $index => $service) {
+            $savedService = Service::updateOrCreate(
+                ['slug' => $service['slug']],
+                array_merge($service, [
+                    'is_featured' => $index < 6,
+                    'is_active' => true,
+                    'order' => $index + 1,
+                ])
+            );
+
+            SeoMeta::updateOrCreate(
+                ['seoable_type' => Service::class, 'seoable_id' => $savedService->id],
+                [
+                    'meta_title' => $service['name'].' | WaterFirst',
+                    'meta_description' => $service['short_description'],
+                    'meta_keywords' => null,
+                    'canonical_url' => null,
+                    'og_title' => $service['name'],
+                    'og_description' => $service['short_description'],
+                    'og_image' => null,
+                    'twitter_title' => $service['name'],
+                    'twitter_description' => $service['short_description'],
+                    'twitter_image' => null,
+                    'schema_json' => null,
+                    'robots' => 'index,follow',
+                ]
+            );
         }
+
+        Service::query()
+            ->whereIn('name', [
+                'Infrastructure & Societal Development Engineering',
+                'Urban Planning & Smart City Development',
+                'Project & Construction Management',
+            ])
+            ->update(['is_active' => false, 'is_featured' => false]);
+
+        Cache::forget('footer_services');
     }
 }

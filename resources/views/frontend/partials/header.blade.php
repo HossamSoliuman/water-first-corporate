@@ -1,184 +1,84 @@
-<header id="site-header" class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-200/60"
-    x-data="{ mobileOpen: false, servicesOpen: false }">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20 transition-all duration-300">
+<header id="site-header" class="sticky top-0 z-50 border-b border-ink-200 bg-white/95 backdrop-blur-sm"
+    x-data="{ mobileOpen: false }">
+    <div class="border-b border-ink-100 bg-primary-600 text-white">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
+            <p class="font-mono text-[10px] uppercase tracking-[.18em] text-primary-100">Bangalore, India · Water &amp; environmental engineering</p>
+            <a href="{{ route('contact') }}" class="hidden items-center gap-2 font-mono text-[10px] uppercase tracking-[.18em] text-white hover:text-accent-200 sm:flex">
+                Start a project <x-icon name="arrow-long-right" class="h-3.5 w-3.5" />
+            </a>
+        </div>
+    </div>
 
-            <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                <div class="relative">
-                    <div class="ring-pulse absolute inset-0 rounded-full bg-brown-200/30"></div>
-                    <img src="{{ asset('images/alada-logo.png') }}" alt="Alada" class="h-12 w-auto relative z-10">
-                </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between gap-8">
+            <a href="{{ route('home') }}" class="shrink-0" aria-label="WaterFirst home">
+                <img src="{{ asset('images/waterfirst-logo.svg') }}" alt="WaterFirst" class="h-11 w-auto">
             </a>
 
-            <nav class="hidden lg:flex items-center gap-8">
-                <a href="{{ route('home') }}"
-                    class="text-sm font-medium text-navy-700 hover:text-teal-600 transition-colors tracking-wide">Home</a>
+            <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+                <a href="{{ route('home') }}" class="text-sm font-medium text-ink-700 transition-colors hover:text-primary-600">Home</a>
 
-                <div class="relative" x-data="{ open: false }" @mouseenter="open=true" @mouseleave="open=false">
-                    <button
-                        class="flex items-center gap-1 text-sm font-medium text-navy-700 hover:text-teal-600 transition-colors tracking-wide">
-                        About Us
-                        <x-icon name="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200"
-                            ::class="open ? 'rotate-180' : ''" />
+                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button type="button" @click="open = !open" class="flex items-center gap-1 text-sm font-medium text-ink-700 transition-colors hover:text-primary-600" :aria-expanded="open">
+                        About
+                        <x-icon name="chevron-down" class="h-3.5 w-3.5 transition-transform" ::class="open ? 'rotate-180' : ''" />
                     </button>
-                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
-                        x-transition:enter-start="opacity-0 translate-y-2"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        x-transition:leave="transition ease-in duration-150"
-                        x-transition:leave-end="opacity-0 translate-y-2"
-                        class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-2xl shadow-2xl shadow-navy-900/10 border border-slate-100 p-2 z-50">
-                        @foreach ([['company-overview', 'building-office-2', 'Company Overview'], ['our-team', 'users', 'Our Team'], ['why-choose-us', 'shield-check', 'Why Choose Us'], ['business-models', 'squares-2x2', 'Business Models']] as [$r, $icon, $label])
-                            <a href="{{ route($r) }}"
-                                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors group/item">
-                                <div
-                                    class="w-8 h-8 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600 group-hover/item:bg-teal-600 group-hover/item:text-white transition-all shrink-0">
-                                    <x-icon name="{{ $icon }}" class="w-4 h-4" />
-                                </div>
-                                <span class="text-sm font-medium text-navy-700 leading-tight">{{ $label }}</span>
+                    <div x-show="open" x-cloak x-transition
+                        class="absolute left-1/2 top-full mt-4 w-64 -translate-x-1/2 border border-ink-200 bg-white p-2 shadow-soft">
+                        @foreach ([['company-overview', '01', 'Company Overview'], ['our-team', '02', 'Our Team'], ['why-choose-us', '03', 'Why Choose Us'], ['business-models', '04', 'Business Models']] as [$routeName, $index, $label])
+                            <a href="{{ route($routeName) }}" class="group flex items-center gap-3 border-b border-ink-100 px-3 py-3 last:border-0 hover:bg-surface">
+                                <span class="font-mono text-[10px] text-accent-600">{{ $index }}</span>
+                                <span class="text-sm font-medium text-ink-800 group-hover:text-primary-600">{{ $label }}</span>
                             </a>
                         @endforeach
                     </div>
                 </div>
 
-                <div class="relative" x-data="{ open: false }" @mouseenter="open=true" @mouseleave="open=false">
-                    <button
-                        class="flex items-center gap-1 text-sm font-medium text-navy-700 hover:text-teal-600 transition-colors tracking-wide">
+                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button type="button" @click="open = !open" class="flex items-center gap-1 text-sm font-medium text-ink-700 transition-colors hover:text-primary-600" :aria-expanded="open">
                         Expertise
-                        <x-icon name="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200"
-                            ::class="open ? 'rotate-180' : ''" />
+                        <x-icon name="chevron-down" class="h-3.5 w-3.5 transition-transform" ::class="open ? 'rotate-180' : ''" />
                     </button>
-                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
-                        x-transition:enter-start="opacity-0 translate-y-2"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        x-transition:leave="transition ease-in duration-150"
-                        x-transition:leave-end="opacity-0 translate-y-2"
-                        class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[560px] bg-white rounded-2xl shadow-2xl shadow-navy-900/10 border border-slate-100 p-5 z-50">
-                        <div class="grid grid-cols-2 gap-1">
-                            @foreach ($footerServices as $svc)
-                                <a href="{{ route('expertise.show',$svc->slug) }}"
-                                    class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors group/item">
-                                    <div
-                                        class="w-8 h-8 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600 group-hover/item:bg-teal-600 group-hover/item:text-white transition-all shrink-0">
-                                        <x-icon name="{{ $svc->icon ?? 'building-office-2' }}" class="w-4 h-4" />
-                                    </div>
-                                    <span
-                                        class="text-xs font-medium text-navy-700 leading-tight">{{ $svc->name }}</span>
+                    <div x-show="open" x-cloak x-transition
+                        class="absolute left-1/2 top-full mt-4 w-[640px] -translate-x-1/2 border border-ink-200 bg-white p-5 shadow-soft">
+                        <div class="mb-4 flex items-center justify-between border-b border-ink-200 pb-3">
+                            <p class="section-index">DISCIPLINES / {{ str_pad($footerServices->count(), 2, '0', STR_PAD_LEFT) }}</p>
+                            <a href="{{ route('expertise.index') }}" class="text-xs font-semibold text-primary-600 hover:text-secondary-500">View all expertise</a>
+                        </div>
+                        <div class="grid grid-cols-2 gap-x-5">
+                            @foreach ($footerServices as $service)
+                                <a href="{{ route('expertise.show', $service->slug) }}" class="group flex items-start gap-3 border-b border-ink-100 py-3 hover:text-primary-600">
+                                    <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center border border-accent-500 text-accent-600">
+                                        <x-icon name="{{ $service->icon ?? 'building-office-2' }}" class="h-3.5 w-3.5" />
+                                    </span>
+                                    <span class="text-xs font-medium leading-snug text-ink-700 group-hover:text-primary-600">{{ $service->name }}</span>
                                 </a>
                             @endforeach
-                        </div>
-                        <div class="mt-3 pt-3 border-t border-slate-100">
-                            <a href="{{ route('expertise.index') }}"
-                                class="flex items-center gap-2 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors">
-                                View all expertise
-                                <x-icon name="arrow-long-right" class="w-4 h-4 arrow-nudge" />
-                            </a>
                         </div>
                     </div>
                 </div>
 
-<a href="{{ route('case-studies.index') }}"
-                    class="text-sm font-medium text-navy-700 hover:text-teal-600 transition-colors tracking-wide">Case Studies</a>
-                <a href="{{ route('insights.index') }}"
-                    class="text-sm font-medium text-navy-700 hover:text-teal-600 transition-colors tracking-wide">Insights</a>
-
-                @php
-                    $careersPage = app\models\Page::where('slug', 'careers')->firstOrFail();
-                @endphp
-                @if ($careersPage->is_published)
-                    <a href="{{ route('careers') }}"
-                        class="text-sm font-medium text-navy-700 hover:text-teal-600 transition-colors tracking-wide">Careers</a>
-                @endif
-
-                <a href="{{ route('contact') }}"
-                    class="btn-glossy ml-2 inline-flex items-center gap-2   text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-teal-600 transition-all duration-300 group">
-                    Get in Touch
-                    <x-icon name="arrow-long-right" class="w-4 h-4 arrow-nudge" />
-                </a>
+                <a href="{{ route('case-studies.index') }}" class="text-sm font-medium text-ink-700 transition-colors hover:text-primary-600">Projects</a>
+                <a href="{{ route('insights.index') }}" class="text-sm font-medium text-ink-700 transition-colors hover:text-primary-600">Insights</a>
+                <a href="{{ route('careers') }}" class="text-sm font-medium text-ink-700 transition-colors hover:text-primary-600">Careers</a>
+                <a href="{{ route('contact') }}" class="wf-btn-primary px-5 py-2.5">Contact</a>
             </nav>
 
-            <button @click="mobileOpen = !mobileOpen"
-                class="lg:hidden p-2 rounded-lg text-navy-600 hover:bg-slate-100 transition-colors">
-                <x-icon name="bars-3" class="w-6 h-6" />
+            <button type="button" @click="mobileOpen = !mobileOpen" class="border border-ink-200 p-2.5 text-ink-800 lg:hidden" aria-label="Toggle navigation" :aria-expanded="mobileOpen">
+                <x-icon name="bars-3" class="h-5 w-5" x-show="!mobileOpen" />
+                <x-icon name="x-mark" class="h-5 w-5" x-show="mobileOpen" x-cloak />
             </button>
         </div>
     </div>
 
-    {{-- Secondary Country/Region Nav --}}
-    <div class="hidden lg:block border-t border-slate-200 bg-white" x-data="{ hovered: null }">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-            @php
-                $regions = [
-                    'Americas' => ['United States', 'Canada', 'Latin America'],
-                    'Europe' => [
-                        'United Kingdom',
-                        'Sweden',
-                        'Italy',
-                        'France',
-                        'Germany',
-                        'Poland',
-                        'Netherlands',
-                        'Austria',
-                        'Greece',
-                    ],
-                    'Asia' => ['India', 'Singapore', 'Hong Kong', 'Indonesia', 'Malaysia', 'Vietnam'],
-                    'Middle East' => [
-                        'Bahrain',
-                        'Oman',
-                        'Kuwait',
-                        'Qatar',
-                        'Saudi Arabia',
-                        'Jordan',
-                        'Iran',
-                        'Iraq',
-                        'Dubai',
-                    ],
-                    'Oceania' => ['Australia', 'New Zealand'],
-                ];
-            @endphp
-            @foreach ($regions as $region => $countries)
-                <div class="relative group" @mouseenter="hovered = '{{ $region }}'" @mouseleave="hovered = null">
-                    <button
-                        class="px-5 py-2.5 text-xs font-semibold text-navy-700 hover:text-brown-500 hover:bg-slate-50 uppercase tracking-widest transition-colors flex items-center gap-1.5">
-                        {{ $region }}
-                        <x-icon name="chevron-down" class="w-3 h-3" />
-                    </button>
-                    <div x-show="hovered === '{{ $region }}'" x-cloak
-                        x-transition:enter="transition ease-out duration-150"
-                        x-transition:enter-start="opacity-0 -translate-y-1"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        class="absolute top-full left-0 min-w-56 bg-white border border-slate-200 shadow-xl shadow-navy-900/10 rounded-b-xl py-2 z-50">
-                        @foreach ($countries as $country)
-                            <span
-                                class="block px-5 py-1.5 text-sm text-navy-700 hover:text-brown-500 hover:bg-slate-50 cursor-default transition-colors">
-                                {{ $country }}
-                            </span>
-                        @endforeach
-                    </div>
-                </div>
+    <div x-show="mobileOpen" x-cloak x-transition class="border-t border-ink-200 bg-white lg:hidden">
+        <nav class="mx-auto grid max-w-7xl gap-1 px-4 py-5 sm:px-6" aria-label="Mobile navigation">
+            @foreach ([['home', 'Home'], ['company-overview', 'Company Overview'], ['why-choose-us', 'Why Choose Us'], ['our-team', 'Our Team'], ['business-models', 'Business Models'], ['expertise.index', 'Expertise'], ['case-studies.index', 'Projects'], ['insights.index', 'Insights'], ['careers', 'Careers'], ['contact', 'Contact']] as [$routeName, $label])
+                <a href="{{ route($routeName) }}" class="flex items-center justify-between border-b border-ink-100 px-2 py-3 text-sm font-medium text-ink-800 hover:text-primary-600">
+                    {{ $label }}
+                    <x-icon name="arrow-long-right" class="h-4 w-4 text-accent-600" />
+                </a>
             @endforeach
-        </div>
-    </div>
-
-    <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-200"
-        x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-        class="lg:hidden border-t border-slate-100 bg-white">
-        <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
-            <a href="{{ route('home') }}"
-                class="block px-4 py-3 rounded-xl text-sm font-medium text-navy-700 hover:bg-slate-50 transition-colors">Home</a>
-
-            <p class="px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">About Us</p>
-            @foreach ([['company-overview', 'Company Overview'], ['our-team', 'Our Team'], ['why-choose-us', 'Why Choose Us'], ['business-models', 'Business Models']] as [$r, $l])
-                <a href="{{ route($r) }}"
-                    class="block px-6 py-2.5 rounded-xl text-sm font-medium text-navy-700 hover:bg-slate-50 transition-colors">{{ $l }}</a>
-            @endforeach
-
-            @foreach ([['expertise.index', 'Expertise'], ['case-studies.index', 'Projects'], ['insights.index', 'Insights'], ['careers', 'Careers']] as [$r, $l])
-                <a href="{{ route($r) }}"
-                    class="block px-4 py-3 rounded-xl text-sm font-medium text-navy-700 hover:bg-slate-50 transition-colors">{{ $l }}</a>
-            @endforeach
-            <a href="{{ route('contact') }}"
-                class="block px-4 py-3 rounded-xl text-sm font-semibold text-white bg-navy-900 text-center mt-2 hover:bg-teal-600 transition-colors">Get
-                in Touch</a>
-        </div>
+        </nav>
     </div>
 </header>

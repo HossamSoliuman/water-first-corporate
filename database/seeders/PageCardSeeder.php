@@ -12,33 +12,33 @@ class PageCardSeeder extends Seeder
     {
         $sets = [
             'why-choose-us' => [
-                ['Experts in Building Teams That Deliver', 'Assembling high-performing engineering teams with deep niche expertise in infrastructure and plant engineering.'],
-                ['Collaboration Without Barriers', 'Seamless communication, transparent processes, and strong global coordination across every engagement.'],
-                ['Beyond Project Delivery', 'Helping partners gain a lasting competitive advantage in their markets, not just completing scopes of work.'],
-                ['Innovating Engineering Workflows', 'Refining workflows and applying digital tools for smarter, faster, and more reliable design.'],
-                ['Engineering-Driven at the Core', 'Strong technical excellence backed by decades of combined project experience across sectors.'],
-                ['Leadership With Ownership', 'Key leaders act as co-owners — ensuring commitment, shared vision, and lasting partnerships.'],
-                ['Operating in a True Niche Market', 'Specialised engineering domains that go well beyond common outsourcing areas.'],
-                ['Best-in-Class IT Infrastructure', 'Global-grade security, documentation standards, and compliance built into how we work.'],
+                ['Creatively deliver high-quality solutions', 'Apply technical rigour and creative thinking to reach outcomes that work in practice.'],
+                ['Comprehensive approach and region-specific focus', 'Connect every discipline to local water, regulatory and operating conditions.'],
+                ['Close interaction with clients and project teams on site', 'Keep communication direct and engineering decisions grounded in field reality.'],
+                ['Maintain ownership and respect confidentiality', 'Stay accountable for the work while protecting sensitive project and client information.'],
+                ['Cost-effective sustainable solutions — integrating all stakeholders involved', 'Balance lifecycle value, environmental outcomes and stakeholder requirements.'],
             ],
             'business-models' => [
-                ['Locked-Cost Model', 'For clearly defined scopes where budget certainty is critical — a fixed price agreed upfront, minimizing cost risk and simplifying internal approvals.'],
-                ['Pay-As-You-Go Model', 'For flexible or evolving scopes — you only pay for the actual hours and resources used, giving agility without long-term commitment.'],
-                ['Virtual Design Center', 'For ongoing, multi-project needs — a cloud-connected, dedicated remote team acting as your extended office, improving speed, knowledge retention, and scalability.'],
-                ['Alliance Framework', 'For strategic, long-term partnerships — jointly planned roadmaps, shared KPIs, and joint development that drive higher productivity and continuous improvement.'],
+                ['Defined Engineering Package', 'A clear scope, programme and fee for feasibility, DPR, FEED or detailed engineering deliverables.'],
+                ['Time & Expertise Support', 'Flexible specialist capacity for evolving scopes, reviews, troubleshooting or procurement support.'],
+                ['Project Management Consultancy', 'Integrated coordination, reporting, quality oversight and technical support through delivery.'],
+                ['Operations & Maintenance Partnership', 'Performance-focused plant operations, troubleshooting and team training over the asset lifecycle.'],
             ],
         ];
 
         foreach ($sets as $slug => $cards) {
             $page = Page::where('slug', $slug)->first();
+
             if (! $page) {
                 continue;
             }
 
-            foreach ($cards as $i => [$title, $description]) {
+            PageCard::where('page_id', $page->id)->whereNotIn('title', array_column($cards, 0))->delete();
+
+            foreach ($cards as $index => [$title, $description]) {
                 PageCard::updateOrCreate(
                     ['page_id' => $page->id, 'title' => $title],
-                    ['description' => $description, 'order' => $i + 1]
+                    ['description' => $description, 'order' => $index + 1]
                 );
             }
         }

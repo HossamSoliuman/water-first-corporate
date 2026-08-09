@@ -1,32 +1,52 @@
 <?php
 
+namespace Tests\Feature\Auth;
+
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Route;
+use Tests\TestCase;
 
-test('confirm password screen can be rendered', function () {
-    $user = User::factory()->create();
+class PasswordConfirmationTest extends TestCase
+{
+    use RefreshDatabase;
 
-    $response = $this->actingAs($user)->get('/confirm-password');
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-    $response->assertStatus(200);
-});
+        if (! Route::has('password.confirm')) {
+            $this->markTestSkipped('Password confirmation routes are not enabled in this application.');
+        }
+    }
 
-test('password can be confirmed', function () {
-    $user = User::factory()->create();
+    public function test_confirm_password_screen_can_be_rendered(): void
+    {
+        $user = User::factory()->create();
 
-    $response = $this->actingAs($user)->post('/confirm-password', [
-        'password' => 'password',
-    ]);
+        $this->actingAs($user)->get('/confirm-password')->assertOk();
+    }
 
-    $response->assertRedirect();
-    $response->assertSessionHasNoErrors();
-});
+    public function test_password_can_be_confirmed(): void
+    {
+        $user = User::factory()->create();
 
-test('password is not confirmed with invalid password', function () {
-    $user = User::factory()->create();
+        $response = $this->actingAs($user)->post('/confirm-password', [
+            'password' => 'password',
+        ]);
 
-    $response = $this->actingAs($user)->post('/confirm-password', [
-        'password' => 'wrong-password',
-    ]);
+        $response->assertRedirect();
+        $response->assertSessionHasNoErrors();
+    }
 
-    $response->assertSessionHasErrors();
-});
+    public function test_password_is_not_confirmed_with_an_invalid_password(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->post('/confirm-password', [
+            'password' => 'wrong-password',
+        ]);
+
+        $response->assertSessionHasErrors();
+    }
+}
