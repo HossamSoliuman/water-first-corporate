@@ -203,7 +203,7 @@
             <div class="lg:col-span-4">
                 <p class="section-kicker">07 — India focus</p>
                 <h2 class="mt-6 text-3xl font-semibold text-ink-800">Local context. National project experience.</h2>
-                <p class="mt-5 text-sm leading-7 text-ink-500">Experience spans BWSSB, KIADB, NMCG and RDWSB programmes, with delivery across Karnataka, West Bengal, Uttar Pradesh and Odisha.</p>
+                <p class="mt-5 text-sm leading-7 text-ink-500">Experience spans BWSSB, KIADB, NMCG and RDWSB programmes across Karnataka, West Bengal, Uttar Pradesh and Odisha, plus industrial wastewater engineering in Iraq.</p>
             </div>
         </div>
     </section>

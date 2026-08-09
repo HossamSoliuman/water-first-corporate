@@ -23,6 +23,7 @@
                     <div class="mt-7 grid gap-5 text-base leading-8 text-ink-500">
                         <p>We work across municipal and industrial water, wastewater, solids management, effluent treatment, sewerage, water supply, waterbody rejuvenation and operations.</p>
                         <p>Our team brings 15–35 years of experience in process, mechanical, electrical, instrumentation and automation engineering, backed by field interaction and regulatory awareness.</p>
+                        <p>Our treatment experience spans seawater, river water and groundwater, with conventional and advanced processes selected to protect public health, receiving waterbodies, flora and fauna.</p>
                     </div>
                 </div>
                 <div class="md:col-span-2 reveal-right">
