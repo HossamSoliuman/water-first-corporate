@@ -1,16 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="interior-hero flow-lines py-20 md:py-28">
+    <section class="interior-hero flow-lines py-10 md:py-14">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-breadcrumbs :items="[['name' => 'Company Overview']]" />
-            <div class="mt-12 grid gap-10 lg:grid-cols-12">
-                <div class="lg:col-span-3"><p class="section-kicker reveal">01 — Company</p></div>
-                <div class="lg:col-span-8">
-                    <h1 class="reveal delay-100 text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">Water is first in every system we engineer.</h1>
-                    <p class="reveal delay-200 mt-7 max-w-3xl text-lg leading-8 text-ink-500">WaterFirst Engineering Consultancy Private Limited is a Bangalore-based environmental and infrastructure engineering practice focused on difficult water and wastewater problems.</p>
+            <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
+                <div class="lg:col-span-12">
+                    <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Water is first in every system we engineer.</h1>
+                    <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">WaterFirst Engineering Consultancy Private Limited is a Bangalore-based environmental and infrastructure engineering practice focused on difficult water and wastewater problems.</p>
 
-                    <div class="reveal delay-300 mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-ink-200 pt-7">
+                    <div class="reveal delay-300 mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-ink-200 pt-6">
                         @foreach ([
                             ['map-pin', 'Bangalore, Karnataka'],
                             ['droplet', 'Water & wastewater led'],
@@ -28,15 +27,9 @@
         </div>
     </section>
 
-    <section class="bg-white py-24">
-        <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-            <aside class="lg:col-span-3">
-                <div class="sticky-label">
-                    <p class="section-kicker">02 — Our position</p>
-                    <x-icon name="waves" class="float-slow mt-8 hidden h-12 w-12 text-accent-300 lg:block" />
-                </div>
-            </aside>
-            <div class="grid gap-12 lg:col-span-9 md:grid-cols-5">
+    <section class="bg-white py-16 md:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-12 md:grid-cols-5">
                 <div class="md:col-span-3 reveal-left">
                     <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Sustainable technical solutions to challenging environmental problems.</h2>
                     <div class="technical-rule mt-7 grid gap-5 pl-6 text-base leading-8 text-ink-500">
@@ -130,12 +123,11 @@
         </div>
     </section>
 
-    <section class="border-y border-ink-200 bg-surface py-24">
+    <section class="border-y border-ink-200 bg-surface py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col gap-6 border-b border-ink-200 pb-8 md:flex-row md:items-end md:justify-between">
                 <div>
-                    <p class="section-kicker">03 — Practice scope</p>
-                    <h2 class="mt-6 max-w-2xl text-4xl font-semibold leading-tight text-ink-800">Everything water touches, engineered end to end.</h2>
+                    <h2 class="max-w-2xl text-4xl font-semibold leading-tight text-ink-800">Everything water touches, engineered end to end.</h2>
                 </div>
                 <a href="{{ route('expertise.index') }}" class="wf-btn-outline group">
                     Full expertise map <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
@@ -168,12 +160,11 @@
         </div>
     </section>
 
-    <section class="border-b border-ink-200 bg-white py-24">
+    <section class="border-b border-ink-200 bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="reveal-left lg:col-span-4">
-                    <p class="section-kicker">04 — Disciplines</p>
-                    <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Five engineering disciplines, one delivery team.</h2>
+                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Five engineering disciplines, one delivery team.</h2>
                     <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">15–35 years of experience per discipline, backed by field interaction and regulatory awareness.</p>
 
                     <svg class="mt-10 hidden w-full max-w-sm text-accent-500 lg:block" viewBox="0 0 320 80" fill="none" aria-hidden="true">
@@ -206,13 +197,12 @@
         </div>
     </section>
 
-    <section class="bg-surface py-24">
+    <section class="bg-surface py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-10 lg:grid-cols-12">
                 <div class="lg:col-span-3">
                     <div class="sticky-label">
-                        <p class="section-kicker">05 — Source waters</p>
-                        <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800">Treatment experience across every source.</h2>
+                        <h2 class="text-3xl font-semibold leading-tight text-ink-800">Treatment experience across every source.</h2>
                         <p class="mt-6 text-sm leading-7 text-ink-500">Conventional and advanced processes, selected for the raw water actually available.</p>
                     </div>
                 </div>
@@ -243,11 +233,10 @@
         </div>
     </section>
 
-    <section class="border-y border-ink-200 bg-white py-24">
+    <section class="border-y border-ink-200 bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="border-b border-ink-200 pb-8">
-                <p class="section-kicker">06 — Operating principles</p>
-                <h2 class="mt-6 max-w-2xl text-4xl font-semibold leading-tight text-ink-800">How every engagement is held to account.</h2>
+                <h2 class="max-w-2xl text-4xl font-semibold leading-tight text-ink-800">How every engagement is held to account.</h2>
             </div>
 
             <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -276,5 +265,4 @@
         </div>
     </section>
 
-    @include('frontend.partials.about-nav')
 @endsection

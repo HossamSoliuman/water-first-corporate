@@ -1,20 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="interior-hero flow-lines py-20 md:py-28">
+    <section class="interior-hero flow-lines py-10 md:py-14">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-breadcrumbs :items="[['name' => 'Expertise']]" />
-            <div class="mt-12 grid gap-10 lg:grid-cols-12">
-                <div class="lg:col-span-3"><p class="section-kicker">01 — Expertise</p></div>
-                <div class="lg:col-span-8">
-                    <h1 class="text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">Everything we engineer starts with water.</h1>
-                    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink-500">Twelve connected areas of expertise spanning water supply and treatment, sewerage and wastewater, reuse and desalination, residuals, environmental assessment, detailed engineering and long-term operations.</p>
+            <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
+                <div class="lg:col-span-12">
+                    <h1 class="text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Everything we engineer starts with water.</h1>
+                    <p class="mt-5 max-w-3xl text-lg leading-8 text-ink-500">Twelve connected areas of expertise spanning water supply and treatment, sewerage and wastewater, reuse and desalination, residuals, environmental assessment, detailed engineering and long-term operations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-surface py-20">
+    <section class="bg-surface py-14 md:py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($services as $index => $service)

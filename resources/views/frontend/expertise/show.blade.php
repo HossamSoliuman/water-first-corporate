@@ -1,28 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="interior-hero flow-lines py-20 md:py-28">
+    <section class="interior-hero flow-lines py-10 md:py-14">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-breadcrumbs :items="[['name' => 'Expertise', 'url' => route('expertise.index')], ['name' => $service->name]]" />
-            <div class="mt-12 grid gap-10 lg:grid-cols-12">
-                <div class="lg:col-span-3">
+            <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
+                <div class="lg:col-span-12">
                     <span class="flex h-14 w-14 items-center justify-center border border-accent-500 text-accent-600"><x-icon name="{{ $service->icon ?? 'building-office-2' }}" class="h-7 w-7" /></span>
                 </div>
-                <div class="lg:col-span-8">
-                    <p class="section-kicker">01 — Expertise</p>
-                    <h1 class="mt-7 text-4xl font-semibold leading-[1.08] text-ink-800 md:text-6xl">{{ $service->name }}</h1>
+                <div class="lg:col-span-12">
+                    <h1 class="text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.08] text-ink-800">{{ $service->name }}</h1>
                     <p class="mt-6 max-w-3xl text-lg leading-8 text-ink-500">{{ $service->short_description }}</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-white py-20">
+    <section class="bg-white py-14 md:py-16">
         <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
             <aside class="lg:col-span-3">
                 <div class="sticky-label">
-                    <p class="section-kicker">02 — Scope</p>
-                    <div class="mt-8 border-t border-ink-200 pt-6">
+                    <div class="border-t border-ink-200 pt-6">
                         <p class="font-mono text-[10px] uppercase tracking-[.14em] text-ink-500">Delivery base</p>
                         <p class="mt-2 text-sm font-semibold text-ink-800">Bangalore · India</p>
                     </div>

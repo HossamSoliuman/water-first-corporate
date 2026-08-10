@@ -8,12 +8,11 @@
     $currentRoute = request()->route()?->getName();
 @endphp
 
-<section class="flow-lines bg-primary-600 py-20 text-white">
+<section class="flow-lines bg-primary-600 py-14 md:py-16 text-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-10 lg:grid-cols-12">
             <div class="reveal-left lg:col-span-4">
-                <p class="section-kicker section-kicker-light">More about WaterFirst</p>
-                <h2 class="mt-6 text-3xl font-semibold leading-tight text-white">Continue through the practice.</h2>
+                <h2 class="text-3xl font-semibold leading-tight text-white">Continue through the practice.</h2>
                 <a href="{{ route('contact') }}" class="wf-btn-light sheen group mt-8">
                     Talk to our engineers
                     <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />

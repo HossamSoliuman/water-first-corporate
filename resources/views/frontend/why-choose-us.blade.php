@@ -2,18 +2,17 @@
 
 @section('content')
     @php($sec = $page->sections ?? [])
-    <section class="interior-hero flow-lines py-20 md:py-28">
+    <section class="interior-hero flow-lines py-10 md:py-14">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-breadcrumbs :items="[['name' => 'About', 'url' => route('company-overview')], ['name' => $page->title]]" />
-            <div class="mt-12 grid gap-10 lg:grid-cols-12">
-                <div class="lg:col-span-3"><p class="section-kicker reveal">01 — Why WaterFirst</p></div>
-                <div class="lg:col-span-8">
-                    <h1 class="reveal delay-100 text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">{{ $page->title }}</h1>
+            <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
+                <div class="lg:col-span-12">
+                    <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">{{ $page->title }}</h1>
                     @if ($page->subtitle)
-                        <p class="reveal delay-200 mt-7 max-w-3xl text-lg leading-8 text-ink-500">{{ $page->subtitle }}</p>
+                        <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">{{ $page->subtitle }}</p>
                     @endif
 
-                    <div class="reveal delay-300 mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-ink-200 pt-7">
+                    <div class="reveal delay-300 mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-ink-200 pt-6">
                         @foreach ([
                             ['light-bulb', 'Creative solutions'],
                             ['map-pin', 'Region-specific'],
@@ -43,19 +42,17 @@
 
     @include('frontend.partials.about-cards', [
         'cards' => $cards,
-        'cardsLabel' => 'Five commitments',
         'cardsHeading' => 'Reasons to partner with us',
         'cardsCountLabel' => 'commitments',
         'gridCols' => 3,
         'cardIcons' => ['light-bulb', 'map-pin', 'users', 'lock-closed', 'scale'],
     ])
 
-    <section class="bg-white py-24">
+    <section class="bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="reveal-left lg:col-span-4">
-                    <p class="section-kicker">04 — Delivery assurance</p>
-                    <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">What holds true on every project.</h2>
+                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">What holds true on every project.</h2>
                     <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">Sustainable outcomes pursued without losing sight of time or cost.</p>
 
                     <svg class="mt-10 hidden w-full max-w-sm text-accent-500 lg:block" viewBox="0 0 320 80" fill="none" aria-hidden="true">
@@ -90,5 +87,4 @@
         </div>
     </section>
 
-    @include('frontend.partials.about-nav')
 @endsection

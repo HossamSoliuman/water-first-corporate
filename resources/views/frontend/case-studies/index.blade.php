@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="interior-hero flow-lines py-20 md:py-28"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Case Studies']]" /><div class="mt-12 grid gap-10 lg:grid-cols-12"><div class="lg:col-span-3"><p class="section-kicker">01 — Project record</p></div><div class="lg:col-span-8"><h1 class="text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">Evidence in the field.</h1><p class="mt-7 max-w-3xl text-lg leading-8 text-ink-500">Selected municipal and industrial water assignments, from feasibility and detailed engineering to EPC support and long-term operations.</p></div></div></div></section>
+    <section class="interior-hero flow-lines py-10 md:py-14"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Case Studies']]" /><div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12"><div class="lg:col-span-12"><h1 class="text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Evidence in the field.</h1><p class="mt-5 max-w-3xl text-lg leading-8 text-ink-500">Selected municipal and industrial water assignments, from feasibility and detailed engineering to EPC support and long-term operations.</p></div></div></div></section>
 
-    <section class="bg-surface py-20">
+    <section class="bg-surface py-14 md:py-16">
         <div class="mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:flex-row lg:px-8">
             <aside class="w-full shrink-0 lg:w-64">
                 <form method="GET" action="{{ route('case-studies.index') }}" class="sticky-label border border-ink-200 bg-white p-5">

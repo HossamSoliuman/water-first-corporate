@@ -25,16 +25,15 @@
             <path class="flow-stroke-slow" stroke="currentColor" stroke-width="1.5" d="M0 100c170-38 250 30 430 4s240-52 396-20 306 58 414 24 200-26 200-26"/>
         </svg>
 
-        <div class="relative z-10 mx-auto grid min-h-[720px] max-w-7xl items-center gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
+        <div class="relative z-10 mx-auto grid min-h-[540px] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-16">
             <div class="relative z-10 lg:col-span-7">
-                <p class="section-kicker section-kicker-light reveal">01 — Water-led engineering</p>
-                <h1 class="reveal delay-100 mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] text-white md:text-7xl">
+                <h1 class="reveal delay-100 max-w-4xl text-4xl font-semibold leading-[1.05] text-white md:text-6xl">
                     Engineering clarity for every drop.
                 </h1>
-                <p class="reveal delay-200 mt-8 max-w-2xl text-lg leading-8 text-primary-100 md:text-xl">
+                <p class="reveal delay-200 mt-5 max-w-2xl text-base leading-7 text-primary-100 md:text-lg md:leading-8">
                     Sustainable technical solutions for municipal and industrial water, wastewater and environmental infrastructure — designed in Bangalore, delivered with ownership.
                 </p>
-                <div class="reveal delay-300 mt-10 flex flex-col gap-3 sm:flex-row">
+                <div class="reveal delay-300 mt-8 flex flex-col gap-3 sm:flex-row">
                     <a href="{{ route('expertise.index') }}" class="wf-btn-light sheen group">
                         Explore water engineering
                         <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
@@ -44,7 +43,7 @@
                     </a>
                 </div>
 
-                <div class="reveal delay-400 mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-primary-500/70 pt-7">
+                <div class="reveal delay-400 mt-9 flex flex-wrap gap-x-8 gap-y-4 border-t border-primary-500/70 pt-6">
                     @foreach ([
                         ['building-library', 'Municipal programmes'],
                         ['beaker', 'Industrial effluent'],
@@ -172,13 +171,12 @@
     </section>
 
     @if ($featuredServices->count())
-        <section class="bg-surface py-24">
+        <section class="bg-surface py-16 md:py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid gap-10 lg:grid-cols-12">
                     <div class="lg:col-span-3">
                         <div class="sticky-label">
-                            <p class="section-kicker">02 — Expertise</p>
-                            <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800">Integrated around water. Exact at every stage.</h2>
+                            <h2 class="text-3xl font-semibold leading-tight text-ink-800">Integrated around water. Exact at every stage.</h2>
                             <a href="{{ route('expertise.index') }}" class="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-secondary-500">
                                 All 12 expertise areas <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
                             </a>
@@ -221,12 +219,11 @@
         </section>
     @endif
 
-    <section class="border-y border-ink-200 bg-white py-24">
+    <section class="border-y border-ink-200 bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="reveal-left lg:col-span-5">
-                    <p class="section-kicker">03 — Treatment focus</p>
-                    <h2 class="mt-6 text-4xl font-semibold leading-tight text-ink-800 md:text-5xl">From source water to circular reuse.</h2>
+                    <h2 class="text-4xl font-semibold leading-tight text-ink-800 md:text-5xl">From source water to circular reuse.</h2>
                     <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">Process, environmental and infrastructure engineering joined into one accountable delivery chain.</p>
 
                     <svg class="mt-10 hidden w-full max-w-sm text-accent-500 lg:block" viewBox="0 0 320 90" fill="none" aria-hidden="true">
@@ -289,12 +286,11 @@
     </section>
 
     @if ($supportingServices->count())
-        <section class="bg-surface py-24">
+        <section class="bg-surface py-16 md:py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col gap-6 border-b border-ink-200 pb-8 md:flex-row md:items-end md:justify-between">
                     <div>
-                        <p class="section-kicker">04 — Lifecycle coverage</p>
-                        <h2 class="mt-6 max-w-2xl text-4xl font-semibold leading-tight text-ink-800">Residuals, assessment, design and operations — under one roof.</h2>
+                        <h2 class="max-w-2xl text-4xl font-semibold leading-tight text-ink-800">Residuals, assessment, design and operations — under one roof.</h2>
                     </div>
                     <a href="{{ route('expertise.index') }}" class="wf-btn-outline group">
                         Full expertise map <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
@@ -319,12 +315,11 @@
         </section>
     @endif
 
-    <section class="flow-lines bg-primary-600 py-24 text-white">
+    <section class="flow-lines bg-primary-600 py-16 md:py-20 text-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="reveal-left lg:col-span-4">
-                    <p class="section-kicker section-kicker-light">05 — Why WaterFirst</p>
-                    <h2 class="mt-6 text-4xl font-semibold leading-tight text-white">Ownership is engineered into the process.</h2>
+                    <h2 class="text-4xl font-semibold leading-tight text-white">Ownership is engineered into the process.</h2>
                     <x-icon name="waves" class="float-slow mt-10 hidden h-16 w-16 text-accent-300/70 lg:block" />
                 </div>
                 <div class="grid gap-px border border-primary-400 bg-primary-400 sm:grid-cols-2 lg:col-span-8">
@@ -349,12 +344,11 @@
     </section>
 
     @if ($featuredCaseStudies->count())
-        <section class="bg-surface py-24">
+        <section class="bg-surface py-16 md:py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col gap-6 border-b border-ink-200 pb-8 md:flex-row md:items-end md:justify-between">
                     <div>
-                        <p class="section-kicker">06 — Project record</p>
-                        <h2 class="mt-6 text-4xl font-semibold text-ink-800 md:text-5xl">Measured by delivered outcomes.</h2>
+                        <h2 class="text-4xl font-semibold text-ink-800 md:text-5xl">Measured by delivered outcomes.</h2>
                     </div>
                     <a href="{{ route('case-studies.index') }}" class="wf-btn-outline group">
                         All projects <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
@@ -370,12 +364,11 @@
     @endif
 
     @if ($industries->count())
-        <section class="border-y border-ink-200 bg-white py-24">
+        <section class="border-y border-ink-200 bg-white py-16 md:py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid gap-12 lg:grid-cols-12">
                     <div class="reveal-left lg:col-span-4">
-                        <p class="section-kicker">07 — Sectors</p>
-                        <h2 class="mt-6 text-3xl font-semibold text-ink-800">Where water performance is mission-critical.</h2>
+                        <h2 class="text-3xl font-semibold text-ink-800">Where water performance is mission-critical.</h2>
                     </div>
                     <div class="grid sm:grid-cols-2 lg:col-span-8">
                         @foreach ($industries as $index => $industry)
@@ -393,7 +386,7 @@
         </section>
     @endif
 
-    <section class="bg-surface py-20">
+    <section class="bg-surface py-14 md:py-16">
         <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
             <div class="reveal-left lg:col-span-8">
                 <div class="media-frame group relative border border-ink-200 bg-white">
@@ -402,8 +395,7 @@
                 </div>
             </div>
             <div class="reveal-right lg:col-span-4">
-                <p class="section-kicker">08 — India focus</p>
-                <h2 class="mt-6 text-3xl font-semibold text-ink-800">Local context. National project experience.</h2>
+                <h2 class="text-3xl font-semibold text-ink-800">Local context. National project experience.</h2>
                 <p class="mt-5 text-sm leading-7 text-ink-500">Experience spans BWSSB, KIADB, NMCG and RDWSB programmes across Karnataka, West Bengal, Uttar Pradesh and Odisha, plus industrial wastewater engineering in Iraq.</p>
 
                 <div class="mt-7 grid gap-px border border-ink-200 bg-ink-200">

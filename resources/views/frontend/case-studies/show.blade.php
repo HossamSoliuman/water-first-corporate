@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="interior-hero flow-lines py-20 md:py-28">
+    <section class="interior-hero flow-lines py-10 md:py-14">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-breadcrumbs :items="[['name' => 'Case Studies', 'url' => route('case-studies.index')], ['name' => $caseStudy->title]]" />
-            <div class="mt-12 grid gap-10 lg:grid-cols-12">
-                <div class="lg:col-span-3"><p class="section-kicker">01 — Project</p></div>
-                <div class="lg:col-span-8">
+            <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
+                <div class="lg:col-span-12">
                     <div class="flex flex-wrap gap-3 font-mono text-[10px] uppercase tracking-[.14em] text-primary-600">@if ($caseStudy->industry)<span>{{ $caseStudy->industry->name }}</span>@endif @if ($caseStudy->category)<span class="text-accent-700">/ {{ $caseStudy->category->name }}</span>@endif</div>
-                    <h1 class="mt-6 text-4xl font-semibold leading-[1.08] text-ink-800 md:text-6xl"><span class="font-metric">{{ $caseStudy->title }}</span></h1>
+                    <h1 class="mt-6 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.08] text-ink-800"><span class="font-metric">{{ $caseStudy->title }}</span></h1>
                     @if ($caseStudy->client_name)<p class="mt-7 text-sm text-ink-500"><span class="font-semibold text-ink-800">Client / project partners:</span> {{ $caseStudy->client_name }}</p>@endif
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-white py-20">
+    <section class="bg-white py-14 md:py-16">
         <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
             <article class="space-y-12 lg:col-span-8">
                 @if ($caseStudy->featured_image)<img src="{{ asset($caseStudy->featured_image) }}" alt="{{ $caseStudy->title }}" class="w-full border border-ink-200">@endif

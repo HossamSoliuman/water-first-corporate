@@ -3,16 +3,13 @@
         $cardIcons = $cardIcons ?? [];
         $cardDelays = ['', 'delay-100', 'delay-200', 'delay-300', 'delay-400', 'delay-500'];
     @endphp
-    <section class="border-y border-ink-200 bg-surface py-24">
+    <section class="border-y border-ink-200 bg-surface py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-10 lg:grid-cols-12">
                 <div class="lg:col-span-3">
                     <div class="sticky-label">
-                        @if (! empty($cardsLabel ?? ''))
-                            <p class="section-kicker">03 — {{ $cardsLabel }}</p>
-                        @endif
                         @if (! empty($cardsHeading ?? ''))
-                            <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800">{{ $cardsHeading }}</h2>
+                            <h2 class="text-3xl font-semibold leading-tight text-ink-800">{{ $cardsHeading }}</h2>
                         @endif
                         <p class="mt-7 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.16em] text-ink-500">
                             <span class="pulse-node h-1.5 w-1.5 rounded-full bg-accent-500"></span>

@@ -1,15 +1,12 @@
 @if (($sec['intro_heading'] ?? '') || ($sec['intro_body'] ?? '') || ($sec['side_image'] ?? ''))
-    @php($highlights = $highlights ?? [])
-    <section class="bg-white py-24">
-        <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-            <div class="lg:col-span-3">
-                <div class="sticky-label">
-                    <p class="section-kicker">02 — {{ $sec['intro_label'] ?? 'Overview' }}</p>
-                    <x-icon name="{{ $introIcon ?? 'waves' }}" class="float-slow mt-8 hidden h-12 w-12 text-accent-300 lg:block" />
-                </div>
-            </div>
-            <div class="grid gap-10 lg:col-span-9 xl:grid-cols-5">
-                <div class="reveal-left xl:col-span-3">
+    @php
+        $highlights = $highlights ?? [];
+        $stats = $stats ?? [];
+    @endphp
+    <section class="bg-white py-16 md:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-10 xl:grid-cols-5">
+                <div class="reveal-left xl:col-span-3 {{ count($stats) ? 'xl:flex xl:flex-col' : '' }}">
                     @if ($sec['intro_heading'] ?? '')
                         <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">{{ $sec['intro_heading'] }}</h2>
                     @endif
@@ -22,7 +19,7 @@
                     @endif
 
                     @if (count($highlights))
-                        <div class="mt-10 grid gap-px border border-ink-200 bg-ink-200">
+                        <div class="mt-10 grid gap-px border border-ink-200 bg-ink-200 {{ count($stats) ? 'xl:grow' : '' }}">
                             @foreach ($highlights as $index => [$icon, $label, $detail])
                                 <div class="hover-row group flex items-start gap-4 bg-white p-5 reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index % 4] }}">
                                     <span class="icon-tile h-10 w-10"><x-icon name="{{ $icon }}" class="h-4 w-4" /></span>
@@ -35,7 +32,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="reveal-right xl:col-span-2">
+                <div class="reveal-right flex flex-col xl:col-span-2">
                     @if ($sec['side_image'] ?? '')
                         <figure class="media-frame group relative border border-ink-200">
                             <img src="{{ asset($sec['side_image']) }}" alt="{{ $page->title }}" class="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async">
@@ -60,6 +57,25 @@
                             </svg>
 
                             <p class="mt-7 font-heading text-xl font-medium leading-8 text-ink-800">Practical engineering, direct collaboration and accountable delivery.</p>
+                        </div>
+                    @endif
+
+                    @if (count($stats))
+                        <div class="hidden grow xl:block"></div>
+                        <div class="mt-5 grid grid-cols-2 gap-px border border-ink-200 bg-ink-200 sm:grid-cols-4">
+                            @foreach ($stats as $index => [$icon, $value, $unit, $countTo, $label])
+                                <div class="group bg-white px-4 py-5 reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index % 4] }}">
+                                    <span class="icon-tile h-9 w-9"><x-icon name="{{ $icon }}" class="h-4 w-4" /></span>
+                                    <p class="metric mt-4 text-xl font-semibold leading-none sm:text-2xl">
+                                        @if ($countTo)
+                                            <span data-count-to="{{ $countTo }}">{{ $value }}</span>{{ $unit }}
+                                        @else
+                                            {{ $value }}{{ $unit }}
+                                        @endif
+                                    </p>
+                                    <p class="mt-2 text-[11px] leading-[1.45] text-ink-500">{{ $label }}</p>
+                                </div>
+                            @endforeach
                         </div>
                     @endif
                 </div>
