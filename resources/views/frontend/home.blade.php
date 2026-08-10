@@ -1,8 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="relative overflow-hidden bg-primary-600 text-white flow-lines">
-        <div class="mx-auto grid min-h-[720px] max-w-7xl items-center gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
+    <section class="relative isolate overflow-hidden bg-primary-950 text-white">
+        <video
+            data-hero-video
+            class="absolute inset-0 h-full w-full object-cover"
+            poster="{{ asset('images/waterfirst-hero-poster.jpg') }}"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+            tabindex="-1"
+            disablepictureinpicture
+        >
+            <source src="{{ asset('videos/hero-water-treatment.mp4') }}" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-primary-950/60"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-950 via-primary-900/80 to-primary-950/20"></div>
+
+        <div class="relative z-10 mx-auto grid min-h-[720px] max-w-7xl items-center gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
             <div class="relative z-10 lg:col-span-7">
                 <p class="section-kicker section-kicker-light reveal">01 — Water-led engineering</p>
                 <h1 class="reveal delay-100 mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] text-white md:text-7xl">
@@ -23,7 +41,7 @@
             </div>
 
             <div class="reveal-scale lg:col-span-5">
-                <div class="border border-primary-400 bg-primary-700 p-6 md:p-8">
+                <div class="border border-primary-300/60 bg-primary-950/75 p-6 shadow-2xl backdrop-blur-sm md:p-8">
                     <div class="flex items-center justify-between border-b border-primary-500 pb-4">
                         <span class="font-mono text-[10px] uppercase tracking-[.18em] text-accent-200">Treatment train / 01</span>
                         <span class="h-2 w-2 bg-accent-400"></span>
@@ -55,6 +73,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -126,6 +145,35 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+
+            <div class="mt-14 grid gap-4 md:grid-cols-3">
+                @foreach ([
+                    ['images/source-water-intake.jpg', '01', 'Source', 'Raw-water intake & conveyance'],
+                    ['images/treatment-process.jpg', '02', 'Process', 'Treatment systems & controls'],
+                    ['images/circular-water-reuse.jpg', '03', 'Reuse', 'Polishing, recovery & circular use'],
+                ] as [$image, $number, $stage, $description])
+                    <figure class="group relative overflow-hidden border border-ink-200 bg-primary-950 reveal">
+                        <img
+                            src="{{ asset($image) }}"
+                            alt="{{ $description }} infrastructure"
+                            class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.025]"
+                            width="1456"
+                            height="1092"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-950 via-primary-950/80 to-transparent px-5 pb-5 pt-16 text-white">
+                            <div class="flex items-end justify-between gap-4">
+                                <div>
+                                    <p class="font-mono text-[9px] uppercase tracking-[.18em] text-accent-200">{{ $number }} / {{ $stage }}</p>
+                                    <figcaption class="mt-2 font-heading text-sm font-medium">{{ $description }}</figcaption>
+                                </div>
+                                <span class="h-2 w-2 shrink-0 bg-accent-400"></span>
+                            </div>
+                        </div>
+                    </figure>
+                @endforeach
             </div>
         </div>
     </section>
@@ -240,3 +288,29 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        (() => {
+            const heroVideo = document.querySelector('[data-hero-video]');
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            if (!heroVideo) {
+                return;
+            }
+
+            const syncHeroMotion = () => {
+                if (reducedMotion.matches) {
+                    heroVideo.pause();
+
+                    return;
+                }
+
+                heroVideo.play().catch(() => {});
+            };
+
+            syncHeroMotion();
+            reducedMotion.addEventListener?.('change', syncHeroMotion);
+        })();
+    </script>
+@endpush
