@@ -33,6 +33,4 @@
             </div>
         </div>
     </section>
-
-    <section class="deep-band py-20"><div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8"><h2 class="max-w-4xl text-4xl font-semibold text-white md:text-5xl">Need the whole chain to work as one?</h2><a href="{{ route('contact') }}" class="wf-btn-light">Discuss an integrated scope</a></div></section>
 @endsection

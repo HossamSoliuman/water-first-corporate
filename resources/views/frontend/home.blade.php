@@ -272,21 +272,6 @@
             </div>
         </section>
     @endif
-
-    <section class="bg-primary-600 py-24 text-white">
-        <div class="mx-auto grid max-w-7xl items-end gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-            <div class="lg:col-span-8">
-                <p class="section-kicker section-kicker-light">08 — Start a conversation</p>
-                <h2 class="mt-7 text-4xl font-semibold leading-tight text-white md:text-6xl">Bring us the environmental problem that resists easy answers.</h2>
-            </div>
-            <div class="lg:col-span-4 lg:text-right">
-                <p class="mb-7 text-sm leading-7 text-primary-100">From feasibility and process selection to detailed engineering, PMC and long-term O&amp;M.</p>
-                <a href="{{ route('contact') }}" class="wf-btn-light group">
-                    Discuss your project <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
-                </a>
-            </div>
-        </div>
-    </section>
 @endsection
 
 @push('scripts')

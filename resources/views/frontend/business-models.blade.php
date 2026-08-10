@@ -13,5 +13,4 @@
     </section>
     @include('frontend.partials.about-two-column', ['sec' => $sec])
     @include('frontend.partials.about-cards', ['cards' => $cards, 'cardsLabel' => 'Flexible delivery', 'cardsHeading' => 'Engagement models'])
-    <section class="deep-band py-20"><div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8"><h2 class="max-w-4xl text-4xl font-semibold text-white md:text-5xl">A delivery model sized to the problem and accountable to the outcome.</h2><a href="{{ route('contact') }}" class="wf-btn-light">Discuss your project</a></div></section>
 @endsection

@@ -39,6 +39,4 @@
             </div>
         </section>
     @endif
-
-    <section class="deep-band py-20"><div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8"><h2 class="max-w-4xl text-4xl font-semibold text-white md:text-5xl">Build a career around work that protects water.</h2><a href="{{ route('careers') }}" class="wf-btn-light">View careers</a></div></section>
 @endsection

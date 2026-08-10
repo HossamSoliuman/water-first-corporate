@@ -55,14 +55,4 @@
             </div>
         </div>
     </section>
-
-    <section class="deep-band py-20">
-        <div class="mx-auto grid max-w-7xl items-end gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-            <div class="lg:col-span-8">
-                <p class="section-kicker section-kicker-light">03 — Our promise</p>
-                <h2 class="mt-7 text-4xl font-semibold leading-tight text-white md:text-5xl">Clear thinking. Responsible engineering. Lasting water outcomes.</h2>
-            </div>
-            <div class="lg:col-span-4 lg:text-right"><a href="{{ route('contact') }}" class="wf-btn-light">Work with WaterFirst</a></div>
-        </div>
-    </section>
 @endsection

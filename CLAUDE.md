@@ -2,14 +2,14 @@
 
 Marketing site + CMS for **WaterFirst Engineering Consultancy Private Limited** (Bangalore, Karnataka, India) — a water, wastewater and multi-disciplinary engineering consultancy founded by Uma Upadhyay.
 
-> **Rebrand in progress.** This codebase was originally built for a brand called **Alada** and is being rebranded to WaterFirst. Public pages change; the admin panel does not. Read `docs/REBRAND-WATERFIRST-GUIDE.md` before touching any frontend view, seeder or brand asset. Any remaining "Alada" string is leftover, not intentional.
+> **Rebranded from Alada.** This codebase was originally built for a brand called **Alada**. The rebrand is complete: no "Alada" string, palette token or legacy asset remains, and the legacy upload folders (`public/services`, `public/software-logos`, `public/team-members`, `public/uploads`) were deleted — admin upload controllers recreate them on demand. Public pages changed; the admin panel did not. `docs/REBRAND-WATERFIRST-GUIDE.md` is the historical brief; note §6 is superseded.
 
 ## Architecture notes (non-obvious)
 
 - **The frontend does not use the Vite/Tailwind build.** `resources/views/layouts/app.blade.php` loads `https://cdn.tailwindcss.com`, configures Tailwind **inline**, and carries ~450 lines of inline `<style>`. That file is the single source of truth for public-site design tokens, custom classes and animations. Editing `tailwind.config.js` or `resources/css/app.css` alone changes nothing on the public site.
 - `resources/views/layouts/admin.blade.php` loads the Tailwind CDN with its **own independent** inline config. Frontend and admin theming cannot break each other.
 - Public pages are CMS-driven. Content lives in DB tables (`services`, `industries`, `pages` + `page_cards`, `case_studies`, `blogs`, `team_members`, `hero_slides`, `software_logos`, `job_listings`, `settings`) and is editable from `/admin`. Change content via seeders (all `updateOrCreate`, re-runnable) — not by hardcoding it into Blade.
-- "Services" is the internal model name; the public-facing term and URL is **Expertise** (`/expertise`, `expertise.index`, `expertise.show`).
+- "Services" is the internal model name; the public-facing term and URL is **Expertise** (`/expertise`, `expertise.index`, `expertise.show`). The 12 expertise areas are seeded from `docs/WaterFirst_Presentation_20260717content.pdf`; `ServiceSeeder` deletes any service row whose slug is not in that list (and its `seo_metas` row), so it is the single source of truth for the taxonomy.
 - `Service`, `CaseStudy`, `Blog` etc. use Spatie `HasSlug`, which slugs on create only. Renaming a record does **not** regenerate its slug — set slugs explicitly when a URL must change.
 - Icons come from a fixed vocabulary in `resources/views/components/icon.blade.php`. Check it before using an icon name in a seeder.
 - Frontend scroll animations use the `.reveal`, `.reveal-left`, `.reveal-right`, `.reveal-scale` + `.delay-*` classes defined in `layouts/app.blade.php`.
