@@ -21,6 +21,7 @@ class HomeController extends Controller
         $data = [
             'heroVideo' => HeroSlide::active()->first(),
             'featuredServices' => Service::active()->featured()->with('seo')->limit(6)->get(),
+            'supportingServices' => Service::active()->where('is_featured', false)->limit(6)->get(),
             'featuredCaseStudies' => CaseStudy::published()->featured()->with(['category', 'industry'])->limit(3)->get(),
             'latestBlogs' => Blog::published()->with(['category', 'author'])->latest('published_at')->limit(3)->get(),
             'industries' => Industry::active()->limit(8)->get(),
