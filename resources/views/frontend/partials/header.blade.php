@@ -26,9 +26,8 @@
                     <div x-show="open" x-cloak x-transition
                         class="absolute left-1/2 top-full w-64 -translate-x-1/2 pt-3">
                         <div class="border border-ink-200 bg-white p-2 shadow-soft">
-                            @foreach ([['company-overview', '01', 'Company Overview'], ['our-team', '02', 'Our Team'], ['why-choose-us', '03', 'Why Choose Us'], ['business-models', '04', 'Business Models']] as [$routeName, $index, $label])
+                            @foreach ([['company-overview', 'Company Overview'], ['our-team', 'Our Team'], ['why-choose-us', 'Why Choose Us'], ['business-models', 'Business Models']] as [$routeName, $label])
                                 <a href="{{ route($routeName) }}" class="group flex items-center gap-3 border-b border-ink-100 px-3 py-3 last:border-0 hover:bg-surface">
-                                    <span class="font-mono text-[10px] text-accent-600">{{ $index }}</span>
                                     <span class="text-sm font-medium text-ink-800 group-hover:text-primary-600">{{ $label }}</span>
                                 </a>
                             @endforeach
@@ -44,14 +43,13 @@
                     <div x-show="open" x-cloak x-transition
                         class="absolute left-1/2 top-full w-[640px] -translate-x-1/2 pt-3">
                         <div class="border border-ink-200 bg-white p-5 shadow-soft">
-                            <div class="mb-4 flex items-center justify-between border-b border-ink-200 pb-3">
-                                <p class="section-index">EXPERTISE / {{ str_pad($footerServices->count(), 2, '0', STR_PAD_LEFT) }}</p>
+                            <div class="mb-4 flex items-center justify-end border-b border-ink-200 pb-3">
                                 <a href="{{ route('expertise.index') }}" class="text-xs font-semibold text-primary-600 hover:text-secondary-500">View all expertise</a>
                             </div>
                             <div class="grid grid-cols-2 gap-x-5">
                                 @foreach ($footerServices as $service)
-                                    <a href="{{ route('expertise.show', $service->slug) }}" class="group flex items-start gap-3 border-b border-ink-100 py-3 hover:text-primary-600">
-                                        <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center border border-accent-500 text-accent-600">
+                                    <a href="{{ route('expertise.show', $service->slug) }}" class="group flex items-center gap-3 border-b border-ink-100 py-3 hover:text-primary-600">
+                                        <span class="flex h-7 w-7 shrink-0 items-center justify-center border border-accent-500 text-accent-600">
                                             <x-icon name="{{ $service->icon ?? 'building-office-2' }}" class="h-3.5 w-3.5" />
                                         </span>
                                         <span class="text-xs font-medium leading-snug text-ink-700 group-hover:text-primary-600">{{ $service->name }}</span>

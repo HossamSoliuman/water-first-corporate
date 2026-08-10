@@ -21,7 +21,7 @@ class ServiceController extends Controller
     {
         $service = Service::where('slug', $slug)->where('is_active', true)->with('seo')->firstOrFail();
         $seo = $this->seoService->for($service);
-        $related = Service::active()->where('id', '!=', $service->id)->limit(6)->get();
+        $related = Service::active()->where('id', '!=', $service->id)->get();
 
         return view('frontend.expertise.show', compact('service', 'seo', 'related'));
     }
