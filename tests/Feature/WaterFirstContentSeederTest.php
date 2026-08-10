@@ -43,6 +43,20 @@ class WaterFirstContentSeederTest extends TestCase
         $this->assertSame('wastewater-treatment-stp-etp-cetp', Service::query()->where('order', 4)->value('slug'));
     }
 
+    public function test_home_page_links_to_every_active_expertise_area(): void
+    {
+        $services = Service::query()->where('is_active', true)->orderBy('order')->get();
+
+        $response = $this->get(route('home'));
+
+        $response->assertOk();
+        $response->assertSeeInOrder($services->pluck('name')->all());
+
+        foreach ($services as $service) {
+            $response->assertSee(route('expertise.show', $service->slug), false);
+        }
+    }
+
     public function test_pre_waterfirst_services_are_removed_rather_than_deactivated(): void
     {
         $this->assertSame(12, Service::query()->count());

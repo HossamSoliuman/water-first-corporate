@@ -20,6 +20,7 @@ class HomeController extends Controller
     {
         $data = [
             'heroVideo' => HeroSlide::active()->first(),
+            'expertiseServices' => Service::active()->get(['id', 'name', 'slug']),
             'featuredServices' => Service::active()->featured()->with('seo')->limit(6)->get(),
             'supportingServices' => Service::active()->where('is_featured', false)->limit(6)->get(),
             'featuredCaseStudies' => CaseStudy::published()->featured()->with(['category', 'industry'])->limit(3)->get(),

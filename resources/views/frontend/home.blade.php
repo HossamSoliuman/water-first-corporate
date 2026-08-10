@@ -177,9 +177,30 @@
                     <div class="lg:col-span-3">
                         <div class="sticky-label">
                             <h2 class="text-3xl font-semibold leading-tight text-ink-800">Integrated around water. Exact at every stage.</h2>
-                            <a href="{{ route('expertise.index') }}" class="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-secondary-500">
-                                All 12 expertise areas <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
+                            <a href="{{ route('expertise.index') }}" class="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 transition-colors hover:text-secondary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-600">
+                                All {{ $expertiseServices->count() }} expertise areas <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
                             </a>
+
+                            <nav class="mt-7 border-t border-ink-200" aria-label="Expertise areas">
+                                <ol class="grid sm:grid-cols-2 lg:grid-cols-1">
+                                    @foreach ($expertiseServices as $index => $expertiseService)
+                                        <li class="border-b border-ink-200 sm:odd:border-r lg:border-r-0">
+                                            <a
+                                                href="{{ route('expertise.show', $expertiseService->slug) }}"
+                                                class="group flex min-h-12 items-center gap-3 px-2 py-3 transition-colors hover:bg-white focus-visible:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary-600"
+                                            >
+                                                <span class="font-mono text-[10px] font-semibold tracking-[.12em] text-accent-600">
+                                                    {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                                                </span>
+                                                <span class="flex-1 text-xs font-medium leading-5 text-ink-700 transition-colors group-hover:text-primary-600">
+                                                    {{ $expertiseService->name }}
+                                                </span>
+                                                <x-icon name="arrow-long-right" class="h-3.5 w-3.5 shrink-0 text-primary-600 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100" />
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                     <div class="grid gap-5 md:grid-cols-2 lg:col-span-9">
