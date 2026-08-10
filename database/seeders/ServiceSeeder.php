@@ -115,6 +115,7 @@ class ServiceSeeder extends Seeder
             $savedService = Service::updateOrCreate(
                 ['slug' => $service['slug']],
                 array_merge($service, [
+                    'featured_image' => "services/{$service['slug']}_medium.webp",
                     'is_featured' => $index < 6,
                     'is_active' => true,
                     'order' => $index + 1,
