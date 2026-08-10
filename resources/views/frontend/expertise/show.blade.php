@@ -9,7 +9,7 @@
                     <span class="flex h-14 w-14 items-center justify-center border border-accent-500 text-accent-600"><x-icon name="{{ $service->icon ?? 'building-office-2' }}" class="h-7 w-7" /></span>
                 </div>
                 <div class="lg:col-span-8">
-                    <p class="section-kicker">01 — Discipline</p>
+                    <p class="section-kicker">01 — Expertise</p>
                     <h1 class="mt-7 text-4xl font-semibold leading-[1.08] text-ink-800 md:text-6xl">{{ $service->name }}</h1>
                     <p class="mt-6 max-w-3xl text-lg leading-8 text-ink-500">{{ $service->short_description }}</p>
                 </div>

@@ -30,7 +30,7 @@
                     Sustainable technical solutions for municipal and industrial water, wastewater and environmental infrastructure — designed in Bangalore, delivered with ownership.
                 </p>
                 <div class="reveal delay-300 mt-10 flex flex-col gap-3 sm:flex-row">
-                    <a href="{{ route('expertise.show', 'water-wastewater-drainage-engineering') }}" class="wf-btn-light group">
+                    <a href="{{ route('expertise.index') }}" class="wf-btn-light group">
                         Explore water engineering
                         <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
                     </a>
@@ -64,7 +64,7 @@
                         </g>
                     </svg>
                     <div class="grid grid-cols-3 border-t border-primary-500 pt-5 text-center">
-                        @foreach ([['15–35', 'YEARS EXP.'], ['10', 'DISCIPLINES'], ['360°', 'LIFECYCLE']] as [$value, $label])
+                        @foreach ([['15–35', 'YEARS EXP.'], ['12', 'EXPERTISE AREAS'], ['360°', 'LIFECYCLE']] as [$value, $label])
                             <div class="border-r border-primary-500 last:border-0">
                                 <p class="font-mono text-xl font-semibold text-white">{{ $value }}</p>
                                 <p class="mt-1 font-mono text-[8px] tracking-[.14em] text-primary-200">{{ $label }}</p>
@@ -95,9 +95,9 @@
                     <div class="lg:col-span-3">
                         <div class="sticky-label">
                             <p class="section-kicker">02 — Expertise</p>
-                            <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800">Integrated around water. Exact across every discipline.</h2>
+                            <h2 class="mt-6 text-3xl font-semibold leading-tight text-ink-800">Integrated around water. Exact at every stage.</h2>
                             <a href="{{ route('expertise.index') }}" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-secondary-500">
-                                All 10 disciplines <x-icon name="arrow-long-right" class="h-4 w-4" />
+                                All 12 expertise areas <x-icon name="arrow-long-right" class="h-4 w-4" />
                             </a>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                                 </div>
                                 <h3 class="mt-8 text-xl font-semibold leading-snug text-ink-800 group-hover:text-primary-600">{{ $service->name }}</h3>
                                 <p class="mt-3 flex-1 text-sm leading-6 text-ink-500">{{ $service->short_description }}</p>
-                                <div class="mt-6 border-t border-ink-100 pt-4 text-xs font-semibold uppercase tracking-wider text-primary-600">Explore discipline</div>
+                                <div class="mt-6 border-t border-ink-100 pt-4 text-xs font-semibold uppercase tracking-wider text-primary-600">Explore expertise</div>
                             </a>
                         @endforeach
                     </div>

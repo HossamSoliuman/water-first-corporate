@@ -45,7 +45,7 @@
                         class="absolute left-1/2 top-full w-[640px] -translate-x-1/2 pt-4">
                         <div class="border border-ink-200 bg-white p-5 shadow-soft">
                             <div class="mb-4 flex items-center justify-between border-b border-ink-200 pb-3">
-                                <p class="section-index">DISCIPLINES / {{ str_pad($footerServices->count(), 2, '0', STR_PAD_LEFT) }}</p>
+                                <p class="section-index">EXPERTISE / {{ str_pad($footerServices->count(), 2, '0', STR_PAD_LEFT) }}</p>
                                 <a href="{{ route('expertise.index') }}" class="text-xs font-semibold text-primary-600 hover:text-secondary-500">View all expertise</a>
                             </div>
                             <div class="grid grid-cols-2 gap-x-5">

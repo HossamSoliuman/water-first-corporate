@@ -7,8 +7,8 @@
             <div class="mt-12 grid gap-10 lg:grid-cols-12">
                 <div class="lg:col-span-3"><p class="section-kicker">01 — Expertise</p></div>
                 <div class="lg:col-span-8">
-                    <h1 class="text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">Engineering disciplines, integrated by water.</h1>
-                    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink-500">Ten coordinated disciplines covering process, environmental, civil, structural, architecture, digital engineering and building services.</p>
+                    <h1 class="text-5xl font-semibold leading-[1.05] text-ink-800 md:text-7xl">Everything we engineer starts with water.</h1>
+                    <p class="mt-7 max-w-3xl text-lg leading-8 text-ink-500">Twelve connected areas of expertise spanning water supply and treatment, sewerage and wastewater, reuse and desalination, residuals, environmental assessment, detailed engineering and long-term operations.</p>
                 </div>
             </div>
         </div>
@@ -34,5 +34,5 @@
         </div>
     </section>
 
-    <section class="deep-band py-20"><div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8"><h2 class="max-w-4xl text-4xl font-semibold text-white md:text-5xl">Need several disciplines to work as one?</h2><a href="{{ route('contact') }}" class="wf-btn-light">Discuss an integrated scope</a></div></section>
+    <section class="deep-band py-20"><div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-end md:justify-between lg:px-8"><h2 class="max-w-4xl text-4xl font-semibold text-white md:text-5xl">Need the whole chain to work as one?</h2><a href="{{ route('contact') }}" class="wf-btn-light">Discuss an integrated scope</a></div></section>
 @endsection

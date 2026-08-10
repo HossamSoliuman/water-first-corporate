@@ -1,6 +1,6 @@
-# Corporate Website — Laravel 12
+# WaterFirst — Laravel 12
 
-A full-featured corporate website with admin panel, built on Laravel 12.
+Marketing site and CMS for **WaterFirst Engineering Consultancy Private Limited** (Bangalore, Karnataka, India) — a water, wastewater and environmental engineering consultancy. Built on Laravel 12 with an admin panel.
 
 ## Tech Stack
 
@@ -18,11 +18,11 @@ A full-featured corporate website with admin panel, built on Laravel 12.
 ## Features
 
 ### Public Site
-- **Home page** — hero, stats, featured services, industries grid, case studies, blog preview, CTA
-- **Services** — listing + detail pages with SEO
-- **Industries** — listing + filtered case studies per industry
-- **Case Studies** — filterable grid (by category & industry), detail with gallery + PDF download
-- **Blog** — listing, category/tag filter, search, full article with related posts
+- **Home page** — hero, stats, featured expertise, treatment focus, sectors grid, project record, software stack, CTA
+- **Expertise** (`/expertise`) — listing + detail pages with SEO. `Service` is the internal model name; the public term is Expertise
+- **Industries** — listing + filtered projects per sector
+- **Projects** (`/case-studies`) — filterable grid (by category & industry), detail with gallery + PDF download
+- **Insights** (`/insights`) — listing, category/tag filter, search, full article with related posts
 - **Contact** — form with reCAPTCHA, auto-reply email, admin notification
 - **Generic pages** — privacy policy, terms, careers, etc. (CMS-driven)
 - **Sitemap** — dynamic XML sitemap with caching

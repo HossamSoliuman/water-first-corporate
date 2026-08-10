@@ -1,7 +1,7 @@
 {
-    "name": "corporate/website",
+    "name": "waterfirst/website",
     "type": "project",
-    "description": "Corporate Website - Laravel 12",
+    "description": "WaterFirst Engineering Consultancy - marketing site and CMS (Laravel 12)",
     "require": {
         "php": "^8.2",
         "anhskohbo/no-captcha": "^3.5",

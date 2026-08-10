@@ -22,23 +22,39 @@ class WaterFirstContentSeederTest extends TestCase
         $this->seed(DatabaseSeeder::class);
     }
 
-    public function test_waterfirst_services_are_seeded_in_the_approved_order(): void
+    public function test_waterfirst_expertise_matches_the_presentation_service_areas(): void
     {
         $this->assertSame([
-            'Water, Wastewater & Drainage Engineering',
-            'Environmental Engineering & Hydrogeology',
-            'Transportation Infrastructure Engineering',
-            'Structural Engineering',
-            'Architectural Design Services',
-            'Urban & Infrastructure Development Engineering',
-            'Surveying, GIS & Geospatial Engineering Services',
-            'Industrial, LNG, Oil & Gas & Energy Engineering',
-            'BIM & Digital Engineering',
-            'MEPF Engineering Services',
+            'Water Supply & Distribution Systems',
+            'Drinking Water Treatment',
+            'Sewerage Systems, Networks & Pumping Stations',
+            'Wastewater Treatment — STP, ETP & CETP',
+            'Industrial Wastewater & Process Water',
+            'Water Reuse, Recycling & Desalination',
+            'Sludge, Biosolids & Solid Waste Management',
+            'Sustainability, ESG & Climate Disclosure',
+            'Water Audit, EHS & Environmental Assessment',
+            'Detailed Engineering & Design',
+            'DPR, Tender & Procurement Support',
+            'Project Management, Operations & Maintenance',
         ], Service::query()->where('is_active', true)->orderBy('order')->pluck('name')->all());
 
         $this->assertSame(6, Service::query()->where('is_active', true)->where('is_featured', true)->count());
-        $this->assertSame(0, Service::query()->where('name', 'Project & Construction Management')->where('is_active', true)->count());
+        $this->assertSame('wastewater-treatment-stp-etp-cetp', Service::query()->where('order', 4)->value('slug'));
+    }
+
+    public function test_pre_waterfirst_services_are_removed_rather_than_deactivated(): void
+    {
+        $this->assertSame(12, Service::query()->count());
+
+        $this->assertSame(0, Service::query()->whereIn('name', [
+            'Transportation Infrastructure Engineering',
+            'Structural Engineering',
+            'Architectural Design Services',
+            'BIM & Digital Engineering',
+            'MEPF Engineering Services',
+            'Project & Construction Management',
+        ])->count());
     }
 
     public function test_all_eighteen_presentation_projects_are_published_individually(): void
@@ -91,7 +107,7 @@ class WaterFirstContentSeederTest extends TestCase
         $this->seed(DatabaseSeeder::class);
         $this->seed(DatabaseSeeder::class);
 
-        $this->assertSame(10, Service::query()->where('is_active', true)->count());
+        $this->assertSame(12, Service::query()->where('is_active', true)->count());
         $this->assertSame(18, CaseStudy::published()->count());
         $this->assertSame(11, SoftwareLogo::query()->count());
         $this->assertSame(
