@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="WaterFirst">
+  <defs>
+    <linearGradient id="wf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#07579A"/>
+      <stop offset="1" stop-color="#1976B8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14.08" fill="url(#wf)"/>
+  <path fill="#FFFFFF" d="M32 8.96 45.73 28.99A16.64 16.64 0 1 1 18.27 28.99Z"/>
+  <g fill="none" stroke="#00A6A6" stroke-width="3.2" stroke-linecap="round">
+    <path d="M22.68 39.93Q32 33.57 41.32 39.93"/>
+    <path d="M24.35 45.5Q32 41.08 39.65 45.5"/>
+  </g>
+</svg>
