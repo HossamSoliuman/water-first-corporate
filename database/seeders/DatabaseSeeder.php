@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
             CaseStudySeeder::class,
             SoftwareLogoSeeder::class,
             TeamMemberSeeder::class,
+            BlogCategorySeeder::class,
+            BlogTagSeeder::class,
+            BlogSeeder::class,
+            JobListingSeeder::class,
         ]);
     }
 }

@@ -14,4 +14,12 @@ class JobListing extends Model
     {
         return $query->where('is_active', true)->orderBy('order');
     }
+
+    /**
+     * Display label for the stored enum value, e.g. "full-time" => "Full-time".
+     */
+    public function getEmploymentTypeLabelAttribute(): string
+    {
+        return $this->employment_type === 'part-time' ? 'Part-time' : 'Full-time';
+    }
 }

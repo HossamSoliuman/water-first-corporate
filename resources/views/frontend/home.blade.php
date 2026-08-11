@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="relative isolate overflow-hidden bg-primary-950 text-white">
+    <section class="relative isolate min-h-[calc(100svh-5.25rem)] overflow-hidden bg-primary-950 text-white">
         <video
             data-hero-video
             class="absolute inset-0 h-full w-full object-cover"
@@ -17,58 +17,27 @@
         >
             <source src="{{ asset('videos/hero-water-treatment.mp4') }}" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-primary-950/60"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-primary-950 via-primary-900/80 to-primary-950/20"></div>
+        <div class="absolute inset-0 bg-primary-950/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-950 via-primary-900/70 to-transparent"></div>
 
         <svg class="pointer-events-none absolute inset-x-0 bottom-0 h-24 w-full text-accent-400/25" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" fill="none">
             <path class="flow-stroke" stroke="currentColor" stroke-width="1.5" d="M0 74c160-40 260 34 420 6s250-56 400-24 300 62 420 26 200-30 200-30"/>
             <path class="flow-stroke-slow" stroke="currentColor" stroke-width="1.5" d="M0 100c170-38 250 30 430 4s240-52 396-20 306 58 414 24 200-26 200-26"/>
         </svg>
 
-        <div class="relative z-10 mx-auto grid min-h-[540px] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-16">
-            <div class="relative z-10 lg:col-span-7">
-                <h1 class="reveal delay-100 max-w-4xl text-4xl font-semibold leading-[1.05] text-white md:text-6xl">
-                    Engineering clarity for every drop.
-                </h1>
-                <p class="reveal delay-200 mt-5 max-w-2xl text-base leading-7 text-primary-100 md:text-lg md:leading-8">
-                    Sustainable technical solutions for municipal and industrial water, wastewater and environmental infrastructure — designed in Bangalore, delivered with ownership.
-                </p>
-                <div class="reveal delay-300 mt-8 flex flex-col gap-3 sm:flex-row">
-                    <a href="{{ route('expertise.index') }}" class="wf-btn-light sheen group">
-                        Explore water engineering
-                        <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
-                    </a>
-                    <a href="{{ route('case-studies.index') }}" class="wf-btn-outline border-accent-300 text-white hover:bg-primary-700">
-                        View project record
-                    </a>
-                </div>
-
-                <div class="reveal delay-400 mt-9 flex flex-wrap gap-x-8 gap-y-4 border-t border-primary-500/70 pt-6">
-                    @foreach ([
-                        ['building-library', 'Municipal programmes'],
-                        ['beaker', 'Industrial effluent'],
-                        ['arrow-path', 'Reuse & recycling'],
-                        ['wrench-screwdriver', 'Design to O&M'],
-                    ] as [$icon, $label])
-                        <span class="group flex items-center gap-3">
-                            <span class="icon-tile icon-tile-dark h-9 w-9"><x-icon name="{{ $icon }}" class="h-4 w-4" /></span>
-                            <span class="font-mono text-[10px] uppercase tracking-[.16em] text-primary-100">{{ $label }}</span>
-                        </span>
-                    @endforeach
-                </div>
-            </div>
-
-            <div class="reveal-scale lg:col-span-5">
-                <div class="border border-primary-300/60 bg-primary-950/75 p-6 shadow-2xl backdrop-blur-sm md:p-8">
-                    <div class="flex items-center justify-between border-b border-primary-500 pb-4">
-                        <span class="font-mono text-[10px] uppercase tracking-[.18em] text-accent-200">Treatment train / 01</span>
-                        <span class="flex items-center gap-2">
-                            <span class="pulse-node h-1.5 w-1.5 rounded-full bg-accent-400"></span>
-                            <span class="font-mono text-[9px] uppercase tracking-[.16em] text-primary-200">Live schematic</span>
-                        </span>
-                    </div>
-
-                    <svg viewBox="0 0 440 236" class="mt-6 w-full" role="img" aria-label="Animated schematic showing water moving from intake through the treatment process to reuse">
+        <div class="relative z-10 mx-auto flex min-h-[calc(100svh-5.25rem)] max-w-7xl flex-col justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <h1 class="reveal delay-100 max-w-3xl text-left text-4xl font-semibold leading-[1.05] text-white md:text-6xl">
+                Engineering clarity for
+                <span class="mt-1 block text-accent-200">
+                    <span
+                        data-typewriter
+                        data-typewriter-words='["every drop.", "municipal water.", "industrial effluent.", "reuse and recycling.", "safe sanitation."]'
+                    >every drop.</span><span class="type-caret" aria-hidden="true"></span>
+                </span>
+            </h1>
+            <div class="reveal-scale delay-300 mt-8 max-w-4xl border border-primary-300/60 bg-primary-950/75 p-6 shadow-2xl backdrop-blur-sm md:p-8">
+                <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+                    <svg viewBox="0 0 440 236" class="w-full" role="img" aria-label="Animated schematic showing water moving from intake through the treatment process to reuse">
                         <defs>
                             <clipPath id="wf-intake-clip"><rect x="88" y="98" width="52" height="84"/></clipPath>
                             <clipPath id="wf-reuse-clip"><rect x="332" y="98" width="52" height="84"/></clipPath>
@@ -124,26 +93,52 @@
                         </g>
                     </svg>
 
-                    <div class="grid grid-cols-3 border-t border-primary-500 pt-5 text-center">
-                        @foreach ([
-                            ['clock', '15–35', 'YEARS EXP.', null],
-                            ['squares-2x2', '12', 'EXPERTISE AREAS', 12],
-                            ['arrow-path', '360°', 'LIFECYCLE', null],
-                        ] as [$icon, $value, $label, $countTo])
-                            <div class="border-r border-primary-500 last:border-0">
-                                <x-icon name="{{ $icon }}" class="mx-auto h-4 w-4 text-accent-300" />
-                                <p class="mt-2 font-mono text-xl font-semibold text-white">
-                                    @if ($countTo)
-                                        <span data-count-to="{{ $countTo }}">{{ $value }}</span>
-                                    @else
-                                        {{ $value }}
-                                    @endif
-                                </p>
-                                <p class="mt-1 font-mono text-[8px] tracking-[.14em] text-primary-200">{{ $label }}</p>
-                            </div>
-                        @endforeach
+                    <div class="min-w-0">
+                        <div class="grid grid-cols-3 border-y border-primary-500 py-5 text-center">
+                            @foreach ([
+                                ['clock', '15–35', 'YEARS EXP.', null],
+                                ['squares-2x2', '12', 'EXPERTISE AREAS', 12],
+                                ['arrow-path', '360°', 'LIFECYCLE', null],
+                            ] as [$icon, $value, $label, $countTo])
+                                <div class="min-w-0 border-r border-primary-500 px-2 last:border-0">
+                                    <x-icon name="{{ $icon }}" class="mx-auto h-4 w-4 text-accent-300" />
+                                    <p class="mt-2 font-mono text-2xl font-semibold text-white">
+                                        @if ($countTo)
+                                            <span data-count-to="{{ $countTo }}">{{ $value }}</span>
+                                        @else
+                                            {{ $value }}
+                                        @endif
+                                    </p>
+                                    <p class="mt-1 whitespace-nowrap font-mono text-[9px] font-medium leading-4 tracking-[.06em] text-primary-100">{{ $label }}</p>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="mt-6 flex flex-col gap-3">
+                            <a href="{{ route('expertise.index') }}" class="wf-btn-light sheen group w-full">
+                                Explore water engineering
+                                <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
+                            </a>
+                            <a href="{{ route('case-studies.index') }}" class="wf-btn-outline w-full border-accent-300 text-white hover:bg-primary-700">
+                                View project record
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="reveal delay-400 mt-8 grid max-w-4xl grid-cols-2 gap-4 border-t border-primary-500/70 pt-6 md:grid-cols-4 md:gap-5">
+                @foreach ([
+                    ['building-library', 'Municipal programmes'],
+                    ['beaker', 'Industrial effluent'],
+                    ['arrow-path', 'Reuse & recycling'],
+                    ['wrench-screwdriver', 'Design to O&M'],
+                ] as [$icon, $label])
+                    <span class="group flex min-w-0 items-center gap-3">
+                        <span class="icon-tile icon-tile-dark h-9 w-9"><x-icon name="{{ $icon }}" class="h-4 w-4" /></span>
+                        <span class="font-mono text-[9px] uppercase leading-4 tracking-[.13em] text-primary-100">{{ $label }}</span>
+                    </span>
+                @endforeach
             </div>
         </div>
 
@@ -490,6 +485,57 @@
 
             syncHeroMotion();
             reducedMotion.addEventListener?.('change', syncHeroMotion);
+        })();
+
+        (() => {
+            const target = document.querySelector('[data-typewriter]');
+
+            if (!target || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            let words = [];
+
+            try {
+                words = JSON.parse(target.dataset.typewriterWords || '[]');
+            } catch (error) {
+                return;
+            }
+
+            if (words.length < 2) {
+                return;
+            }
+
+            const typeDelay = 80;
+            const eraseDelay = 40;
+            const holdDelay = 2400;
+            const switchDelay = 400;
+
+            let wordIndex = 0;
+            let charIndex = words[0].length;
+            let isErasing = true;
+
+            target.textContent = words[0];
+
+            const tick = () => {
+                charIndex += isErasing ? -1 : 1;
+                target.textContent = words[wordIndex].slice(0, charIndex);
+
+                let delay = isErasing ? eraseDelay : typeDelay;
+
+                if (isErasing && charIndex === 0) {
+                    isErasing = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    delay = switchDelay;
+                } else if (!isErasing && charIndex === words[wordIndex].length) {
+                    isErasing = true;
+                    delay = holdDelay;
+                }
+
+                window.setTimeout(tick, delay);
+            };
+
+            window.setTimeout(tick, holdDelay);
         })();
     </script>
 @endpush

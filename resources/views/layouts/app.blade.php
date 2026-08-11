@@ -142,6 +142,13 @@
         @keyframes wf-spin { to { transform: rotate(360deg); } }
         @keyframes wf-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes wf-sheen { 0% { transform: translateX(-120%); } 60%, 100% { transform: translateX(220%); } }
+        @keyframes wf-caret { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0; } }
+
+        .type-caret {
+            display: inline-block; width: .055em; min-width: 2px; height: .82em;
+            margin-left: .07em; vertical-align: -.04em; background: #67E5E5;
+            animation: wf-caret 1.05s steps(1, end) infinite;
+        }
 
         .float-slow { animation: wf-float 7s ease-in-out infinite; }
         .flow-stroke { stroke-dasharray: 8 10; animation: wf-flow 4s linear infinite; }
@@ -179,7 +186,8 @@
         @media (prefers-reduced-motion: reduce) {
             .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1 !important; transform: none !important; transition: none !important; }
             .float-slow, .flow-stroke, .flow-stroke-slow, .pulse-node, .spin-ring, .scroll-cue, .marquee-track,
-            .draw-stroke, .is-visible .draw-stroke, .sheen::after { animation: none !important; }
+            .draw-stroke, .is-visible .draw-stroke, .sheen::after, .type-caret { animation: none !important; }
+            .type-caret { opacity: 0 !important; }
             .draw-stroke { stroke-dashoffset: 0 !important; }
             .media-frame img, .hover-row > *, .underline-grow { transition: none !important; }
             * { scroll-behavior: auto !important; }
