@@ -11,11 +11,20 @@ use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
+    /**
+     * Slugs of the only pages that are editable from the admin Pages screen.
+     * Every other page row stays in the database — the public site reads it —
+     * but is not surfaced for editing.
+     *
+     * @var list<string>
+     */
+    private const EDITABLE_SLUGS = ['privacy-policy', 'terms-conditions'];
+
     public function __construct(private SeoService $seoService) {}
 
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::whereIn('slug', self::EDITABLE_SLUGS)->get();
 
         return view('admin.pages.index', compact('pages'));
     }
