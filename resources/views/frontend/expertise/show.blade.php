@@ -1,68 +1,125 @@
 @extends('layouts.app')
 
+@push('styles')
+<style>
+    /* Bootstrap-compatible grid inside CMS-authored service descriptions */
+    .service-desc .row { display: flex; flex-wrap: wrap; margin: 0 -.75rem; }
+    .service-desc [class*="col-"] { width: 100%; padding: 0 .75rem; box-sizing: border-box; }
+    @media (min-width: 768px) { .service-desc .col-md-6 { width: 50%; } }
+    @media (min-width: 992px) { .service-desc .col-lg-4 { width: 33.333%; } }
+
+    .service-desc .list-unstyled { margin: 0; padding-left: 0; list-style: none; }
+    .service-desc .text-center { text-align: center; }
+    .service-desc .mt-4 { margin-top: 1.5rem; }
+    .service-desc .mt-5 { margin-top: 2rem; }
+    .service-desc .mb-3 { margin-bottom: .75rem; }
+    .service-desc .mb-4 { margin-bottom: 1rem; }
+    .service-desc .mb-5 { margin-bottom: 2rem; }
+    .service-desc .me-2 { margin-right: .5rem; }
+
+    .service-desc .service-section h2 {
+        font-family: 'Sora', ui-sans-serif, system-ui;
+        font-size: 1.35rem; font-weight: 700; color: #0B2437;
+        margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 2px solid #E5F0F6;
+    }
+
+    .service-desc .expertise-card {
+        background: #F5FBFE; border: 1px solid #E5F0F6; border-radius: 1rem;
+        padding: 1.5rem 1rem; margin-bottom: 1rem; color: #0B2437;
+    }
+    .service-desc .expertise-card h5 {
+        font-family: 'Sora', ui-sans-serif, system-ui;
+        font-size: .875rem; font-weight: 600; margin: 0; color: #0B2437;
+    }
+    .service-desc .expertise-card i { color: #00A6A6; }
+
+    .service-desc .text-primary { color: #00A6A6; }
+    .service-desc .text-success { color: #16a34a; }
+    .service-desc i.fa-3x { display: block; margin-bottom: .75rem; font-size: 2rem; }
+
+    .service-desc .blockquote {
+        background: #ECFEFE; border-left: 4px solid #00A6A6; border-radius: .75rem;
+        margin: 0; padding: 1.25rem 1.5rem; font-size: 1rem; font-style: italic; color: #12324A;
+    }
+</style>
+@endpush
+
 @section('content')
-    <section class="interior-hero flow-lines py-10 md:py-14">
+    <x-page-hero
+        :title="$service->name"
+        :subtitle="$service->short_description"
+        :icon="$service->icon ?? 'building-office-2'"
+        size="compact"
+        :breadcrumbs="[['name' => 'Expertise', 'url' => route('expertise.index')], ['name' => $service->name]]"
+    />
+
+    <section class="bg-white py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <x-breadcrumbs :items="[['name' => 'Expertise', 'url' => route('expertise.index')], ['name' => $service->name]]" />
-            <div class="mt-6">
-                <h1 class="text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.08] text-ink-800">{{ $service->name }}</h1>
-                <p class="mt-6 max-w-3xl text-lg leading-8 text-ink-500">{{ $service->short_description }}</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-white py-14 md:py-16">
-        <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-            <article class="lg:col-span-8 reveal-left">
-                @if ($service->featured_image)
-                    <figure class="group relative mb-9 reveal-scale delay-100">
-                        <span aria-hidden="true" class="pointer-events-none absolute -left-3 -top-3 hidden h-20 w-20 border-l-2 border-t-2 border-accent-500 transition-all duration-500 ease-out group-hover:-left-4 group-hover:-top-4 sm:block"></span>
-                        <span aria-hidden="true" class="pointer-events-none absolute -bottom-3 -right-3 hidden h-20 w-20 border-b-2 border-r-2 border-accent-500 transition-all duration-500 ease-out group-hover:-bottom-4 group-hover:-right-4 sm:block"></span>
-                        <div class="media-frame sheen relative aspect-video w-full border border-ink-200">
+            <div class="grid gap-12 lg:grid-cols-3">
+                <article class="reveal-left lg:col-span-2">
+                    @if ($service->featured_image)
+                        <div class="media-frame mb-8 aspect-video overflow-hidden rounded-2xl">
                             <img src="{{ asset($service->featured_image) }}" alt="{{ $service->name }}" class="h-full w-full object-cover">
-                            <span aria-hidden="true" class="media-tint absolute inset-0"></span>
-                            <span aria-hidden="true" class="media-veil absolute inset-x-0 bottom-0 h-2/5"></span>
-                            <figcaption class="absolute inset-x-0 bottom-0 flex items-center gap-3 p-4 sm:p-5">
-                                <span class="h-1.5 w-1.5 shrink-0 bg-accent-400"></span>
-                                <span class="font-mono text-[10px] uppercase tracking-[.16em] text-white/90">{{ $service->name }}</span>
-                            </figcaption>
                         </div>
-                    </figure>
-                @endif
-                <div class="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-ink-800 prose-li:marker:text-accent-600">{!! $service->description !!}</div>
-            </article>
-            <aside class="space-y-5 lg:col-span-4 reveal-right">
-                <div class="technical-rule bg-surface p-6">
-                    <h2 class="text-xl font-semibold text-ink-800">Start a project</h2>
-                    <p class="mt-3 text-sm leading-6 text-ink-500">Share the source water, discharge challenge or delivery scope. We will frame the right technical response.</p>
-                    <a href="{{ route('contact') }}" class="wf-btn-primary mt-6 w-full">Get in touch</a>
-                </div>
+                    @endif
+                    <div class="prose prose-lg service-desc max-w-none">{!! $service->description !!}</div>
+                </article>
 
-                @if ($related->count())
-                    <div class="border border-ink-200 bg-white p-6">
-                        <h2 class="font-mono text-[10px] uppercase tracking-[.16em] text-primary-600">Related expertise</h2>
-                        <div class="mt-4 grid">
-                            @foreach ($related as $relatedService)
-                                <a href="{{ route('expertise.show', $relatedService->slug) }}" class="hover-row group flex items-center gap-3 border-t border-ink-100 px-2 py-3 text-sm font-medium leading-snug text-ink-700 hover:text-primary-600">
-                                    <span class="h-1.5 w-1.5 shrink-0 bg-accent-500"></span>
-                                    <span class="underline-grow">{{ $relatedService->name }}</span>
-                                </a>
-                            @endforeach
-                        </div>
+                <aside class="reveal-right space-y-6">
+                    <div class="wf-panel p-6">
+                        <h2 class="mb-3 font-heading text-lg text-white">Start a Project</h2>
+                        <p class="mb-5 text-sm text-primary-200">
+                            Tell us about your project and we will outline how {{ $settings->get('site_name', 'WaterFirst') }} can deliver it.
+                        </p>
+                        <a href="{{ route('contact') }}" class="wf-btn-primary w-full py-3 text-sm">Get in Touch</a>
                     </div>
-                @endif
 
-                @php
-                    $youtubeId = null;
-                    if ($service->youtube_url) {
-                        preg_match('~(?:youtu\.be/|youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/))([\w-]{11})~', $service->youtube_url, $matches);
-                        $youtubeId = $matches[1] ?? null;
-                    }
-                @endphp
-                @if ($youtubeId)
-                    <iframe class="aspect-video w-full border border-ink-200" src="https://www.youtube-nocookie.com/embed/{{ $youtubeId }}" title="{{ $service->name }} video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                @endif
-            </aside>
+                    @if ($related->count())
+                        <div class="wf-panel p-6">
+                            <h2 class="mb-4 text-sm font-semibold uppercase tracking-wide text-white">Related Expertise</h2>
+                            <div class="space-y-3">
+                                @foreach ($related as $relatedService)
+                                    <a href="{{ route('expertise.show', $relatedService->slug) }}"
+                                        class="group/item flex items-center gap-3 rounded-xl border border-transparent p-3 transition-all hover:border-white/20 hover:bg-white/10">
+                                        <span class="wf-chip flex h-9 w-9 items-center justify-center transition-all group-hover/item:bg-accent-500 group-hover/item:text-white">
+                                            <x-icon name="{{ $relatedService->icon ?? 'building-office-2' }}" class="h-4 w-4" />
+                                        </span>
+                                        <span class="text-sm font-medium leading-tight text-primary-100">{{ $relatedService->name }}</span>
+                                        <x-icon name="chevron-right" class="ml-auto h-4 w-4 shrink-0 text-primary-300" />
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    <div class="wf-panel p-6">
+                        <h2 class="mb-2 text-sm font-semibold text-white">Delivered Across Sectors</h2>
+                        <p class="mb-4 text-xs text-primary-200">Municipal · Industrial · Energy · Urban development</p>
+                        <a href="{{ route('case-studies.index') }}" class="flex items-center gap-2 text-xs font-semibold text-accent-300 transition-colors hover:text-accent-200">
+                            View all case studies <x-icon name="arrow-long-right" class="h-4 w-4" />
+                        </a>
+                    </div>
+
+                    @php
+                        $youtubeId = null;
+                        if ($service->youtube_url) {
+                            preg_match('~(?:youtu\.be/|youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/))([\w-]{11})~', $service->youtube_url, $matches);
+                            $youtubeId = $matches[1] ?? null;
+                        }
+                    @endphp
+                    @if ($youtubeId)
+                        <div class="wf-panel overflow-hidden p-2">
+                            <div class="relative w-full overflow-hidden rounded-xl" style="aspect-ratio: 16 / 9">
+                                <iframe class="absolute inset-0 h-full w-full"
+                                    src="https://www.youtube-nocookie.com/embed/{{ $youtubeId }}"
+                                    title="{{ $service->name }} video" loading="lazy" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    @endif
+                </aside>
+            </div>
         </div>
     </section>
 @endsection

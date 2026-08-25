@@ -18,12 +18,18 @@ class HomeController extends Controller
 
     public function index()
     {
+        $featuredCaseStudies = CaseStudy::published()->featured()->with(['category', 'industry'])->limit(3)->get();
+
+        if ($featuredCaseStudies->isEmpty()) {
+            $featuredCaseStudies = CaseStudy::published()->with(['category', 'industry'])->latest('id')->limit(3)->get();
+        }
+
         $data = [
             'heroVideo' => HeroSlide::active()->first(),
             'expertiseServices' => Service::active()->get(['id', 'name', 'slug']),
             'featuredServices' => Service::active()->featured()->with('seo')->limit(6)->get(),
             'supportingServices' => Service::active()->where('is_featured', false)->limit(6)->get(),
-            'featuredCaseStudies' => CaseStudy::published()->featured()->with(['category', 'industry'])->limit(3)->get(),
+            'featuredCaseStudies' => $featuredCaseStudies,
             'latestBlogs' => Blog::published()->with(['category', 'author'])->latest('published_at')->limit(3)->get(),
             'industries' => Industry::active()->limit(8)->get(),
             'softwareLogos' => SoftwareLogo::ordered()->get(),
