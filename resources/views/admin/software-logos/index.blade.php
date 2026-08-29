@@ -7,6 +7,54 @@
     <span class="text-sm text-gray-500">{{ $logos->count() }} logo(s)</span>
 </div>
 
+{{-- Section content --}}
+<div class="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+    <h3 class="text-sm font-semibold text-gray-700 mb-4">Home Page Section</h3>
+    <form method="POST" action="{{ route('admin.software-logos.section') }}" class="space-y-4">
+        @csrf @method('PUT')
+
+        <label class="flex items-center gap-2 text-sm text-gray-700">
+            <input type="hidden" name="enabled" value="0">
+            <input type="checkbox" name="enabled" value="1" @checked(old('enabled', $section['enabled']))
+                   class="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500">
+            Show this section on the home page
+        </label>
+
+        <div class="grid gap-4 sm:grid-cols-3">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Eyebrow <span class="text-gray-400 font-normal">(optional)</span></label>
+                <input type="text" name="eyebrow" value="{{ old('eyebrow', $section['eyebrow']) }}" placeholder="e.g. Toolset"
+                       class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-teal-500">
+                @error('eyebrow') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Heading</label>
+                <input type="text" name="heading" value="{{ old('heading', $section['heading']) }}"
+                       class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-teal-500">
+                @error('heading') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Highlighted Words <span class="text-gray-400 font-normal">(teal)</span></label>
+                <input type="text" name="heading_accent" value="{{ old('heading_accent', $section['heading_accent']) }}"
+                       class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-teal-500">
+                @error('heading_accent') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1.5">Subtitle <span class="text-gray-400 font-normal">(optional)</span></label>
+            <textarea name="subtitle" rows="2"
+                      class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-teal-500 resize-none">{{ old('subtitle', $section['subtitle']) }}</textarea>
+            @error('subtitle') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+        </div>
+
+        <button type="submit"
+                class="bg-teal-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-teal-700">
+            Save Section
+        </button>
+    </form>
+</div>
+
 {{-- Upload --}}
 <div class="bg-white rounded-xl border border-gray-200 p-6 mb-6">
     <h3 class="text-sm font-semibold text-gray-700 mb-4">Upload Logos</h3>

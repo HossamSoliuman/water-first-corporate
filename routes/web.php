@@ -94,6 +94,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 
     Route::get('software-logos', [SoftwareLogoController::class, 'index'])->name('software-logos.index');
     Route::post('software-logos', [SoftwareLogoController::class, 'store'])->name('software-logos.store');
+    Route::put('software-logos/section', [SoftwareLogoController::class, 'updateSection'])->name('software-logos.section');
     Route::put('software-logos/{softwareLogo}', [SoftwareLogoController::class, 'update'])->name('software-logos.update');
     Route::delete('software-logos/{softwareLogo}', [SoftwareLogoController::class, 'destroy'])->name('software-logos.destroy');
 

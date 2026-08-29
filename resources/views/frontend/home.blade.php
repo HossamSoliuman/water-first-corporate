@@ -371,13 +371,22 @@
     @endif
 
     {{-- ═══ SOFTWARE ═══ --}}
-    @if ($softwareLogos->count())
+    @if ($softwareSection['enabled'] && $softwareLogos->count())
         <section class="border-t border-ink-100 bg-white py-16">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="reveal mb-10 text-center">
+                    @if ($softwareSection['eyebrow'])
+                        <p class="eyebrow mb-4">{{ $softwareSection['eyebrow'] }}</p>
+                    @endif
                     <h2 class="font-heading text-3xl font-bold text-ink-900 md:text-4xl">
-                        Software <span class="text-accent-600">We Use</span>
+                        {{ $softwareSection['heading'] }}
+                        @if ($softwareSection['heading_accent'])
+                            <span class="text-accent-600">{{ $softwareSection['heading_accent'] }}</span>
+                        @endif
                     </h2>
+                    @if ($softwareSection['subtitle'])
+                        <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-ink-500">{{ $softwareSection['subtitle'] }}</p>
+                    @endif
                 </div>
                 <div class="reveal flex flex-wrap items-center justify-center gap-8 md:gap-12">
                     @foreach ($softwareLogos as $logo)

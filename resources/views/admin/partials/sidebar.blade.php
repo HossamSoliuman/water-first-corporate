@@ -22,6 +22,7 @@
             ['admin.career-images.index','photo',                  'Career Gallery',     'admin/career-images'],
             ['admin.team-members.index',  'user-group',             'Team Members',       'admin/team-members'],
             ['admin.hero-slides.index',   'film',                   'Hero Video',         'admin/hero-slides'],
+            ['admin.software-logos.index','cpu-chip',               'Software We Use',    'admin/software-logos'],
             ['admin.pages.index',         'document-arrow-down',    'Pages',              'admin/pages'],
             ['admin.users.index',         'user-circle',            'Users',              'admin/users'],
             ['admin.settings.index',      'cog-6-tooth',            'Settings',           'admin/settings'],

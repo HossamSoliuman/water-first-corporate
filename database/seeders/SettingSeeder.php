@@ -29,6 +29,11 @@ class SettingSeeder extends Seeder
             ['key' => 'social_instagram', 'value' => '', 'group' => 'social', 'type' => 'text'],
             ['key' => 'ga4_id', 'value' => '', 'group' => 'analytics', 'type' => 'text'],
             ['key' => 'gtm_id', 'value' => '', 'group' => 'analytics', 'type' => 'text'],
+            ['key' => 'software_section_enabled', 'value' => '1', 'group' => 'software', 'type' => 'boolean'],
+            ['key' => 'software_section_eyebrow', 'value' => '', 'group' => 'software', 'type' => 'text'],
+            ['key' => 'software_section_heading', 'value' => 'Software', 'group' => 'software', 'type' => 'text'],
+            ['key' => 'software_section_heading_accent', 'value' => 'We Use', 'group' => 'software', 'type' => 'text'],
+            ['key' => 'software_section_subtitle', 'value' => '', 'group' => 'software', 'type' => 'textarea'],
         ];
 
         foreach ($settings as $setting) {

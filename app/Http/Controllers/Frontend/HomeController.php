@@ -33,6 +33,7 @@ class HomeController extends Controller
             'latestBlogs' => Blog::published()->with(['category', 'author'])->latest('published_at')->limit(3)->get(),
             'industries' => Industry::active()->limit(8)->get(),
             'softwareLogos' => SoftwareLogo::ordered()->get(),
+            'softwareSection' => SoftwareLogo::sectionSettings(),
         ];
 
         $page = Page::where('slug', 'home')->first();
