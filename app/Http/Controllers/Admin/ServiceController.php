@@ -47,7 +47,7 @@ class ServiceController extends Controller
         $validated['is_active'] = $request->boolean('is_active');
 
         $service = Service::create($validated);
-        $this->seoService->saveFor($service, $request->only(['meta_title', 'meta_description', 'og_image', 'robots']));
+        $this->seoService->saveFor($service, $request->only(['meta_title', 'meta_description', 'meta_keywords', 'og_image', 'robots']));
 
         return redirect()->route('admin.expertise.index')->with('success', 'Service created.');
     }
@@ -82,7 +82,7 @@ class ServiceController extends Controller
         $validated['is_active'] = $request->boolean('is_active');
 
         $expertise->update($validated);
-        $this->seoService->saveFor($expertise, $request->only(['meta_title', 'meta_description', 'og_image', 'robots']));
+        $this->seoService->saveFor($expertise, $request->only(['meta_title', 'meta_description', 'meta_keywords', 'og_image', 'robots']));
 
         return redirect()->route('admin.expertise.index')->with('success', 'Expertise updated.');
     }

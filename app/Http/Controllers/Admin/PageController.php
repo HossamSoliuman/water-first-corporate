@@ -6,25 +6,23 @@ use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Services\SeoService;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PageController extends Controller
 {
     /**
-     * Slugs of the only pages that are editable from the admin Pages screen.
-     * Every other page row stays in the database — the public site reads it —
-     * but is not surfaced for editing.
+     * Pages whose copy is editable from the admin. Every other page keeps its
+     * copy in the site content seeder and exposes only its SEO meta here.
      *
      * @var list<string>
      */
-    private const EDITABLE_SLUGS = ['privacy-policy', 'terms-conditions'];
+    private const CONTENT_EDITABLE_SLUGS = ['privacy-policy', 'terms-conditions'];
 
     public function __construct(private SeoService $seoService) {}
 
     public function index()
     {
-        $pages = Page::whereIn('slug', self::EDITABLE_SLUGS)->get();
+        $pages = Page::orderBy('id')->get();
 
         return view('admin.pages.index', compact('pages'));
     }
@@ -32,65 +30,48 @@ class PageController extends Controller
     public function edit(Page $page)
     {
         $page->load('seo');
+        $canEditContent = $this->canEditContent($page);
 
-        return view('admin.pages.edit', compact('page'));
+        return view('admin.pages.edit', compact('page', 'canEditContent'));
     }
 
     public function update(Request $request, Page $page)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:200',
-            'subtitle' => 'nullable|string|max:300',
-            'content' => 'nullable|string',
-            'featured_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
-            'side_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
-            'is_published' => 'boolean',
-        ]);
+        $rules = [
+            'meta_title' => 'nullable|string|max:200',
+            'meta_description' => 'nullable|string|max:500',
+            'meta_keywords' => 'nullable|string|max:255',
+            'og_image' => 'nullable|string|max:255',
+            'robots' => ['nullable', Rule::in(['index,follow', 'noindex,follow', 'index,nofollow', 'noindex,nofollow'])],
+        ];
 
-        $validated['is_published'] = $request->boolean('is_published');
-
-        if ($request->hasFile('featured_image')) {
-            $validated['featured_image'] = $this->storePageImage($request->file('featured_image'));
-        } else {
-            unset($validated['featured_image']);
+        if ($this->canEditContent($page)) {
+            $rules += [
+                'title' => 'required|string|max:200',
+                'subtitle' => 'nullable|string|max:300',
+                'content' => 'nullable|string',
+            ];
         }
 
-        // Sections come from named array inputs (sections[key]) on custom page types.
-        // Handle outside validation so type mismatches from stale requests never block saves.
-        $sections = $request->input('sections');
-        if (is_array($sections)) {
-            $sections = array_filter($sections, fn ($v) => $v !== null && $v !== '');
-        } else {
-            $sections = [];
+        $validated = $request->validate($rules);
+
+        if ($this->canEditContent($page)) {
+            $page->update([
+                'title' => $validated['title'],
+                'subtitle' => $validated['subtitle'] ?? null,
+                'content' => $validated['content'] ?? null,
+                'is_published' => $request->boolean('is_published'),
+            ]);
         }
 
-        // Preserve previously stored image paths held in sections.
-        $sections = array_merge(array_intersect_key($page->sections ?? [], ['side_image' => true]), $sections);
-
-        if ($request->hasFile('side_image')) {
-            $sections['side_image'] = $this->storePageImage($request->file('side_image'));
-        }
-
-        if ($sections !== []) {
-            $validated['sections'] = $sections;
-        }
-
-        $page->update($validated);
-        $this->seoService->saveFor($page, $request->only(['meta_title', 'meta_description', 'og_image', 'robots']));
+        $this->seoService->saveFor($page, $request->only(['meta_title', 'meta_description', 'meta_keywords', 'og_image', 'robots']));
 
         return back()->with('success', 'Page updated successfully.');
     }
 
-    private function storePageImage(UploadedFile $file): string
+    private function canEditContent(Page $page): bool
     {
-        $dir = public_path('pages');
-        if (! is_dir($dir)) {
-            mkdir($dir, 0755, true);
-        }
-        $filename = Str::uuid().'.'.$file->getClientOriginalExtension();
-        $file->move($dir, $filename);
-
-        return 'pages/'.$filename;
+        return in_array($page->slug, self::CONTENT_EDITABLE_SLUGS, true);
     }
 }
 

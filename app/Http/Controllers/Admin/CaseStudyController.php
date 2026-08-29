@@ -86,7 +86,7 @@ class CaseStudyController extends Controller
         }
 
         $cs = CaseStudy::create($validated);
-        $this->seoService->saveFor($cs, $request->only(['meta_title', 'meta_description', 'og_image', 'robots']));
+        $this->seoService->saveFor($cs, $request->only(['meta_title', 'meta_description', 'meta_keywords', 'og_image', 'robots']));
 
         return redirect()->route('admin.case-studies.index')->with('success', 'Case study created.');
     }
@@ -140,7 +140,7 @@ class CaseStudyController extends Controller
         $validated['is_published'] = $request->boolean('is_published');
 
         $caseStudy->update($validated);
-        $this->seoService->saveFor($caseStudy, $request->only(['meta_title', 'meta_description', 'og_image', 'robots']));
+        $this->seoService->saveFor($caseStudy, $request->only(['meta_title', 'meta_description', 'meta_keywords', 'og_image', 'robots']));
 
         return redirect()->route('admin.case-studies.index')->with('success', 'Case study updated.');
     }
