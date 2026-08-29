@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CareerImage;
 use App\Models\JobListing;
 use App\Models\Page;
 use App\Models\Setting;
@@ -60,9 +61,11 @@ class CareerController extends Controller
         ];
 
         $jobs = JobListing::active()->get();
+        $careerImages = CareerImage::ordered()->get();
 
         return view('frontend.career', compact(
             'jobs',
+            'careerImages',
             'contactEmail',
             'phone',
             'seo',
