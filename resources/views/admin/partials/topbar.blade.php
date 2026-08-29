@@ -1,5 +1,5 @@
 {{-- admin/partials/topbar.blade.php --}}
-<header class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+<header class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shrink-0">
     <div class="flex items-center gap-4">
         <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden text-gray-500 hover:text-gray-800">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

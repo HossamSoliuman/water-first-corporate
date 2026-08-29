@@ -38,7 +38,7 @@
 </head>
 <body class="h-full" x-data="{ sidebarOpen: false }">
 
-<div class="min-h-full flex">
+<div class="h-full flex overflow-hidden">
     <div x-show="sidebarOpen" x-cloak @click="sidebarOpen = false" class="fixed inset-0 z-40 bg-black/50 lg:hidden"></div>
     @include('admin.partials.sidebar')
 
