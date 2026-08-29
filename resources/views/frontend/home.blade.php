@@ -59,7 +59,7 @@
         <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
                 @foreach ([
-                    ['19', '+', 19, 'Years Founder Experience', 'Water and wastewater treatment'],
+                    ['20', '+', 20, 'Years Founder Experience', 'Water and wastewater treatment'],
                     ['15–35', '', null, 'Years Per Discipline', 'Senior engineers on every project'],
                     [$expertiseServices->count(), '', $expertiseServices->count(), 'Engineering Disciplines', 'Delivered as integrated solutions'],
                     [$industries->count(), '', $industries->count(), 'Industries Served', 'Public and industrial sectors'],
@@ -87,32 +87,23 @@
                 <div class="reveal-left">
                     <p class="eyebrow mb-4">Who We Are</p>
                     <h2 class="mb-6 font-heading text-4xl leading-tight text-ink-900 md:text-5xl">
-                        Water Is First In<br>
-                        <span class="text-accent-600">Every System We Engineer.</span>
+                        Engineering Water Systems <br>
+                        <span class="text-accent-600">for Sustainable Communities</span>
                     </h2>
                     <p class="mb-6 leading-relaxed text-ink-500">
-                        {{ $settings->get('site_name', 'WaterFirst') }} is a multi-disciplinary engineering consultancy
-                        working across water, wastewater, environmental and infrastructure engineering. We operate over the
-                        complete project lifecycle — from feasibility and conceptual design through detailed engineering,
-                        construction support and long-term operations.
+                        WaterFirst is a leading engineering consultancy providing specialized services across water, wastewater, environmental, and infrastructure sectors. Our expertise spans the entire asset lifecycle, from strategic planning and feasibility assessment to detailed engineering, construction support, and ongoing operational services.
                     </p>
                     <p class="mb-8 leading-relaxed text-ink-500">
-                        Our combination of senior technical experience, digital delivery methods and close client
-                        collaboration produces solutions that are technically robust, regulation-ready and
-                        cost-effective across every environment.
+                        By integrating technical innovation, industry best practices, and client-focused delivery, we create solutions that enhance operational efficiency, ensure regulatory compliance, and deliver measurable long-term value.
                     </p>
-                    <a href="{{ route('company-overview') }}" class="group inline-flex items-center gap-2 font-semibold text-accent-600 transition-colors hover:text-ink-900">
-                        Discover Our Story
-                        <x-icon name="arrow-long-right" class="h-5 w-5 arrow-nudge" />
-                    </a>
                 </div>
 
                 <div class="reveal-right grid grid-cols-1 gap-4 sm:grid-cols-2">
                     @foreach ([
-                        ['light-bulb', 'Creative Technical Solutions', 'High-quality engineering shaped around the actual site, source and constraint.'],
-                        ['map-pin', 'Comprehensive & Region-Aware', 'A complete approach with region-specific regulatory and environmental focus.'],
-                        ['users', 'Close Client Interaction', 'Direct collaboration with client and project teams, on site and through delivery.'],
-                        ['scale', 'Cost-Effective & Sustainable', 'Lifecycle value that integrates every stakeholder in the outcome.'],
+                        ['light-bulb', 'Advanced Technical Capabilities', ' Practical and innovative engineering solutions tailored to project-specific challenges'],
+                        ['map-pin', 'Environmentally Responsible Design', ' Engineering outcomes that balance performance, sustainability, and environmental stewardship'],
+                        ['users', 'Client-Centric Project Delivery', ' Transparent collaboration and stakeholder engagement throughout all project phases'],
+                        ['scale', 'Optimized Whole-of-Life Value', ' Cost-effective infrastructure solutions that support reliability, resilience, and long-term asset performance'],
                     ] as [$icon, $title, $detail])
                         <div class="wf-panel group p-5 text-center sm:text-left">
                             <div class="wf-chip mx-auto mb-3 flex h-10 w-10 items-center justify-center sm:mx-0">

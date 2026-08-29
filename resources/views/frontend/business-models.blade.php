@@ -51,8 +51,8 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="reveal-left lg:col-span-4">
-                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">The commitment matches the stage.</h2>
-                    <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">A focused study, a defined engineering package and a long-term operations programme each ask for a different structure.</p>
+                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Tailored Expertise Across Every Project Stage</h2>
+                    <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">Every project requires a different level of technical engagement, governance, and delivery support. Our services are structured to align with each phase of the asset lifecycle, providing the right expertise at the right time to optimize performance, manage risk, and maximize project value.</p>
 
                     <a href="{{ route('contact') }}" class="wf-btn-primary group mt-8">
                         Discuss your project <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
@@ -61,10 +61,10 @@
 
                 <div class="lg:col-span-8">
                     @foreach ([
-                        ['01', 'light-bulb', 'Study & feasibility', 'Options assessed before capital is committed.'],
-                        ['02', 'pencil-square', 'Detailed engineering', 'DPR, FEED and design packages issued for construction.'],
-                        ['03', 'presentation-chart-line', 'Delivery & oversight', 'Coordination, quality review and technical support on site.'],
-                        ['04', 'arrow-path', 'Operations & optimisation', 'Performance held over the life of the asset.'],
+                        ['01', 'light-bulb', 'Strategic Planning, Studies & Feasibility', 'Comprehensive assessments, option evaluations, technology selection, business case development, and feasibility studies that support informed investment and infrastructure planning decisions.'],
+                        ['02', 'pencil-square', 'Detailed Engineering & Design', 'FEED, detailed engineering, process design, multidisciplinary coordination, technical specifications, and construction-ready documentation developed to international standards.'],
+                        ['03', 'presentation-chart-line', 'Project Delivery & Technical Assurance', 'Engineering management, design reviews, procurement support, construction-phase services, quality assurance, stakeholder coordination, and technical governance throughout project execution.'],
+                        ['04', 'arrow-path', 'Commissioning, Operations & Optimization', 'Commissioning support, performance validation, process optimization, asset management, operational improvement, and lifecycle performance enhancement to ensure long-term infrastructure reliability.'],
                     ] as $index => [$number, $icon, $stage, $detail])
                         <div class="hover-row group grid grid-cols-[2rem_2.75rem_1fr_auto] items-center gap-4 border-t border-ink-200 py-5 last:border-b reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index] }}">
                             <span class="font-mono text-xs text-accent-600">{{ $number }}</span>

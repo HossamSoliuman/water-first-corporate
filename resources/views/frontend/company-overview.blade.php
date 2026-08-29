@@ -6,15 +6,15 @@
             <x-breadcrumbs :items="[['name' => 'Company Overview']]" />
             <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
                 <div class="lg:col-span-12">
-                    <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Water is first in every system we engineer.</h1>
-                    <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">WaterFirst Engineering Consultancy Private Limited is a Bangalore-based environmental and infrastructure engineering practice focused on difficult water and wastewater problems.</p>
+                    <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Water Is First in Every System We Engineer</h1>
+                    <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">WaterFirst Engineering Consultancy Private Limited is a multidisciplinary environmental and infrastructure engineering firm specializing in complex water, wastewater, and resource management challenges. Serving clients across diverse geographies, we deliver innovative, sustainable, and technically rigorous engineering solutions that support resilient communities, industries, and ecosystems worldwide.</p>
 
                     <div class="reveal delay-300 mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-ink-200 pt-6">
                         @foreach ([
                             ['map-pin', 'Bangalore, Karnataka'],
-                            ['droplet', 'Water & wastewater led'],
-                            ['squares-2x2', 'Multi-disciplinary'],
-                            ['arrow-path', 'Design to operations'],
+                            ['droplet', 'Water & Wastewater Specialists'],
+                            ['squares-2x2', 'Multidisciplinary Excellence'],
+                            ['arrow-path', 'End-to-End Project Delivery'],
                         ] as [$icon, $label])
                             <span class="group flex items-center gap-3">
                                 <span class="icon-tile h-9 w-9"><x-icon name="{{ $icon }}" class="h-4 w-4" /></span>
@@ -31,18 +31,18 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 md:grid-cols-5">
                 <div class="md:col-span-3 reveal-left">
-                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Sustainable technical solutions to challenging environmental problems.</h2>
+                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Sustainable Engineering Solutions for Complex Environmental Challenges</h2>
                     <div class="technical-rule mt-7 grid gap-5 pl-6 text-base leading-8 text-ink-500">
-                        <p>We work across municipal and industrial water, wastewater, solids management, effluent treatment, sewerage, water supply, waterbody rejuvenation and operations.</p>
-                        <p>Our team brings 15–35 years of experience in process, mechanical, electrical, instrumentation and automation engineering, backed by field interaction and regulatory awareness.</p>
-                        <p>Our treatment experience spans seawater, river water and groundwater, with conventional and advanced processes selected to protect public health, receiving waterbodies, flora and fauna.</p>
+                        <p>WaterFirst Engineering Consultancy Private Limited delivers integrated engineering and advisory services across the water, wastewater, environmental, and infrastructure sectors. We partner with clients globally to address complex technical, operational, and sustainability challenges through innovative, practical, and future-ready solutions.</p>
+                        <p>Our multidisciplinary team combines expertise in process, mechanical, electrical, instrumentation, automation, and environmental engineering to deliver high-performance outcomes across the entire project lifecycle, from strategic planning and feasibility through detailed design, implementation support, and operational optimization.</p>
+                        <p>With extensive experience in water treatment, wastewater management, resource recovery, and environmental protection, we apply advanced engineering methodologies and proven technologies to enhance infrastructure resilience, safeguard public health, protect natural ecosystems, and create long-term value for our clients and communities.</p>
                     </div>
 
                     <div class="mt-10 grid gap-px border border-ink-200 bg-ink-200 sm:grid-cols-3">
                         @foreach ([
-                            ['shield-check', 'Public health', 'Protected at every design decision'],
-                            ['waves', 'Receiving waters', 'Discharge quality held to standard'],
-                            ['globe-alt', 'Flora & fauna', 'Ecological outcomes considered'],
+                            ['shield-check', 'Public health Protection', 'Engineering safe, reliable, and sustainable systems that support community well-being and operational excellence.'],
+                            ['waves', 'Water Resource Stewardship', ' Delivering solutions that preserve water quality, promote responsible resource management, and ensure regulatory compliance.'],
+                            ['globe-alt', 'Environmental Sustainability', 'Balancing infrastructure performance with ecological responsibility to achieve resilient and sustainable environmental outcomes.'],
                         ] as $index => [$icon, $label, $detail])
                             <div class="group bg-white p-5 reveal {{ ['', 'delay-100', 'delay-200'][$index] }}">
                                 <span class="icon-tile h-10 w-10"><x-icon name="{{ $icon }}" class="h-4 w-4" /></span>
@@ -60,13 +60,19 @@
                             <span class="icon-tile h-10 w-10"><x-icon name="user-circle" class="h-5 w-5" /></span>
                         </div>
                         <h3 class="mt-5 text-2xl font-semibold text-ink-800">Uma Upadhyay</h3>
-                        <p class="mt-3 text-sm leading-7 text-ink-500">IIT Roorkee alumna with a postgraduate qualification in Environmental Engineering and 19 years of water and wastewater treatment experience.</p>
+                        <p class="mt-3 text-sm leading-7 text-ink-500">Uma Upadhyay is the Founder and Managing Director of WaterFirst Engineering Consultancy Pvt. Ltd., with over 20 years of international experience in water, wastewater, environmental, and infrastructure engineering. She has successfully led multidisciplinary projects across North America, the United Kingdom, Australia & New Zealand (ANZ), Europe, the Middle East, and Asia, delivering technically advanced and sustainable solutions for municipal, industrial, and utility-sector clients.<br><br>
+                        Having worked across diverse regulatory environments, climatic conditions, and stakeholder landscapes, she combines global best practices with practical engineering insight to address complex water and environmental challenges. Under her leadership, WaterFirst has established itself as a trusted engineering partner known for technical excellence, innovation, and client-focused delivery.<br><br>
+                        Project Experience Across the USA, UK, ANZ, Europe, Middle East & Asia
+Specialist in Water, Wastewater & Environmental Infrastructure
+Leader in Sustainable Engineering and Resource Management Solutions
+Founder & Managing Director, WaterFirst Engineering Consultancy Pvt. Ltd.
+Practice Profile</p>
 
                         <div class="mt-6 grid gap-3 border-t border-ink-200 pt-5">
                             @foreach ([
                                 ['academic-cap', 'IIT Roorkee alumna'],
                                 ['document-text', 'PG — Environmental Engineering'],
-                                ['clock', '19 years in water & wastewater'],
+                                ['clock', '20+ Years of Global Engineering Experience'],
                             ] as [$icon, $credential])
                                 <span class="group flex items-center gap-3">
                                     <span class="icon-tile h-8 w-8"><x-icon name="{{ $icon }}" class="h-3.5 w-3.5" /></span>
@@ -76,48 +82,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-5 border border-primary-800 bg-primary-950 p-7 text-white">
-                        <div class="flex items-center justify-between border-b border-primary-800 pb-4">
-                            <span class="font-mono text-[10px] uppercase tracking-[.18em] text-accent-200">Practice profile</span>
-                            <span class="pulse-node h-1.5 w-1.5 rounded-full bg-accent-400"></span>
-                        </div>
-
-                        <svg viewBox="0 0 240 128" class="mt-6 w-full" role="img" aria-label="Animated diagram of water flowing through the WaterFirst practice">
-                            <g stroke="#1686C4" stroke-opacity=".35" stroke-width=".75">
-                                <path d="M0 26h240M0 102h240"/>
-                            </g>
-                            <circle class="spin-ring" cx="120" cy="64" r="42" fill="none" stroke="#67E5E5" stroke-opacity=".4" stroke-width="1.25" stroke-dasharray="5 13"/>
-                            <circle cx="120" cy="64" r="30" fill="#07579A" fill-opacity=".45" stroke="#00A6A6" stroke-width="1.5"/>
-                            <path d="M120 46c5.4 6.7 9.3 11.6 9.3 16.1a9.3 9.3 0 0 1-18.6 0c0-4.5 3.9-9.4 9.3-16.1z" fill="none" stroke="#A5F3F3" stroke-opacity=".9" stroke-width="1.4"/>
-                            <g stroke="#67E5E5" stroke-width="2.5" stroke-linecap="round" fill="none">
-                                <path class="flow-stroke" d="M8 64h60"/>
-                                <path class="flow-stroke" style="animation-delay:.8s" d="M172 64h60"/>
-                            </g>
-                            <g fill="#67E5E5">
-                                <circle class="pulse-node" cx="20" cy="64" r="3"/>
-                                <circle class="pulse-node" style="animation-delay:1.4s" cx="220" cy="64" r="3"/>
-                            </g>
-                        </svg>
-
-                        <div class="mt-6 grid grid-cols-3 border-t border-primary-800 pt-5 text-center">
-                            @foreach ([
-                                ['19', '', 19, 'FOUNDER YRS'],
-                                ['15–35', '', null, 'TEAM YRS'],
-                                ['12', '', 12, 'EXPERTISE'],
-                            ] as [$value, $unit, $countTo, $label])
-                                <div class="border-r border-primary-800 last:border-0">
-                                    <p class="font-mono text-xl font-semibold text-white">
-                                        @if ($countTo)
-                                            <span data-count-to="{{ $countTo }}">{{ $value }}</span>{{ $unit }}
-                                        @else
-                                            {{ $value }}{{ $unit }}
-                                        @endif
-                                    </p>
-                                    <p class="mt-1 font-mono text-[8px] tracking-[.14em] text-primary-200">{{ $label }}</p>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+                
                 </div>
             </div>
         </div>
@@ -136,14 +101,14 @@
 
             <div class="mt-10 grid gap-px border border-ink-200 bg-ink-200 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ([
-                    ['building-library', 'Municipal & industrial water', 'Supply and treatment for cities and plants.'],
-                    ['waves', 'Wastewater', 'Collection, treatment and safe discharge.'],
-                    ['truck', 'Solids management', 'Sludge handling, reuse and residuals.'],
-                    ['beaker', 'Effluent treatment', 'Process effluent to compliant quality.'],
-                    ['funnel', 'Sewerage', 'Networks, pumping and conveyance.'],
-                    ['droplet', 'Water supply', 'Source to distribution infrastructure.'],
-                    ['globe-alt', 'Waterbody rejuvenation', 'Restoring lakes and receiving waters.'],
-                    ['wrench-screwdriver', 'Operations', 'Running and optimising built assets.'],
+                    ['building-library', 'Water Treatment & Supply', 'Source development, treatment, desalination, storage, transmission, and distribution systems for municipal and industrial applications.'],
+                    ['waves', 'Wastewater Treatment & Reuse', 'Advanced wastewater treatment, water recycling, nutrient removal, resource recovery, and sustainable reuse solutions.'],
+                    ['truck', 'Industrial Water & Effluent Management', 'Process water systems, industrial effluent treatment, compliance optimization, and Zero Liquid Discharge (ZLD) solutions.'],
+                    ['beaker', 'Biosolids & Resource Recovery', 'Sludge treatment, stabilization, dewatering, energy recovery, beneficial reuse, and circular economy strategies.'],
+                    ['funnel', 'Sewerage & Conveyance Infrastructure', 'Collection networks, pumping stations, force mains, hydraulic modelling, and wastewater conveyance systems.'],
+                    ['droplet', 'Integrated Water Resources Management', 'Surface water, groundwater, stormwater, water security, resilience planning, and sustainable resource management.'],
+                    ['globe-alt', 'Environmental Restoration & Waterbody Rejuvenation', 'Lake, river, wetland, and receiving-water restoration programs focused on ecological resilience and environmental stewardship.'],
+                    ['wrench-screwdriver', 'Operations, Asset Performance & Digital Solutions', 'Commissioning, operational support, asset management, process optimization, automation, digital monitoring, and performance improvement.'],
                 ] as $index => [$icon, $label, $detail])
                     <div class="group flex flex-col bg-white p-7 transition-colors hover:bg-surface reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index % 4] }}">
                         <div class="flex items-start justify-between gap-4">
@@ -164,8 +129,12 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="reveal-left lg:col-span-4">
-                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Five engineering disciplines, one delivery team.</h2>
-                    <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">15–35 years of experience per discipline, backed by field interaction and regulatory awareness.</p>
+                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Integrated Engineering Disciplines. One Global Delivery Platform.</h2>
+                    <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">15–35 years of experience per discipline, backed by field interaction and regulatory awareness.Bringing together world-class technical expertise across core engineering disciplines to deliver complex water, wastewater, environmental, and infrastructure projects worldwide.<br><br>
+                    
+                    15-35 Years of Specialist Experience Across Each Discipline
+
+</p>
 
                     <svg class="mt-10 hidden w-full max-w-sm text-accent-500 lg:block" viewBox="0 0 320 80" fill="none" aria-hidden="true">
                         <path class="draw-stroke" d="M4 54c44-46 86 26 130-6s70 30 182-14" stroke="currentColor" stroke-width="1.5" stroke-opacity=".55"/>
@@ -176,11 +145,11 @@
 
                 <div class="lg:col-span-8">
                     @foreach ([
-                        ['01', 'beaker', 'Process engineering', 'Treatment selection, mass balance and unit-process design.'],
-                        ['02', 'cog-6-tooth', 'Mechanical engineering', 'Equipment, hydraulics and plant layout.'],
-                        ['03', 'bolt', 'Electrical engineering', 'Power distribution, drives and plant supply.'],
-                        ['04', 'signal', 'Instrumentation', 'Measurement, monitoring and control loops.'],
-                        ['05', 'cpu-chip', 'Automation', 'SCADA, sequencing and operational logic.'],
+                        ['01', 'beaker', 'Process engineering', 'Process selection, treatment technology evaluation, mass balance development, process modelling, hydraulic design, and optimization of water and wastewater treatment systems.'],
+                        ['02', 'cog-6-tooth', 'Mechanical engineering', 'Equipment specification, hydraulic systems, pumping stations, pipeline networks, treatment plant layouts, and mechanical infrastructure design.'],
+                        ['03', 'bolt', 'Electrical engineering', 'Power distribution systems, motor control centers, standby power solutions, drives, energy management, and plant electrical infrastructure.'],
+                        ['04', 'signal', 'Instrumentation', 'Process instrumentation, online monitoring systems, control philosophies, analytics, performance monitoring, and regulatory compliance reporting.'],
+                        ['05', 'cpu-chip', 'Automation', 'PLC/SCADA systems, digital integration, intelligent process control, remote monitoring, asset performance management, and operational optimization.'],
                     ] as $index => [$number, $icon, $discipline, $detail])
                         <div class="hover-row group grid grid-cols-[2rem_2.75rem_1fr_auto] items-center gap-4 border-t border-ink-200 py-5 last:border-b reveal {{ ['', 'delay-100', 'delay-200', 'delay-300', 'delay-400'][$index] }}">
                             <span class="font-mono text-xs text-accent-600">{{ $number }}</span>
@@ -202,16 +171,16 @@
             <div class="grid gap-10 lg:grid-cols-12">
                 <div class="lg:col-span-3">
                     <div class="sticky-label">
-                        <h2 class="text-3xl font-semibold leading-tight text-ink-800">Treatment experience across every source.</h2>
-                        <p class="mt-6 text-sm leading-7 text-ink-500">Conventional and advanced processes, selected for the raw water actually available.</p>
+                        <h2 class="text-3xl font-semibold leading-tight text-ink-800">Water Treatment Expertise Across Diverse Source Waters</h2>
+                        <p class="mt-6 text-sm leading-7 text-ink-500">Applying proven and advanced treatment technologies to address varying source water characteristics, regulatory requirements, and operational objectives worldwide.</p>
                     </div>
                 </div>
 
                 <div class="grid gap-5 sm:grid-cols-3 lg:col-span-9">
                     @foreach ([
-                        ['waves', 'Seawater', 'Desalination and high-salinity treatment for coastal and industrial supply.'],
-                        ['droplet', 'River water', 'Surface abstraction with variable quality and seasonal load.'],
-                        ['funnel', 'Groundwater', 'Borewell sources requiring targeted contaminant removal.'],
+                        ['waves', 'Seawater & Desalination', 'Advanced desalination and high-salinity treatment solutions for municipal, industrial, and water security applications in coastal and water-stressed regions.'],
+                        ['droplet', 'Surface Water Systems', 'Treatment of river, reservoir, and lake water sources with process solutions designed to manage seasonal variability, turbidity, and changing water quality conditions.'],
+                        ['funnel', 'Groundwater Treatment', 'Specialized treatment for borehole and aquifer sources, including the removal of naturally occurring and anthropogenic contaminants to meet potable and industrial water standards.'],
                     ] as $index => [$icon, $source, $detail])
                         <article class="wf-card group flex flex-col p-7 reveal {{ ['', 'delay-100', 'delay-200'][$index] }}">
                             <div class="flex items-start justify-between gap-4">
@@ -236,15 +205,15 @@
     <section class="border-y border-ink-200 bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="border-b border-ink-200 pb-8">
-                <h2 class="max-w-2xl text-4xl font-semibold leading-tight text-ink-800">How every engagement is held to account.</h2>
+                <h2 class="max-w-2xl text-4xl font-semibold leading-tight text-ink-800">Our Commitment to Delivery Excellence</h2>
             </div>
 
             <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
                 @foreach ([
-                    ['01', 'clock', 'Time-bound delivery', 'Structured programmes and decisive technical coordination.'],
-                    ['02', 'scale', 'Cost-effective design', 'Fiscally responsible options grounded in lifecycle value.'],
-                    ['03', 'users', 'Customer focus', 'Close interaction with client and project teams on site.'],
-                    ['04', 'shield-check', 'Regulatory compliance', 'Solutions aligned with NGT, MoEF&CC and CPCB requirements.'],
+                    ['01', 'clock', 'Schedule Certainty', 'Disciplined project management, proactive risk mitigation, and efficient execution to achieve predictable and timely project delivery.'],
+                    ['02', 'scale', 'Value-Driven Engineering', 'Optimized technical solutions balancing performance, reliability, sustainability, and whole-of-life cost efficiency.'],
+                    ['03', 'users', 'Client-Centric Collaboration', 'Close partnership with clients, stakeholders, and project teams to ensure alignment, transparency, and successful project outcomes.'],
+                    ['04', 'shield-check', 'Regulatory & Technical Compliance', 'Solutions designed in accordance with international standards, local regulations, environmental requirements, and industry best practices.'],
                 ] as $index => [$number, $icon, $title, $copy])
                     <article class="wf-card group flex flex-col p-7 reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index] }}">
                         <div class="flex items-start justify-between gap-4">
