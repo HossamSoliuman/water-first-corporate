@@ -42,18 +42,21 @@
 
     @include('frontend.partials.about-cards', [
         'cards' => $cards,
-        'cardsHeading' => 'Reasons to partner with us',
-        'cardsCountLabel' => 'commitments',
+        'cardsHeading' => 'Why partner with WaterFirst',
+        'cardsLead' => 'Global expertise. Technical excellence. Trusted delivery.',
+        'cardsBody' => 'Multidisciplinary engineering, global project experience and a client-focused approach, applied across the asset lifecycle. Our teams work as an extension of the client organisation.',
+        'cardsCountLabel' => 'reasons',
         'gridCols' => 3,
-        'cardIcons' => ['light-bulb', 'map-pin', 'users', 'lock-closed', 'scale'],
+        'cardIcons' => ['academic-cap', 'users', 'squares-2x2', 'cpu-chip', 'shield-check', 'globe-alt', 'droplet', 'hand-thumb-up'],
     ])
 
     <section class="bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="reveal-left lg:col-span-4">
-                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">What holds true on every project.</h2>
-                    <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">Sustainable outcomes pursued without losing sight of time or cost.</p>
+                    <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Our commitment on every project.</h2>
+                    <p class="mt-4 font-mono text-[10px] uppercase tracking-[.16em] text-primary-600">Sustainable, high-performance infrastructure — without compromising quality, schedule or value</p>
+                    <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">Every project runs on the same framework: technical excellence, stakeholder collaboration, environmental stewardship and disciplined delivery — whatever its size, complexity or geography.</p>
 
                     <svg class="mt-10 hidden w-full max-w-sm text-accent-500 lg:block" viewBox="0 0 320 80" fill="none" aria-hidden="true">
                         <path class="draw-stroke" d="M4 50c46-42 84 24 128-4s72 26 184-16" stroke="currentColor" stroke-width="1.5" stroke-opacity=".55"/>
@@ -64,10 +67,10 @@
 
                 <div class="grid gap-px border border-ink-200 bg-ink-200 sm:grid-cols-2 lg:col-span-8">
                     @foreach ([
-                        ['lock-closed', 'Confidentiality protected', 'Sensitive project and client information stays contained.'],
-                        ['users', 'Stakeholders integrated', 'Every party with a stake in the outcome is brought into the process.'],
-                        ['globe-alt', 'Sustainable outcomes', 'Environmental performance weighed alongside capital cost.'],
-                        ['clock', 'Time and cost held', 'Programme and budget tracked as engineering constraints.'],
+                        ['lock-closed', 'Confidentiality & information security', 'Client, project and proprietary information protected through governance and secure data management.'],
+                        ['users', 'Integrated stakeholder engagement', 'Clients, operators, regulators and contractors kept aligned and transparent throughout delivery.'],
+                        ['globe-alt', 'Sustainability & environmental stewardship', 'Resource efficiency, environmental performance and resilience built into planning and design.'],
+                        ['clock', 'Schedule & cost discipline', 'Project controls, risk management and engineering oversight holding programme and budget.'],
                     ] as $index => [$icon, $label, $detail])
                         <div class="group flex min-h-40 flex-col justify-between bg-white p-7 transition-colors hover:bg-surface reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index] }}">
                             <div class="flex items-center justify-between">
@@ -83,6 +86,44 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+
+            <div class="mt-16 border-t border-ink-200 pt-12">
+                <div class="flex flex-wrap items-baseline justify-between gap-4">
+                    <h3 class="reveal text-2xl font-semibold leading-tight text-ink-800 md:text-3xl">Project principles that define WaterFirst.</h3>
+                    <span class="font-mono text-[10px] uppercase tracking-[.16em] text-ink-500">05 — principles</span>
+                </div>
+
+                <div class="mt-8 grid gap-px border border-ink-200 bg-ink-200 sm:grid-cols-2 xl:grid-cols-5">
+                    @foreach ([
+                        ['beaker', 'Technical integrity', 'Engineering decisions grounded in sound science, proven methodology and industry best practice.'],
+                        ['users', 'Collaborative delivery', 'Strong partnership with clients and stakeholders throughout the project lifecycle.'],
+                        ['arrow-path', 'Sustainable solutions', 'Operational performance balanced against environmental responsibility and long-term resilience.'],
+                        ['shield-check', 'Accountable execution', 'Quality, safety, schedule and budget held to measurable project outcomes.'],
+                        ['map', 'Global standards, local relevance', 'International best practice applied to regional operating, regulatory and environmental conditions.'],
+                    ] as $index => [$icon, $label, $detail])
+                        <div class="group bg-white p-6 transition-colors hover:bg-surface reveal {{ ['', 'delay-100', 'delay-200', 'delay-300', 'delay-400'][$index] }}">
+                            <span class="icon-tile h-10 w-10"><x-icon name="{{ $icon }}" class="h-4 w-4" /></span>
+                            <p class="mt-6 font-heading text-base font-medium leading-snug text-ink-800 group-hover:text-primary-600">
+                                <span class="underline-grow">{{ $label }}</span>
+                            </p>
+                            <p class="mt-2 text-sm leading-6 text-ink-500">{{ $detail }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-t border-ink-200 bg-surface py-14 md:py-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-6 lg:grid-cols-12 lg:items-center">
+                <div class="lg:col-span-3">
+                    <span class="eyebrow">Our commitment</span>
+                </div>
+                <p class="reveal font-heading text-xl leading-9 text-ink-800 md:text-2xl md:leading-10 lg:col-span-9">
+                    Innovative, resilient and sustainable engineering that strengthens water security, operational performance, environmental stewardship and infrastructure resilience for clients worldwide.
+                </p>
             </div>
         </div>
     </section>

@@ -12,6 +12,9 @@
                         @if (! empty($cardsHeading ?? ''))
                             <h2 class="text-3xl font-semibold leading-tight text-ink-800">{{ $cardsHeading }}</h2>
                         @endif
+                        @if (! empty($cardsLead ?? ''))
+                            <p class="mt-4 font-mono text-[10px] uppercase tracking-[.16em] text-primary-600">{{ $cardsLead }}</p>
+                        @endif
                         @if (! empty($cardsBody ?? ''))
                             <p class="mt-5 max-w-sm text-base leading-7 text-ink-500">{{ $cardsBody }}</p>
                         @endif
