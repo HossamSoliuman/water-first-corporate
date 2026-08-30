@@ -32,6 +32,7 @@
     @include('frontend.partials.about-two-column', [
         'sec' => $sec,
         'introIcon' => 'users',
+        'sideImageAspect' => 'aspect-[3/2]',
         'highlights' => [
             ['beaker', 'Process to automation', 'Process, mechanical, electrical, instrumentation and automation engineering.'],
             ['wrench-screwdriver', 'Design through operations', 'Experience that carries from drawing board to running plant.'],
@@ -40,7 +41,7 @@
         'stats' => [
             ['clock', '20', '', 20, 'Years founder experience'],
             ['academic-cap', '15–35', '', null, 'Years across the team'],
-            ['squares-2x2', '5', '', 95, 'Client retention rate'],
+            ['squares-2x2', '5', '%', 95, 'Client retention rate'],
             ['arrow-path', '360', '°', 360, 'Design to operations'],
         ],
     ])
@@ -63,7 +64,7 @@
             <div class="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($teamMembers as $index => $member)
                     <article class="wf-card group flex flex-col overflow-hidden reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index % 4] }}">
-                        <div class="media-frame aspect-[4/3] w-full border-b border-ink-200">
+                        <div class="media-frame aspect-[3/4] w-full border-b border-ink-200">
                             @if ($member->photo)
                                 <img src="{{ asset($member->photo) }}" alt="{{ $member->name }}" class="h-full w-full object-cover object-top" loading="lazy" decoding="async">
                             @else

@@ -2,6 +2,7 @@
     @php
         $highlights = $highlights ?? [];
         $stats = $stats ?? [];
+        $sideImageAspect = $sideImageAspect ?? 'aspect-[4/5]';
     @endphp
     <section class="bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -38,7 +39,7 @@
                 <div class="reveal-right flex flex-col xl:col-span-2">
                     @if ($sec['side_image'] ?? '')
                         <figure class="media-frame group relative border border-ink-200">
-                            <img src="{{ asset($sec['side_image']) }}" alt="{{ $page->title }}" class="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async">
+                            <img src="{{ asset($sec['side_image']) }}" alt="{{ $page->title }}" class="{{ $sideImageAspect }} w-full object-cover" loading="lazy" decoding="async">
                             <div class="media-tint absolute inset-0"></div>
                             <span class="icon-tile icon-tile-dark absolute left-4 top-4 h-10 w-10 backdrop-blur-sm"><x-icon name="droplet" class="h-4 w-4" /></span>
                         </figure>
