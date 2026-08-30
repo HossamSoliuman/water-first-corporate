@@ -1,6 +1,7 @@
 @if ($cards->count())
     @php
         $cardIcons = $cardIcons ?? [];
+        $cardMeta = $cardMeta ?? [];
         $cardDelays = ['', 'delay-100', 'delay-200', 'delay-300', 'delay-400', 'delay-500'];
     @endphp
     <section class="border-y border-ink-200 bg-surface py-16 md:py-20">
@@ -10,6 +11,9 @@
                     <div class="sticky-label">
                         @if (! empty($cardsHeading ?? ''))
                             <h2 class="text-3xl font-semibold leading-tight text-ink-800">{{ $cardsHeading }}</h2>
+                        @endif
+                        @if (! empty($cardsBody ?? ''))
+                            <p class="mt-5 max-w-sm text-base leading-7 text-ink-500">{{ $cardsBody }}</p>
                         @endif
                         <p class="mt-7 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.16em] text-ink-500">
                             <span class="pulse-node h-1.5 w-1.5 rounded-full bg-accent-500"></span>
@@ -25,10 +29,11 @@
                 </div>
                 <div class="grid gap-5 sm:grid-cols-2 {{ ($gridCols ?? 4) === 3 ? 'xl:grid-cols-3' : '' }} lg:col-span-9">
                     @foreach ($cards as $index => $card)
+                        @php($meta = $cardMeta[$card->id] ?? [])
                         <article class="wf-card group flex flex-col p-7 reveal {{ $cardDelays[$index % 6] }}">
                             <div class="flex items-start justify-between gap-4">
                                 <span class="icon-tile h-12 w-12">
-                                    <x-icon name="{{ $cardIcons[$index] ?? 'check-circle' }}" class="h-5 w-5" />
+                                    <x-icon name="{{ $meta['icon'] ?? ($cardIcons[$index] ?? 'check-circle') }}" class="h-5 w-5" />
                                 </span>
                                 <span class="section-index">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
                             </div>
@@ -43,7 +48,20 @@
                                 <span class="underline-grow">{{ $card->title }}</span>
                             </h3>
                             @if ($card->description)
-                                <p class="mt-3 flex-1 text-sm leading-6 text-ink-500">{{ $card->description }}</p>
+                                <p class="mt-3 text-sm leading-6 text-ink-500">{{ $card->description }}</p>
+                            @endif
+
+                            @if (! empty($meta['tags']))
+                                <div class="mt-6 flex-1">
+                                    <p class="font-mono text-[10px] uppercase tracking-[.16em] text-primary-600">Best suited for</p>
+                                    <div class="mt-3 flex flex-wrap gap-1.5">
+                                        @foreach ($meta['tags'] as $tag)
+                                            <span class="border border-ink-200 bg-surface px-2.5 py-1 text-[11px] leading-4 text-ink-500 transition-colors group-hover:border-accent-300">{{ $tag }}</span>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <div class="flex-1"></div>
                             @endif
 
                             <span class="mt-6 flex items-center gap-3 border-t border-ink-100 pt-4" aria-hidden="true">

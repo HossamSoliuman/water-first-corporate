@@ -13,20 +13,49 @@ use Illuminate\Validation\Rule;
 class PageController extends Controller
 {
     /**
-     * Pages whose copy is editable from the admin. Every other page keeps its
-     * copy in the site content seeder and exposes only its SEO meta here.
+     * What each page exposes to the admin. Anything not listed here keeps its
+     * copy in the site content seeder and edits only its SEO meta.
      *
-     * @var list<string>
+     *  - `content` — title, subtitle and the raw HTML body.
+     *  - `header`  — title and subtitle only (the body is composed of sections).
+     *  - `intro`   — the two-column intro block (copy left, image right).
+     *  - `blocks`  — the repeatable section blocks listed in self::REPEATERS.
+     *  - `cards`   — the page's card collection (managed by PageCardController).
+     *
+     * @var array<string, list<string>>
      */
-    private const CONTENT_EDITABLE_SLUGS = ['privacy-policy', 'terms-conditions'];
+    private const ABILITIES = [
+        'privacy-policy' => ['content'],
+        'terms-conditions' => ['content'],
+        'our-team' => ['intro'],
+        'business-models' => ['header', 'intro', 'blocks', 'cards'],
+    ];
 
     /**
-     * Pages whose two-column intro section (copy left, image right) is editable
-     * from the admin. The values live in the page's `sections` payload.
+     * Repeatable blocks stored in the page's `sections` payload, mapped to the
+     * fields each row carries. The second field is the row's anchor: rows that
+     * leave it blank are dropped on save.
+     *
+     * @var array<string, list<string>>
+     */
+    public const REPEATERS = [
+        'hero_chips' => ['icon', 'label'],
+        'highlights' => ['icon', 'label', 'detail'],
+        'benefits' => ['icon', 'label', 'detail'],
+        'stages' => ['icon', 'title', 'detail'],
+    ];
+
+    /**
+     * Single-line section copy stored alongside the repeaters.
      *
      * @var list<string>
      */
-    private const INTRO_EDITABLE_SLUGS = ['our-team'];
+    public const BLOCK_FIELDS = [
+        'cards_heading', 'cards_body',
+        'benefits_heading', 'benefits_body', 'benefits_footnote',
+        'stages_heading', 'stages_body', 'stages_cta',
+        'closing_heading', 'closing_body',
+    ];
 
     public function __construct(private SeoService $seoService) {}
 
@@ -39,14 +68,49 @@ class PageController extends Controller
 
     public function edit(Page $page)
     {
-        $page->load('seo');
-        $canEditContent = $this->canEditContent($page);
-        $canEditIntro = $this->canEditIntro($page);
+        $page->load('seo', 'cards');
 
-        return view('admin.pages.edit', compact('page', 'canEditContent', 'canEditIntro'));
+        return view('admin.pages.edit', [
+            'page' => $page,
+            'canEditContent' => $this->can($page, 'content'),
+            'canEditHeader' => $this->can($page, 'header'),
+            'canEditIntro' => $this->can($page, 'intro'),
+            'canEditBlocks' => $this->can($page, 'blocks'),
+            'canEditCards' => $this->can($page, 'cards'),
+        ]);
     }
 
     public function update(Request $request, Page $page)
+    {
+        $validated = $request->validate($this->rules($page));
+
+        if ($this->can($page, 'content') || $this->can($page, 'header')) {
+            $attributes = [
+                'title' => $validated['title'],
+                'subtitle' => $validated['subtitle'] ?? null,
+                'is_published' => $request->boolean('is_published'),
+            ];
+
+            if ($this->can($page, 'content')) {
+                $attributes['content'] = $validated['content'] ?? null;
+            }
+
+            $page->update($attributes);
+        }
+
+        if ($this->can($page, 'intro') || $this->can($page, 'blocks')) {
+            $this->saveSections($request, $page, $validated);
+        }
+
+        $this->seoService->saveFor($page, $request->only(['meta_title', 'meta_description', 'meta_keywords', 'og_image', 'robots']));
+
+        return back()->with('success', 'Page updated successfully.');
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function rules(Page $page): array
     {
         $rules = [
             'meta_title' => 'nullable|string|max:200',
@@ -56,15 +120,18 @@ class PageController extends Controller
             'robots' => ['nullable', Rule::in(['index,follow', 'noindex,follow', 'index,nofollow', 'noindex,nofollow'])],
         ];
 
-        if ($this->canEditContent($page)) {
+        if ($this->can($page, 'content') || $this->can($page, 'header')) {
             $rules += [
                 'title' => 'required|string|max:200',
                 'subtitle' => 'nullable|string|max:300',
-                'content' => 'nullable|string',
             ];
         }
 
-        if ($this->canEditIntro($page)) {
+        if ($this->can($page, 'content')) {
+            $rules['content'] = 'nullable|string';
+        }
+
+        if ($this->can($page, 'intro')) {
             $rules += [
                 'intro_label' => 'nullable|string|max:120',
                 'intro_heading' => 'nullable|string|max:200',
@@ -73,51 +140,82 @@ class PageController extends Controller
             ];
         }
 
-        $validated = $request->validate($rules);
+        if ($this->can($page, 'blocks')) {
+            foreach (self::BLOCK_FIELDS as $field) {
+                $rules[$field] = 'nullable|string|max:600';
+            }
 
-        if ($this->canEditContent($page)) {
-            $page->update([
-                'title' => $validated['title'],
-                'subtitle' => $validated['subtitle'] ?? null,
-                'content' => $validated['content'] ?? null,
-                'is_published' => $request->boolean('is_published'),
-            ]);
+            foreach (self::REPEATERS as $block => $fields) {
+                $rules[$block] = 'nullable|array|max:12';
+
+                foreach ($fields as $field) {
+                    $rules["{$block}.*.{$field}"] = $field === 'detail'
+                        ? 'nullable|string|max:600'
+                        : 'nullable|string|max:150';
+                }
+            }
         }
 
-        if ($this->canEditIntro($page)) {
-            $this->saveIntroSection($request, $page, $validated);
-        }
-
-        $this->seoService->saveFor($page, $request->only(['meta_title', 'meta_description', 'meta_keywords', 'og_image', 'robots']));
-
-        return back()->with('success', 'Page updated successfully.');
+        return $rules;
     }
 
     /**
-     * Persist the two-column intro copy and its side image into `sections`,
-     * leaving every other key in the payload untouched.
+     * Persist the intro copy, its side image and the repeatable blocks into
+     * `sections`, leaving every other key in the payload untouched.
      *
      * @param  array<string, mixed>  $validated
      */
-    private function saveIntroSection(Request $request, Page $page, array $validated): void
+    private function saveSections(Request $request, Page $page, array $validated): void
     {
         $sections = $page->sections ?? [];
 
-        $sections['intro_label'] = $validated['intro_label'] ?? null;
-        $sections['intro_heading'] = $validated['intro_heading'] ?? null;
-        $sections['intro_body'] = $validated['intro_body'] ?? null;
+        if ($this->can($page, 'intro')) {
+            $sections['intro_label'] = $validated['intro_label'] ?? null;
+            $sections['intro_heading'] = $validated['intro_heading'] ?? null;
+            $sections['intro_body'] = $validated['intro_body'] ?? null;
 
-        $previousImage = $sections['side_image'] ?? null;
+            $previousImage = $sections['side_image'] ?? null;
 
-        if ($request->hasFile('side_image')) {
-            $sections['side_image'] = $this->storeSideImage($request->file('side_image'));
-            $this->deleteImage($previousImage);
-        } elseif ($request->boolean('remove_side_image')) {
-            $this->deleteImage($previousImage);
-            $sections['side_image'] = null;
+            if ($request->hasFile('side_image')) {
+                $sections['side_image'] = $this->storeSideImage($request->file('side_image'));
+                $this->deleteImage($previousImage);
+            } elseif ($request->boolean('remove_side_image')) {
+                $this->deleteImage($previousImage);
+                $sections['side_image'] = null;
+            }
+        }
+
+        if ($this->can($page, 'blocks')) {
+            foreach (self::BLOCK_FIELDS as $field) {
+                $sections[$field] = $validated[$field] ?? null;
+            }
+
+            foreach (self::REPEATERS as $block => $fields) {
+                $sections[$block] = $this->compactRows($validated[$block] ?? [], $fields);
+            }
         }
 
         $page->update(['sections' => array_filter($sections, fn ($value) => $value !== null)]);
+    }
+
+    /**
+     * Drop rows whose anchor field is blank and trim what survives.
+     *
+     * @param  array<int, array<string, string|null>>  $rows
+     * @param  list<string>  $fields
+     * @return list<array<string, string>>
+     */
+    private function compactRows(array $rows, array $fields): array
+    {
+        $anchor = $fields[1];
+
+        return collect($rows)
+            ->map(fn ($row): array => collect($fields)
+                ->mapWithKeys(fn (string $field): array => [$field => trim((string) ($row[$field] ?? ''))])
+                ->all())
+            ->filter(fn (array $row): bool => $row[$anchor] !== '')
+            ->values()
+            ->all();
     }
 
     private function storeSideImage(UploadedFile $file): string
@@ -141,14 +239,9 @@ class PageController extends Controller
         }
     }
 
-    private function canEditContent(Page $page): bool
+    private function can(Page $page, string $ability): bool
     {
-        return in_array($page->slug, self::CONTENT_EDITABLE_SLUGS, true);
-    }
-
-    private function canEditIntro(Page $page): bool
-    {
-        return in_array($page->slug, self::INTRO_EDITABLE_SLUGS, true);
+        return in_array($ability, self::ABILITIES[$page->slug] ?? [], true);
     }
 }
 

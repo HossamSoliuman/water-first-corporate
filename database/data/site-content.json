@@ -98,14 +98,14 @@
                 "id": 8,
                 "slug": "business-models",
                 "title": "Business Models",
-                "subtitle": "From fixed-scope projects to strategic partnerships, our engagement models are designed to deliver flexibility, scalability, and long-term value for every client engagement.",
+                "subtitle": "Flexible engagement models for global project delivery — aligned to your technical, operational, and commercial requirements.",
                 "content": null,
-                "sections": "{\"side_image\":\"pages\\/e15aa0ea-db7a-4e7e-9893-5de8c7d46381.jpg\",\"intro_label\":\"VALUE. FLEXIBILITY. PARTNERSHIP.\",\"intro_heading\":\"Engagement Models Designed Around Your Needs\",\"intro_body\":\"At {{site_name}}, we recognize that every project has unique objectives, timelines, and resource requirements. Our flexible engagement models are designed to align with your operational needs, providing the right balance of expertise, scalability, and cost efficiency.\\r\\n\\r\\nWhether you require dedicated engineering teams, project-based delivery, staff augmentation, or long-term strategic support, we tailor our approach to ensure seamless collaboration and measurable outcomes.\\r\\n\\r\\nBy combining transparent communication, predictable delivery frameworks, and a commitment to quality, we help clients maximize project value while maintaining agility in a rapidly evolving business environment.\"}",
+                "sections": "{\"intro_label\":\"FLEXIBILITY. SCALABILITY. PARTNERSHIP.\",\"intro_heading\":\"Engagement Models Designed Around Your Needs\",\"intro_body\":\"At {{site_name}}, we recognize that every organization, project, and infrastructure program has unique technical, operational, and commercial requirements. Our engagement models are designed to provide flexibility, scalability, and access to specialized expertise, ensuring the right level of support throughout the project lifecycle.\\r\\n\\r\\nWhether delivering a discrete engineering assignment, augmenting project teams, or establishing long-term strategic partnerships, we tailor our services to align with client objectives, governance structures, delivery timelines, and resource needs.\\r\\n\\r\\nOur collaborative approach combines technical excellence, transparent communication, and accountable project delivery to help clients optimize performance, manage risk, and achieve sustainable outcomes.\",\"side_image\":\"pages\\/e15aa0ea-db7a-4e7e-9893-5de8c7d46381.jpg\",\"hero_chips\":[{\"icon\":\"clipboard-document-list\",\"label\":\"Studies & advisory\"},{\"icon\":\"pencil-square\",\"label\":\"Detailed engineering\"},{\"icon\":\"presentation-chart-line\",\"label\":\"Delivery support\"},{\"icon\":\"users\",\"label\":\"Long-term partnerships\"}],\"highlights\":[{\"icon\":\"light-bulb\",\"label\":\"Outcome-focused engagement\",\"detail\":\"Engagement structures designed around project objectives, business priorities, and measurable performance outcomes.\"},{\"icon\":\"shield-check\",\"label\":\"Technical accountability\",\"detail\":\"Full ownership of engineering quality, technical governance, risk management, and delivery excellence throughout every engagement.\"},{\"icon\":\"presentation-chart-line\",\"label\":\"Transparent communication\",\"detail\":\"Clear reporting, proactive stakeholder engagement, and effective project governance to support informed decision-making at every stage.\"}],\"cards_heading\":\"Engagement models\",\"cards_body\":\"Flexible commercial models aligned to project scope, delivery method, resource requirements, and commercial objectives.\",\"card_meta\":{\"9\":{\"icon\":\"clipboard-document-list\",\"tags\":[\"Feasibility studies\",\"Detailed design packages\",\"Technical due diligence\",\"Asset assessments\",\"Engineering reports\"]},\"10\":{\"icon\":\"clock\",\"tags\":[\"Ongoing engineering support\",\"Design development\",\"Operational improvements\",\"Advisory services\",\"Complex or evolving projects\"]},\"11\":{\"icon\":\"users\",\"tags\":[\"Engineering capacity augmentation\",\"Global design centers\",\"Program management support\",\"Long-term framework agreements\",\"Strategic engineering partnerships\"]}},\"benefits_heading\":\"Why Clients Choose Our Engagement Models\",\"benefits_footnote\":\"One partner. Multiple delivery models. Consistent engineering excellence.\",\"benefits\":[{\"icon\":\"arrow-trending-up\",\"label\":\"Scalable engineering resources\",\"detail\":\"Rapid access to specialized expertise across multiple engineering disciplines.\"},{\"icon\":\"adjustments-horizontal\",\"label\":\"Commercial flexibility\",\"detail\":\"Engagement structures tailored to project complexity, risk profile, and delivery objectives.\"},{\"icon\":\"shield-check\",\"label\":\"Technical accountability\",\"detail\":\"Consistent quality assurance, governance, and engineering oversight throughout project execution.\"},{\"icon\":\"globe-alt\",\"label\":\"Global delivery capability\",\"detail\":\"Supporting clients across North America, Europe, the United Kingdom, Australia & New Zealand, the Middle East, and Asia-Pacific.\"},{\"icon\":\"arrow-path\",\"label\":\"Long-term value creation\",\"detail\":\"Focused on sustainable outcomes, operational excellence, and lifecycle asset performance.\"}],\"stages_heading\":\"Engagement Models Tailored to Your Requirements\",\"stages_body\":\"Every organization, project, and infrastructure program carries a different level of technical engagement, governance, and delivery support. Our services are structured to align with each phase of the asset lifecycle \\u2014 the right expertise, at the right time.\",\"stages_cta\":\"Discuss your project\",\"stages\":[{\"icon\":\"light-bulb\",\"title\":\"Studies & Advisory Services\",\"detail\":\"Strategic planning, feasibility studies, master planning, due diligence, technology assessments, business case development, and technical advisory services.\"},{\"icon\":\"pencil-square\",\"title\":\"Detailed Engineering Services\",\"detail\":\"Multidisciplinary engineering design, process optimization, hydraulic modelling, BIM coordination, technical specifications, and construction documentation.\"},{\"icon\":\"presentation-chart-line\",\"title\":\"Project Delivery Support\",\"detail\":\"Owner's Engineer, Engineer of Record, design management, procurement support, construction-phase services, commissioning, and operational readiness.\"},{\"icon\":\"users\",\"title\":\"Long-Term Technical Partnerships\",\"detail\":\"Dedicated engineering support, framework agreements, capacity enhancement, asset optimization, and ongoing technical advisory services.\"}],\"closing_heading\":\"Scalable Expertise. Trusted Delivery. Lasting Value.\",\"closing_body\":\"Supporting utilities, municipalities, industrial clients, developers, and infrastructure organizations worldwide through flexible engagement models that deliver technical excellence, operational efficiency, and sustainable long-term outcomes.\"}",
                 "featured_image": null,
                 "is_published": 1,
                 "published_at": "2026-05-29 05:58:54",
                 "created_at": "2026-05-29 05:58:56",
-                "updated_at": "2026-06-05 12:34:43"
+                "updated_at": "2026-08-30 00:00:00"
             }
         ],
         "page_cards": [
@@ -193,31 +193,31 @@
                 "id": 9,
                 "page_id": 8,
                 "image": "page-cards/ea73656c-ba44-48d6-8f84-ca1536521935_medium.webp",
-                "title": "Fixed-Fee Project",
-                "description": "You know the scope, we agree on a number, and that's what you pay — full stop. No surprise invoices at the end of the month. Works best when the deliverable is clear: a topo, a site plan, a drafting package.",
+                "title": "Fixed-Fee Engagement",
+                "description": "A defined-scope delivery model with clearly established objectives, deliverables, timelines, and commercial terms. Ideally suited to well-defined assignments where scope certainty and budget predictability are critical.",
                 "order": 1,
                 "created_at": "2026-05-29 05:58:58",
-                "updated_at": "2026-06-04 17:04:21"
+                "updated_at": "2026-08-30 00:00:00"
             },
             {
                 "id": 10,
                 "page_id": 8,
                 "image": "page-cards/40be2de8-c0d0-461b-8e9e-332110e18234_medium.webp",
                 "title": "Time & Materials (T&M)",
-                "description": "Scope still taking shape? No problem. You get billed only for the hours we actually put in. Easy to start, easy to pause, easy to scale — without locking into anything before you're ready.",
+                "description": "A flexible delivery model for projects where scope, requirements, or priorities evolve during execution. Resources are deployed against actual effort, enabling rapid response and effective management of dynamic project environments.",
                 "order": 2,
                 "created_at": "2026-05-29 05:58:58",
-                "updated_at": "2026-06-04 17:06:08"
+                "updated_at": "2026-08-30 00:00:00"
             },
             {
                 "id": 11,
                 "page_id": 8,
                 "image": "page-cards/ae3c60ef-c23f-44cf-8d89-f2462594dd9b_medium.webp",
-                "title": "Dedicated Resource Model",
-                "description": "Think of it as adding someone to your team — except they're already trained, already set up, and ready to plug into your workflows from day one. Same people on your projects, every day, without the hiring headache.",
+                "title": "Dedicated Engineering Resource Model",
+                "description": "A long-term engagement providing dedicated engineering professionals or multidisciplinary teams that operate as an extension of your organization — continuity, scalability, domain expertise, and seamless integration into existing workflows.",
                 "order": 3,
                 "created_at": "2026-05-29 05:58:58",
-                "updated_at": "2026-06-04 17:06:20"
+                "updated_at": "2026-08-30 00:00:00"
             }
         ],
         "services": [
