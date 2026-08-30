@@ -1,7 +1,8 @@
 @php
-    $navLogo = $settings->get('logo_url') ?: 'images/waterfirst-logo.svg';
+    $navLogo = $settings->get('logo_url') ?: 'images/waterfirst-logo.png';
     $navSocials = collect(['linkedin', 'twitter', 'facebook', 'instagram'])
         ->filter(fn ($network) => (bool) $settings->get("social_{$network}"));
+    $navRegions = config('regions', []);
 @endphp
 
 <header id="site-header" class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm" x-data="{ mobileOpen: false }">
@@ -9,13 +10,44 @@
     {{-- ═══ UTILITY BAR ═══ --}}
     <div class="hidden border-b border-ink-100 lg:block">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-2.5 sm:px-6 lg:px-8">
-            <p class="text-[11px] font-semibold uppercase tracking-[.16em] text-ink-500">
-                {{ $settings->get('site_tagline', 'Engineering Water, Sustainably') }}
-            </p>
+            {{-- Regions --}}
+            <nav class="flex items-center gap-5" aria-label="Regions">
+                @foreach ($navRegions as $key => $region)
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button type="button" @click="open = !open" :aria-expanded="open"
+                            class="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[.16em] text-ink-500 transition-colors hover:text-accent-600">
+                            {{ $region['label'] }}
+                            <x-icon name="chevron-down" class="h-3 w-3 transition-transform duration-200" ::class="open ? 'rotate-180' : ''" />
+                        </button>
+                        <div x-show="open" x-cloak
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-end="opacity-0 translate-y-1"
+                            class="absolute left-0 top-full z-50 mt-2 w-56 rounded-2xl border border-ink-100 bg-white p-2 shadow-2xl shadow-ink-900/10">
+                            <ul class="space-y-px">
+                                @foreach ($region['countries'] as $country)
+                                    <li class="flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-xs font-medium text-ink-700">
+                                        <span class="h-1 w-1 shrink-0 rounded-full bg-accent-500" aria-hidden="true"></span>
+                                        {{ $country }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <div class="mt-1 border-t border-ink-100 pt-2">
+                                <a href="{{ route('contact') }}" class="group/region flex items-center gap-2 rounded-lg px-3 py-1.5 text-[11px] font-semibold text-accent-600 transition-colors hover:text-accent-700">
+                                    Talk to our {{ $region['label'] }} team
+                                    <x-icon name="arrow-long-right" class="h-3.5 w-3.5 arrow-nudge" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </nav>
 
             <div class="flex items-center gap-6">
                 @if ($settings->get('address_india'))
-                    <span class="flex items-center gap-2 text-[11px] font-medium text-ink-500">
+                    <span class="hidden items-center gap-2 text-[11px] font-medium text-ink-500 xl:flex">
                         <x-icon name="map-pin" class="h-3.5 w-3.5 text-accent-500" />
                         {{ $settings->get('address_india') }}
                     </span>
@@ -162,6 +194,29 @@
             @endforeach
 
             <a href="{{ route('contact') }}" class="wf-btn-primary mt-2 w-full">Get in Touch</a>
+
+            @if (count($navRegions))
+                <div class="mt-4 border-t border-ink-100 pt-4">
+                    <p class="px-4 pb-2 text-xs font-semibold uppercase tracking-widest text-ink-400">Regions</p>
+                    @foreach ($navRegions as $region)
+                        <div x-data="{ open: false }" class="px-4 py-1">
+                            <button type="button" @click="open = !open" :aria-expanded="open"
+                                class="flex w-full items-center justify-between py-1.5 text-sm font-medium text-ink-800">
+                                {{ $region['label'] }}
+                                <x-icon name="chevron-down" class="h-3.5 w-3.5 text-ink-400 transition-transform duration-200" ::class="open ? 'rotate-180' : ''" />
+                            </button>
+                            <ul x-show="open" x-cloak x-collapse class="pb-2 pl-3">
+                                @foreach ($region['countries'] as $country)
+                                    <li class="flex items-center gap-2.5 py-1 text-xs text-ink-500">
+                                        <span class="h-1 w-1 shrink-0 rounded-full bg-accent-500" aria-hidden="true"></span>
+                                        {{ $country }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </header>
