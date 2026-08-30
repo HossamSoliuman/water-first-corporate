@@ -12,12 +12,8 @@
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-2.5 sm:px-6 lg:px-8">
             {{-- Contact --}}
             <div class="flex items-center gap-6">
-                @if ($settings->get('address_india'))
-                    <span class="hidden items-center gap-2 text-[11px] font-medium text-ink-500 xl:flex">
-                        <x-icon name="map-pin" class="h-3.5 w-3.5 text-accent-500" />
-                        {{ $settings->get('address_india') }}
-                    </span>
-                @endif
+             
+             
 
                 @if ($settings->get('contact_email'))
                     <a href="mailto:{{ $settings->get('contact_email') }}" class="flex items-center gap-2 text-[11px] font-medium text-ink-500 transition-colors hover:text-accent-600">
@@ -25,6 +21,12 @@
                         {{ $settings->get('contact_email') }}
                     </a>
                 @endif
+                
+                <a href="tel:+919886208825" class="hidden items-center gap-2 text-[11px] font-medium text-ink-500 transition-colors hover:text-accent-600 xl:flex">
+                        <x-icon name="phone" class="h-3.5 w-3.5 text-accent-500" />
+                        +919886208825
+                    </a>
+                
 
                 @if ($settings->get('phone'))
                     <a href="tel:{{ $settings->get('phone') }}" class="hidden items-center gap-2 text-[11px] font-medium text-ink-500 transition-colors hover:text-accent-600 xl:flex">

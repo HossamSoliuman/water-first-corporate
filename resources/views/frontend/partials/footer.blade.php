@@ -70,10 +70,17 @@
                 <h2 class="eyebrow mb-5 text-accent-600">Office</h2>
                 <div class="space-y-5 text-sm text-ink-500">
                     <div>
-                        <p class="mb-1.5 font-semibold uppercase tracking-wide text-ink-800">Registered office</p>
-                        <p class="leading-relaxed">{{ $settings->get('address_india', 'Bangalore, Karnataka, India') }}</p>
+                        <p class="mb-1.5 font-semibold uppercase tracking-wide text-ink-800">Corporate office</p>
+                        <p class="leading-relaxed">41021, Sobha Dream Acres, Bangalore, Karnataka, India</p>
                     </div>
+                    
+                    <p class="mb-1.5 font-semibold uppercase tracking-wide text-ink-800">India</p>
+                    <a href="tel:+919886208825" class="flex items-center gap-2 transition-colors hover:text-accent-600">
+                            <x-icon name="phone" class="h-4 w-4 shrink-0 text-accent-500" />
+                            +919886208825
+                        </a>
 
+                    <p class="mb-1.5 font-semibold uppercase tracking-wide text-ink-800">USA</p>
                     @if ($settings->get('phone'))
                         <a href="tel:{{ $settings->get('phone') }}" class="flex items-center gap-2 transition-colors hover:text-accent-600">
                             <x-icon name="phone" class="h-4 w-4 shrink-0 text-accent-500" />

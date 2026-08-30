@@ -7,12 +7,12 @@
             <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
                 <div class="lg:col-span-12">
                     <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Water Is First in Every System We Engineer</h1>
-                    <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">WaterFirst Engineering Consultancy Private Limited is a multidisciplinary environmental and infrastructure engineering firm specializing in complex water, wastewater, and resource management challenges. Serving clients across diverse geographies, we deliver innovative, sustainable, and technically rigorous engineering solutions that support resilient communities, industries, and ecosystems worldwide.</p>
+                    <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">WaterFirst is a multidisciplinary environmental and infrastructure engineering firm specializing in complex civil engineering infrastructure, water, wastewater, and resource management challenges. Serving clients across diverse geographies, we deliver innovative, sustainable, and technically rigorous engineering solutions that support resilient communities, industries, and ecosystems worldwide.</p>
 
                     <div class="reveal delay-300 mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-ink-200 pt-6">
                         @foreach ([
-                            ['map-pin', 'Bangalore, Karnataka'],
-                            ['droplet', 'Water & Wastewater Specialists'],
+                            ['map-pin', 'India & USA'],
+                            ['droplet', 'Civil Engineering Specialists'],
                             ['squares-2x2', 'Multidisciplinary Excellence'],
                             ['arrow-path', 'End-to-End Project Delivery'],
                         ] as [$icon, $label])
@@ -33,7 +33,7 @@
                 <div class="md:col-span-3 reveal-left">
                     <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Sustainable Engineering Solutions for Complex Environmental Challenges</h2>
                     <div class="technical-rule mt-7 grid gap-5 pl-6 text-base leading-8 text-ink-500">
-                        <p>WaterFirst Engineering Consultancy Private Limited delivers integrated engineering and advisory services across the water, wastewater, environmental, and infrastructure sectors. We partner with clients globally to address complex technical, operational, and sustainability challenges through innovative, practical, and future-ready solutions.</p>
+                        <p>WaterFirst delivers integrated engineering and advisory services across the water, wastewater, environmental, and infrastructure sectors. We partner with clients globally to address complex technical, operational, and sustainability challenges through innovative, practical, and future-ready solutions.</p>
                         <p>Our multidisciplinary team combines expertise in process, mechanical, electrical, instrumentation, automation, and environmental engineering to deliver high-performance outcomes across the entire project lifecycle, from strategic planning and feasibility through detailed design, implementation support, and operational optimization.</p>
                         <p>With extensive experience in water treatment, wastewater management, resource recovery, and environmental protection, we apply advanced engineering methodologies and proven technologies to enhance infrastructure resilience, safeguard public health, protect natural ecosystems, and create long-term value for our clients and communities.</p>
                     </div>
@@ -60,13 +60,8 @@
                             <span class="icon-tile h-10 w-10"><x-icon name="user-circle" class="h-5 w-5" /></span>
                         </div>
                         <h3 class="mt-5 text-2xl font-semibold text-ink-800">Uma Upadhyay</h3>
-                        <p class="mt-3 text-sm leading-7 text-ink-500">Uma Upadhyay is the Founder and Managing Director of WaterFirst Engineering Consultancy Pvt. Ltd., with over 20 years of international experience in water, wastewater, environmental, and infrastructure engineering. She has successfully led multidisciplinary projects across North America, the United Kingdom, Australia & New Zealand (ANZ), Europe, the Middle East, and Asia, delivering technically advanced and sustainable solutions for municipal, industrial, and utility-sector clients.<br><br>
-                        Having worked across diverse regulatory environments, climatic conditions, and stakeholder landscapes, she combines global best practices with practical engineering insight to address complex water and environmental challenges. Under her leadership, WaterFirst has established itself as a trusted engineering partner known for technical excellence, innovation, and client-focused delivery.<br><br>
-                        Project Experience Across the USA, UK, ANZ, Europe, Middle East & Asia
-Specialist in Water, Wastewater & Environmental Infrastructure
-Leader in Sustainable Engineering and Resource Management Solutions
-Founder & Managing Director, WaterFirst Engineering Consultancy Pvt. Ltd.
-Practice Profile</p>
+                        <p class="mt-3 text-sm leading-7 text-ink-500">Uma Upadhyay is the Founder and Managing Director of WaterFirst, with over 20 years of international experience in water, wastewater, environmental, and infrastructure engineering. She has successfully led multidisciplinary projects across North America, the United Kingdom, Australia & New Zealand (ANZ), Europe, the Middle East, and Asia, delivering technically advanced and sustainable solutions for municipal, industrial, and utility-sector clients.<br><br>
+                        Having worked across diverse regulatory environments, climatic conditions, and stakeholder landscapes, she combines global best practices with practical engineering insight to address complex water and environmental challenges. Under her leadership, WaterFirst has established itself as a trusted engineering partner known for technical excellence, innovation, and client-focused delivery.</p>
 
                         <div class="mt-6 grid gap-3 border-t border-ink-200 pt-5">
                             @foreach ([
@@ -132,7 +127,7 @@ Practice Profile</p>
                     <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">Integrated Engineering Disciplines. One Global Delivery Platform.</h2>
                     <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">15–35 years of experience per discipline, backed by field interaction and regulatory awareness.Bringing together world-class technical expertise across core engineering disciplines to deliver complex water, wastewater, environmental, and infrastructure projects worldwide.<br><br>
                     
-                    15-35 Years of Specialist Experience Across Each Discipline
+                    
 
 </p>
 

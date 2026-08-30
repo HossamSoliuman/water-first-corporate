@@ -7,7 +7,7 @@
             <video
                 data-hero-video
                 class="h-full w-full object-cover"
-                poster="{{ asset('images/waterfirst-hero-poster.jpg') }}"
+                
                 autoplay muted loop playsinline preload="metadata"
                 aria-hidden="true" tabindex="-1" disablepictureinpicture
             >
@@ -62,7 +62,7 @@
                     ['20', '+', 20, 'Years Founder Experience', 'Water and wastewater treatment'],
                     ['15–35', '', null, 'Years Per Discipline', 'Senior engineers on every project'],
                     [$expertiseServices->count(), '', $expertiseServices->count(), 'Engineering Disciplines', 'Delivered as integrated solutions'],
-                    [$industries->count(), '', $industries->count(), 'Industries Served', 'Public and industrial sectors'],
+                    ['2000', '+', 2000, 'Projects Delivered', 'Successfully delivered across industries'],
                 ] as $index => [$value, $suffix, $countTo, $label, $detail])
                     <div class="reveal text-center {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index] }}">
                         <div class="mb-1 font-display text-5xl font-bold text-ink-900 md:text-6xl">
@@ -246,6 +246,31 @@
             </div>
         </div>
     </section>
+    
+    {{-- ═══ PROJECT FOOTPRINT ═══ --}}
+    <section class="py-24 bg-white" style="padding-bottom: 0;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
+                <div class="reveal-left">
+                    <p class="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-4">Our Project's Footprint
+                    </p>
+                    <h2 class="text-4xl md:text-5xl font-heading text-navy-900 leading-tight">Infrastructure.
+                        Industry.<br><em class="font-display not-italic text-brown-500">Environment.</em></h2>
+                </div>
+                <p class="reveal-right text-slate-600 leading-relaxed">
+                    WaterFirst has built a strong footprint across regions spanning the infrastructure and industrial sectors. We
+                    continue to expand our capabilities and partnerships to deliver sustainable, compliant solutions in a
+                    rapidly evolving environment.
+                </p>
+            </div>
+
+            <div class="reveal-scale">
+                <img src="{{ asset('images/mapimages.jpg') }}"
+                    alt="Map of global project footprint across infrastructure and industry" loading="lazy"
+                    class="w-full h-auto select-none pointer-events-none">
+            </div>
+        </div>
+    </section>
 
     {{-- ═══ CASE STUDIES ═══ --}}
     @if ($featuredCaseStudies->count())
@@ -290,14 +315,16 @@
                             $iconName = $industry->icon ?: 'building';
                             $iconClass = \Illuminate\Support\Str::startsWith($iconName, 'fa-') ? $iconName : 'fa-'.$iconName;
                         @endphp
-                        <a href="{{ route('industries.show', $industry->slug) }}"
-                            class="wf-panel group reveal p-6 text-center"
-                            style="transition-delay: {{ $index * 60 }}ms">
-                            <div class="wf-chip mx-auto mb-3 flex h-12 w-12 items-center justify-center">
-                                <i class="fa-solid {{ $iconClass }} text-xl"></i>
-                            </div>
-                            <h3 class="text-sm font-semibold text-white transition-colors group-hover:text-accent-300">{{ $industry->name }}</h3>
-                        </a>
+                        <a class="wf-panel group reveal p-6 text-center"
+   style="transition-delay: {{ $index * 60 }}ms">
+    <div class="wf-chip mx-auto mb-3 flex h-12 w-12 items-center justify-center">
+        <i class="fa-solid {{ $iconClass }} text-xl"></i>
+    </div>
+
+    <h3 class="text-sm font-semibold text-white transition-colors group-hover:text-accent-300">
+        {{ $industry->name }}
+    </h3>
+</a>
                     @endforeach
                 </div>
             </div>

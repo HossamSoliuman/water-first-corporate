@@ -18,7 +18,7 @@
                         <h2 class="mb-6 font-heading text-2xl text-ink-900">Contact Information</h2>
                         <div class="space-y-4">
                             @foreach (array_filter([
-                                ['map-pin', 'Registered Office', $settings->get('address_india') ?: $settings->get('address')],
+                                ['map-pin', 'Corporate office', '41021, Sobha Dream Acres, Bangalore, Karnataka, India'],
                                 ['phone', 'Phone', $settings->get('phone')],
                                 ['envelope', 'Email', $settings->get('contact_email')],
                             ], fn ($row) => (bool) $row[2]) as [$icon, $label, $value])
@@ -27,14 +27,33 @@
                                         <x-icon name="{{ $icon }}" class="h-5 w-5" />
                                     </div>
                                     <div>
-                                        <p class="text-xs font-semibold uppercase tracking-wide text-ink-400">{{ $label }}</p>
-                                        @if ($icon === 'phone')
-                                            <a href="tel:{{ $value }}" class="mt-0.5 block text-sm text-ink-800 transition-colors hover:text-accent-600">{{ $value }}</a>
-                                        @elseif ($icon === 'envelope')
-                                            <a href="mailto:{{ $value }}" class="mt-0.5 block break-all text-sm text-ink-800 transition-colors hover:text-accent-600">{{ $value }}</a>
-                                        @else
-                                            <p class="mt-0.5 text-sm text-ink-800">{{ $value }}</p>
-                                        @endif
+                                        
+                                        <p class="text-xs font-semibold uppercase tracking-wide text-ink-400">
+    {{ $label }}
+</p>
+
+@if ($icon === 'phone')
+    <div class="mt-0.5 text-sm text-ink-800">
+        <a href="tel:+919886208825"
+           class="block transition-colors hover:text-accent-600">
+            India - +91 98862 08825
+        </a>
+
+        <a href="tel:+12143421735"
+           class="block transition-colors hover:text-accent-600">
+            USA - +1 2143421735
+        </a>
+    </div>
+@elseif ($icon === 'envelope')
+    <a href="mailto:{{ $value }}"
+       class="mt-0.5 block break-all text-sm text-ink-800 transition-colors hover:text-accent-600">
+        {{ $value }}
+    </a>
+@else
+    <p class="mt-0.5 text-sm text-ink-800">
+        {{ $value }}
+    </p>
+@endif
                                     </div>
                                 </div>
                             @endforeach

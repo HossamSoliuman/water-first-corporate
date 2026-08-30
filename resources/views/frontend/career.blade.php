@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="interior-hero flow-lines py-10 md:py-14"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Careers']]" /><div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12"><div class="lg:col-span-12"><h1 class="text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">{{ $hero['heading'] }}</h1><p class="mt-5 max-w-3xl text-lg leading-8 text-ink-500">{{ $hero['tagline'] }}</p></div></div></div></section>
+    <section class="interior-hero flow-lines py-10 md:py-14"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><x-breadcrumbs :items="[['name' => 'Careers']]" /><div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12"><div class="lg:col-span-12"><h1 class="text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">{{ $hero['heading'] }}</h1><p class="mt-5 max-w-3xl text-lg leading-8 text-ink-500">Be part of a global team delivering innovative solutions for municipal and industrial water projects.
+ </p></div></div></div></section>
     <section class="bg-white py-14 md:py-16">
         <div class="mx-auto grid max-w-7xl items-start gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8">
             <div class="{{ $careerImages->count() ? 'lg:col-span-7' : 'lg:col-span-8' }}">
@@ -11,11 +12,14 @@
                     @foreach ([$intro['body_1'], $intro['body_2'], $intro['body_3']] as $paragraph)
                         @if ($paragraph)<p>{{ $paragraph }}</p>@endif
                     @endforeach
+                    
+                    
+ 
                 </div>
                 <div class="technical-rule mt-9 bg-surface p-6">
                     <p class="font-mono text-[10px] uppercase tracking-[.15em] text-primary-600">Recruitment contact</p>
                     @if ($contactEmail)<a href="mailto:{{ $contactEmail }}" class="mt-4 block break-all text-sm font-semibold text-primary-600">{{ $contactEmail }}</a>@endif
-                    @if ($phone)<a href="tel:{{ $phone }}" class="mt-2 block text-sm font-semibold text-primary-600">{{ $phone }}</a>@endif
+                   
                 </div>
             </div>
             @if ($careerImages->count())
