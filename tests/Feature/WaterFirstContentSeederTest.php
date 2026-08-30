@@ -40,20 +40,20 @@ class WaterFirstContentSeederTest extends TestCase
         $this->assertSame(8, Industry::query()->count());
         $this->assertSame(15, CaseStudy::query()->count());
         $this->assertSame(5, Blog::query()->count());
-        $this->assertSame(24, JobListing::query()->count());
+        $this->assertSame(5, JobListing::query()->count());
         $this->assertSame(8, Page::query()->count());
 
         $this->assertSame([
-            'Surveying, GIS & Geospatial Engineering Services',
+            'Water, Wastewater & Drainage Engineering',
+            'Environmental Engineering',
             'Urban & Infrastructure Development Engineering',
             'Transportation Infrastructure Engineering',
-            'Environmental Engineering & Hydrogeology',
-            'Water, Wastewater & Drainage Engineering',
             'Structural Engineering',
-            'Architectural Design Services',
             'Industrial, LNG, Oil & Gas & Energy Engineering',
-            'BIM & Digital Engineering',
             'MEPF Engineering Services',
+            'Architectural Design Services',
+            'Geospatial Engineering Services',
+            'BIM & Digital Engineering',
         ], Service::query()->where('is_active', true)->orderBy('order')->pluck('name')->all());
     }
 
@@ -67,16 +67,31 @@ class WaterFirstContentSeederTest extends TestCase
         }
     }
 
-    public function test_home_page_links_to_every_active_expertise_area(): void
+    /**
+     * The home page surfaces the featured expertise areas plus a link to the
+     * full index — which areas are featured is the client's call in /admin, so
+     * this pins the linking, not the taxonomy.
+     */
+    public function test_home_page_links_to_the_featured_expertise_areas(): void
     {
-        $services = Service::query()->where('is_active', true)->orderBy('order')->get();
+        $featured = Service::query()->where('is_active', true)->where('is_featured', true)->orderBy('order')->limit(6)->get();
+
+        $this->assertNotEmpty($featured);
 
         $response = $this->get(route('home'));
 
         $response->assertOk();
+        $response->assertSee(route('expertise.index'), false);
 
-        foreach ($services as $service) {
+        foreach ($featured as $service) {
             $response->assertSee(route('expertise.show', $service->slug), false);
+        }
+    }
+
+    public function test_every_active_expertise_area_is_reachable(): void
+    {
+        foreach (Service::query()->where('is_active', true)->pluck('slug') as $slug) {
+            $this->get(route('expertise.show', $slug))->assertOk();
         }
     }
 
@@ -116,6 +131,17 @@ class WaterFirstContentSeederTest extends TestCase
         ])->count());
     }
 
+    public function test_re_seeding_keeps_settings_saved_in_admin(): void
+    {
+        Setting::query()->where('key', 'phone')->update(['value' => '+91 80 1234 5678']);
+        Setting::query()->where('key', 'site_tagline')->update(['value' => 'Building a Water-Resilient Future']);
+
+        $this->seed(DatabaseSeeder::class);
+
+        $this->assertSame('+91 80 1234 5678', Setting::query()->where('key', 'phone')->value('value'));
+        $this->assertSame('Building a Water-Resilient Future', Setting::query()->where('key', 'site_tagline')->value('value'));
+    }
+
     public function test_every_referenced_media_file_exists(): void
     {
         $missing = [];
@@ -150,7 +176,7 @@ class WaterFirstContentSeederTest extends TestCase
 
         $this->assertSame(10, Service::query()->where('is_active', true)->count());
         $this->assertSame(15, CaseStudy::query()->count());
-        $this->assertSame(27, DB::table('blog_tag')->count());
+        $this->assertSame(28, DB::table('blog_tag')->count());
         $this->assertSame(38, DB::table('seo_metas')->count());
     }
 

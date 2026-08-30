@@ -37,7 +37,18 @@ class SettingSeeder extends Seeder
         ];
 
         foreach ($settings as $setting) {
-            Setting::updateOrCreate(['key' => $setting['key']], $setting);
+            $existing = Setting::query()->where('key', $setting['key'])->first();
+
+            if ($existing === null) {
+                Setting::query()->create($setting);
+            } else {
+                // The values above are install-time defaults. Once a row exists,
+                // its value belongs to whoever last saved it in /admin — only the
+                // group/type metadata is ours to keep in sync. Overwriting here
+                // is what silently reset the client's contact details.
+                $existing->update(['group' => $setting['group'], 'type' => $setting['type']]);
+            }
+
             Cache::forget('setting_'.$setting['key']);
         }
 

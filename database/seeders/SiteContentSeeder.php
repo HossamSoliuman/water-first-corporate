@@ -50,6 +50,19 @@ class SiteContentSeeder extends Seeder
     /** Pivot tables have no surrogate key, so they are replaced wholesale. */
     private const PIVOTS = ['blog_tag'];
 
+    /**
+     * The tables this seeder owns, in insert order.
+     *
+     * `site-content:export` writes the same set back out, so the snapshot it
+     * produces always covers exactly what a re-seed would overwrite.
+     *
+     * @return list<string>
+     */
+    public static function tables(): array
+    {
+        return self::TABLES;
+    }
+
     public function run(): void
     {
         $payload = $this->payload();
