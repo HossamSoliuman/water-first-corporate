@@ -13,7 +13,7 @@ class SettingSeeder extends Seeder
         $settings = [
             ['key' => 'site_name', 'value' => 'WaterFirst', 'group' => 'general', 'type' => 'text'],
             ['key' => 'site_tagline', 'value' => 'Engineering Water, Sustainably', 'group' => 'general', 'type' => 'text'],
-            ['key' => 'logo_url', 'value' => 'images/waterfirst-logo.svg', 'group' => 'general', 'type' => 'image'],
+            ['key' => 'logo_url', 'value' => 'images/waterfirst-logo.png', 'group' => 'general', 'type' => 'image'],
             ['key' => 'favicon_url', 'value' => '', 'group' => 'general', 'type' => 'image'],
             ['key' => 'footer_text', 'value' => '© '.date('Y').' WaterFirst Engineering Consultancy Private Limited. All rights reserved.', 'group' => 'general', 'type' => 'textarea'],
             ['key' => 'default_og_image', 'value' => '', 'group' => 'general', 'type' => 'image'],

@@ -13,7 +13,7 @@
 
     <div class="w-full max-w-sm">
         <div class="text-center mb-8">
-            <img src="{{ asset('images/waterfirst-logo.svg') }}" alt="WaterFirst" class="h-14 w-auto mx-auto mb-4 brightness-0 invert opacity-90">
+            <img src="{{ asset('images/waterfirst-logo-white.png') }}" alt="WaterFirst" class="h-14 w-auto mx-auto mb-4">
             <p class="text-slate-400 text-sm tracking-widest uppercase">Admin Panel</p>
         </div>
 

@@ -1,5 +1,5 @@
 @php
-    $footerLogo = $settings->get('logo_url') ?: 'images/waterfirst-logo.svg';
+    $footerLogo = $settings->get('logo_url') ?: 'images/waterfirst-logo.png';
     $footerSocials = collect(['linkedin', 'twitter', 'facebook', 'instagram'])
         ->filter(fn ($network) => (bool) $settings->get("social_{$network}"));
 @endphp

@@ -108,7 +108,7 @@ class WaterFirstContentSeederTest extends TestCase
     {
         $this->assertSame('WaterFirst', Setting::query()->where('key', 'site_name')->value('value'));
         $this->assertSame('Bangalore, Karnataka, India', Setting::query()->where('key', 'address_india')->value('value'));
-        $this->assertSame('images/waterfirst-logo.svg', Setting::query()->where('key', 'logo_url')->value('value'));
+        $this->assertSame('images/waterfirst-logo.png', Setting::query()->where('key', 'logo_url')->value('value'));
 
         // People do not transfer between companies, so the payload omits them.
         $this->assertSame(0, TeamMember::query()->whereIn('name', [

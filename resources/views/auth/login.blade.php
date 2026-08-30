@@ -34,8 +34,6 @@
             height: 52px;
             width: auto;
             margin-bottom: 0.75rem;
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
         }
 
         .logo-area p {
@@ -180,7 +178,7 @@
 
     <div class="wrap">
         <div class="logo-area">
-            <img src="{{ asset('images/waterfirst-logo.svg') }}" alt="WaterFirst">
+            <img src="{{ asset('images/waterfirst-logo-white.png') }}" alt="WaterFirst">
             <p>Admin Panel</p>
         </div>
 
