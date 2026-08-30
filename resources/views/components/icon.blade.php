@@ -10,7 +10,7 @@ if (str_starts_with($name, 'fa-') || str_contains($name, ' fa-')) {
     $faSlug = preg_replace('/^(fas?|far|fal|fab|fad)\s+/', '', trim($name));
     // $faSlug is now e.g. "fa-map-marker-distance"
 ?>
-<i class="fa-solid {{ $faSlug }}" style="font-size:1em; line-height:1;"></i>
+<i class="fa-solid {{ $faSlug }}" style="font-size:1em; line-height:1;" {{ $attributes->except(['name', 'class']) }}></i>
 <?php
     return; // stop here – no SVG needed
 }
@@ -73,4 +73,4 @@ $icons = [
 $path = $icons[$name] ?? $icons['sparkles'];
 ?>
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-    class="{{ $class }}">{!! $path !!}</svg>
+    class="{{ $class }}" {{ $attributes->except(['name', 'class']) }}>{!! $path !!}</svg>

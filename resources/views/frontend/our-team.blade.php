@@ -61,21 +61,21 @@
                 </p>
             </div>
 
-            <div class="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="mt-9 flex flex-wrap justify-center gap-5">
                 @foreach ($teamMembers as $index => $member)
-                    <article class="wf-card group flex flex-col overflow-hidden reveal {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index % 4] }}">
-                        <div class="media-frame aspect-[3/4] w-full border-b border-ink-200">
+                    <article class="wf-card group flex w-full flex-col overflow-hidden reveal sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)] {{ ['', 'delay-100', 'delay-200', 'delay-300'][$index % 4] }}">
+                        <div class="media-frame aspect-square w-full border-b border-ink-200">
                             @if ($member->photo)
                                 <img src="{{ asset($member->photo) }}" alt="{{ $member->name }}" class="h-full w-full object-cover object-top" loading="lazy" decoding="async">
                             @else
                                 <div class="flex h-full w-full items-center justify-center bg-primary-900">
-                                    <x-icon name="user-circle" class="h-16 w-16 text-primary-300/60" />
+                                    <x-icon name="user-circle" class="h-12 w-12 text-primary-300/60" />
                                 </div>
                             @endif
                         </div>
-                        <div class="p-6">
-                            <h3 class="font-heading text-xl font-semibold text-ink-800 group-hover:text-primary-600">{{ $member->name }}</h3>
-                            <p class="mt-2 font-mono text-xs uppercase leading-6 tracking-wider text-primary-600">{{ $member->role }}</p>
+                        <div class="px-5 py-4">
+                            <h3 class="font-heading text-lg font-semibold leading-6 text-ink-800 group-hover:text-primary-600">{{ $member->name }}</h3>
+                            <p class="mt-1.5 font-mono text-[10px] uppercase leading-5 tracking-[.14em] text-primary-600">{{ $member->role }}</p>
                         </div>
                     </article>
                 @endforeach
