@@ -7,8 +7,11 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-10 xl:grid-cols-5">
                 <div class="reveal-left xl:col-span-3 {{ count($stats) ? 'xl:flex xl:flex-col' : '' }}">
+                    @if ($sec['intro_label'] ?? '')
+                        <span class="eyebrow">{{ $sec['intro_label'] }}</span>
+                    @endif
                     @if ($sec['intro_heading'] ?? '')
-                        <h2 class="text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">{{ $sec['intro_heading'] }}</h2>
+                        <h2 class="{{ ($sec['intro_label'] ?? '') ? 'mt-4 ' : '' }}text-3xl font-semibold leading-tight text-ink-800 md:text-4xl">{{ $sec['intro_heading'] }}</h2>
                     @endif
                     @if ($sec['intro_body'] ?? '')
                         <div class="technical-rule mt-7 grid gap-5 pl-6 text-base leading-8 text-ink-500">
