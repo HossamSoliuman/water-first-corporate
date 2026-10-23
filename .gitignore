@@ -26,3 +26,18 @@ access.txt
 database/database.sqlite
 docs
 *zip
+
+# Local editor and tooling config
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.claude/
+.agents/
+.ai/
+.codex/
+.cursor/
+.gemini/
+.junie/
+.windsurf/
+.mcp.json
+boost.json

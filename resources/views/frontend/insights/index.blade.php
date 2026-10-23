@@ -2,76 +2,67 @@
 
 @section('content')
     <x-page-hero
-        eyebrow="Knowledge Hub"
+        eyebrow="Knowledge hub"
         title="Engineering"
-        title-accent="Insights"
-        subtitle="Ideas, updates and expertise from our engineering teams."
+        title-accent="insights"
         :breadcrumbs="[['name' => 'Insights']]"
     />
 
-    <section class="bg-surface py-16">
+    <section class="bg-white py-14 md:py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col gap-10 lg:flex-row">
-
-                <aside class="reveal-left w-full shrink-0 space-y-6 lg:w-64">
-                    <form method="GET" action="{{ route('insights.index') }}">
-                        <div class="relative">
-                            <input type="search" name="search" value="{{ request('search') }}" placeholder="Search articles..."
-                                class="w-full rounded-xl border border-ink-200 bg-white py-3 pl-4 pr-10 text-sm outline-none focus:ring-2 focus:ring-accent-500">
-                            <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-ink-400 transition-colors hover:text-accent-600" aria-label="Search">
-                                <x-icon name="arrow-long-right" class="h-4 w-4" />
-                            </button>
-                        </div>
-                    </form>
-
-                    <div class="rounded-2xl border border-ink-100 bg-white p-5">
-                        <h2 class="eyebrow mb-4 text-ink-400">Categories</h2>
-                        <div class="space-y-1">
+            <div class="flex flex-col gap-6 border-b border-line pb-6 lg:flex-row lg:items-center lg:justify-between">
+                <nav class="-mx-4 overflow-x-auto px-4 lg:mx-0 lg:px-0" aria-label="Insight categories">
+                    <ul class="flex gap-2 whitespace-nowrap">
+                        <li>
                             <a href="{{ route('insights.index') }}"
-                                class="block rounded-lg px-3 py-2 text-sm transition-colors {{ ! request('category') ? 'bg-accent-50 font-semibold text-accent-700' : 'text-ink-600 hover:bg-surface' }}">
-                                All Posts
+                                class="inline-flex rounded border px-3.5 py-2 text-sm font-medium transition-colors {{ ! request('category') ? 'border-primary-600 bg-primary-600 text-white' : 'border-ink-200 text-ink-700 hover:border-primary-600' }}">
+                                All posts
                             </a>
-                            @foreach ($categories as $category)
+                        </li>
+                        @foreach ($categories as $category)
+                            <li>
                                 <a href="{{ route('insights.category', $category->slug) }}"
-                                    class="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink-600 transition-colors hover:bg-surface">
-                                    <span>{{ $category->name }}</span>
-                                    <span class="rounded-full bg-ink-50 px-1.5 py-0.5 text-xs text-ink-400">{{ $category->blogs_count }}</span>
+                                    class="inline-flex items-center gap-2 rounded border border-ink-200 px-3.5 py-2 text-sm font-medium text-ink-700 transition-colors hover:border-primary-600">
+                                    {{ $category->name }}
+                                    <span class="font-mono text-[11px] text-ink-400">{{ $category->blogs_count }}</span>
                                 </a>
-                            @endforeach
-                        </div>
-                    </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </nav>
 
-                    @if ($latestTags->count())
-                        <div class="rounded-2xl border border-ink-100 bg-white p-5">
-                            <h2 class="eyebrow mb-4 text-ink-400">Tags</h2>
-                            <div class="flex flex-wrap gap-2">
-                                @foreach ($latestTags as $tag)
-                                    <a href="{{ route('insights.tag', $tag->slug) }}"
-                                        class="rounded-full border border-ink-200 px-3 py-1.5 text-xs text-ink-600 transition-all hover:border-accent-400 hover:bg-accent-50 hover:text-accent-700">
-                                        {{ $tag->name }}
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                </aside>
-
-                <div class="flex-1">
-                    @if ($blogs->count())
-                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                            @foreach ($blogs as $index => $blog)
-                                @include('frontend.insights._card', ['blog' => $blog, 'delay' => ($index % 3) * 60])
-                            @endforeach
-                        </div>
-                        <div class="mt-10">{{ $blogs->links() }}</div>
-                    @else
-                        <div class="rounded-2xl border border-ink-100 bg-white py-20 text-center">
-                            <x-icon name="pencil-square" class="mx-auto mb-3 h-12 w-12 text-ink-200" />
-                            <p class="text-ink-400">No articles found.</p>
-                        </div>
-                    @endif
-                </div>
+                <form method="GET" action="{{ route('insights.index') }}" class="relative w-full lg:w-72" role="search">
+                    <label for="insight-search" class="sr-only">Search articles</label>
+                    <input id="insight-search" type="search" name="search" value="{{ request('search') }}" placeholder="Search articles"
+                        class="w-full rounded border border-ink-200 bg-white py-2.5 pl-4 pr-11 text-sm text-ink-800 outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-100">
+                    <button type="submit" class="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded text-ink-500 hover:text-primary-600" aria-label="Search">
+                        <x-icon name="arrow-long-right" class="h-4 w-4" />
+                    </button>
+                </form>
             </div>
+
+            @if ($latestTags->count())
+                <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <span class="font-mono text-[11px] uppercase tracking-[.14em] text-ink-500">Tags</span>
+                    @foreach ($latestTags as $tag)
+                        <a href="{{ route('insights.tag', $tag->slug) }}" class="font-mono text-xs text-primary-600 hover:underline">#{{ $tag->name }}</a>
+                    @endforeach
+                </div>
+            @endif
+
+            @if ($blogs->count())
+                <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+                    @foreach ($blogs as $index => $blog)
+                        @include('frontend.insights._card', ['blog' => $blog, 'delay' => ($index % 3) * 60])
+                    @endforeach
+                </div>
+                <div class="mt-12">{{ $blogs->links() }}</div>
+            @else
+                <div class="mt-12 rounded bg-surface px-6 py-16 text-center">
+                    <p class="text-lg text-ink-600">No articles match your search.</p>
+                    <a href="{{ route('insights.index') }}" class="mt-4 inline-block text-sm font-semibold text-primary-600 hover:underline">Show all articles</a>
+                </div>
+            @endif
         </div>
     </section>
 @endsection

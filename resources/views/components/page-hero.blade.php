@@ -12,43 +12,35 @@
 
 @php
     $padding = match ($size) {
-        'tall' => 'py-32',
-        'compact' => 'py-20',
-        default => 'py-28',
+        'tall' => 'pt-10 pb-20 md:pb-24',
+        'compact' => 'pt-8 pb-12 md:pb-14',
+        default => 'pt-10 pb-16 md:pb-20',
     };
-    $titleSize = $size === 'compact' ? 'text-4xl md:text-5xl' : 'text-5xl md:text-6xl';
+    $titleSize = $size === 'compact' ? 'text-[clamp(2rem,4vw,3.25rem)]' : 'text-[clamp(2.4rem,5vw,4.25rem)]';
 @endphp
 
-<section class="relative overflow-hidden bg-primary-950 wf-texture {{ $padding }}">
-    @if ($image)
-        <img src="{{ $image }}" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover opacity-30">
-    @endif
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900/95 to-accent-950/40"></div>
-
-    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden border-b border-line bg-surface">
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 {{ $padding }}">
         @if (count($breadcrumbs))
-            <x-breadcrumbs :items="$breadcrumbs" light />
+            <x-breadcrumbs :items="$breadcrumbs" />
         @endif
 
-        <div class="mt-8 flex items-start gap-6">
-            @if ($icon)
-                <span class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-accent-500/20 text-accent-300">
-                    <x-icon name="{{ $icon }}" class="h-8 w-8" />
-                </span>
-            @endif
-
-            <div class="max-w-3xl">
-                @if ($eyebrow)
-                    <p class="eyebrow eyebrow-light mb-4">{{ $eyebrow }}</p>
+        <div class="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div class="{{ $subtitle || $image ? 'lg:col-span-7' : 'lg:col-span-10' }}">
+                @if ($eyebrow || $icon)
+                    <div class="mb-5 flex items-center gap-4">
+                        @if ($icon)
+                            <span class="icon-tile h-11 w-11"><x-icon name="{{ $icon }}" class="h-5 w-5" /></span>
+                        @endif
+                        @if ($eyebrow)
+                            <p class="eyebrow">{{ $eyebrow }}</p>
+                        @endif
+                    </div>
                 @endif
 
-                <h1 class="font-heading {{ $titleSize }} leading-tight text-white">
-                    {{ $title }}@if ($titleAccent)<br><span class="text-accent-300">{{ $titleAccent }}</span>@endif
+                <h1 class="{{ $titleSize }} text-ink-900">
+                    {{ $title }}@if ($titleAccent) <span class="text-primary-600">{{ $titleAccent }}</span>@endif
                 </h1>
-
-                @if ($subtitle)
-                    <p class="mt-5 text-lg leading-relaxed text-primary-200">{{ $subtitle }}</p>
-                @endif
 
                 @if ($meta)
                     <div class="mt-6">{{ $meta }}</div>
@@ -56,6 +48,20 @@
 
                 {{ $slot }}
             </div>
+
+            @if ($image)
+                <div class="lg:col-span-5">
+                    <div class="media-frame aspect-[4/3] rounded">
+                        <img src="{{ $image }}" alt="" aria-hidden="true" class="h-full w-full object-cover">
+                    </div>
+                    @if ($subtitle)
+                        <p class="mt-5 text-base leading-7 text-ink-600">{{ $subtitle }}</p>
+                    @endif
+                </div>
+            @elseif ($subtitle)
+                <p class="border-l-2 border-accent-500 pl-5 text-lg leading-8 text-ink-600 lg:col-span-5">{{ $subtitle }}</p>
+            @endif
         </div>
     </div>
+    <div class="gauge-x mx-auto max-w-7xl" aria-hidden="true"></div>
 </section>

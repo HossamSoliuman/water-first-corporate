@@ -13,7 +13,7 @@
         <div class="grid gap-10 lg:grid-cols-12">
             <div class="reveal-left lg:col-span-4">
                 <h2 class="text-3xl font-semibold leading-tight text-white">Continue through the practice.</h2>
-                <a href="{{ route('contact') }}" class="wf-btn-light sheen group mt-8">
+                <a href="{{ route('contact') }}" class="wf-btn-light group mt-8">
                     Talk to our engineers
                     <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
                 </a>

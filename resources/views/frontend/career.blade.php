@@ -34,7 +34,7 @@
                         <div class="marquee-up">
                             @foreach ([false, true] as $isClone)
                                 @foreach ($gallery as $image)
-                                    <figure class="media-frame mb-5 rounded-2xl border border-ink-200/60" @if ($isClone) aria-hidden="true" @endif>
+                                    <figure class="media-frame mb-5 rounded border border-line" @if ($isClone) aria-hidden="true" @endif>
                                         <img src="{{ asset($image->path) }}" alt="{{ $isClone ? '' : $image->alt }}" loading="lazy" class="block h-auto w-full object-cover">
                                     </figure>
                                 @endforeach

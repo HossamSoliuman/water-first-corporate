@@ -2,53 +2,59 @@
 
 @section('content')
     <x-page-hero
-        eyebrow="What We Do"
+        eyebrow="What we do"
         title="Engineering"
-        title-accent="Expertise"
-        subtitle="Multi-disciplinary capabilities delivered as integrated solutions, from concept to completion."
+        title-accent="expertise"
         :breadcrumbs="[['name' => 'Expertise']]"
     />
 
-    <section class="bg-surface py-20">
+    <section class="bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid border-l border-t border-line md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($services as $index => $service)
                     <a href="{{ route('expertise.show', $service->slug) }}"
-                        class="wf-card group reveal flex flex-col p-7"
-                        style="transition-delay: {{ $index * 60 }}ms">
-                        <div class="mb-5 flex items-start justify-between">
-                            <span class="icon-tile flex h-12 w-12 items-center justify-center">
-                                <x-icon name="{{ $service->icon ?? 'building-office-2' }}" class="h-6 w-6" />
-                            </span>
-                            @if ($service->is_featured)
-                                <span class="rounded-full bg-accent-50 px-2.5 py-1 text-xs font-semibold text-accent-700">Featured</span>
+                        class="group reveal flex flex-col border-b border-r border-line p-6 transition-colors hover:bg-surface md:p-7"
+                        style="transition-delay: {{ ($index % 3) * 60 }}ms">
+                        <div class="media-frame aspect-[16/9] rounded">
+                            @if ($service->featured_image)
+                                <img src="{{ asset($service->featured_image) }}" alt="" loading="lazy" decoding="async" class="h-full w-full object-cover">
+                            @else
+                                <div class="flow-lines h-full w-full bg-surface"></div>
                             @endif
                         </div>
 
-                        <h2 class="mb-2 flex-1 font-heading text-lg leading-snug text-ink-900">{{ $service->name }}</h2>
-                        <p class="mb-5 text-sm leading-relaxed text-ink-400">{{ $service->short_description }}</p>
-
-                        <div class="flex items-center justify-between border-t border-ink-100 pt-4">
-                            <span class="text-xs font-semibold uppercase tracking-wide text-secondary-500">Explore</span>
-                            <span class="arrow-wrap text-accent-600"><x-icon name="arrow-long-right" class="h-5 w-5" /></span>
+                        <div class="mt-6 flex items-center gap-3 text-primary-600">
+                            <x-icon name="{{ $service->icon ?? 'building-office-2' }}" class="h-5 w-5" />
+                            @if ($service->is_featured)
+                                <span class="font-mono text-[11px] uppercase tracking-[.12em] text-accent-700">Featured</span>
+                            @endif
                         </div>
+
+                        <h2 class="mt-3 text-xl font-semibold leading-snug text-ink-900">
+                            <span class="underline-grow">{{ $service->name }}</span>
+                        </h2>
+                        <p class="mt-3 flex-1 text-sm leading-6 text-ink-600">{{ $service->short_description }}</p>
+
+                        <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">
+                            Explore <x-icon name="arrow-long-right" class="arrow-nudge h-4 w-4" />
+                        </span>
                     </a>
                 @endforeach
             </div>
         </div>
     </section>
 
-    <section class="relative overflow-hidden bg-primary-950 wf-texture py-16">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900/90 to-accent-950/40"></div>
-        <div class="reveal relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            <h2 class="mb-4 font-heading text-3xl text-white md:text-4xl">Need an Integrated Solution?</h2>
-            <p class="mb-8 text-primary-200">
-                Our multi-disciplinary teams combine expertise across engineering disciplines to deliver seamless,
-                end-to-end project delivery.
-            </p>
-            <a href="{{ route('contact') }}" class="wf-btn-primary group px-8 py-4">
-                Discuss Your Project
-                <x-icon name="arrow-long-right" class="h-5 w-5 arrow-nudge" />
+    <section class="border-t border-line bg-surface py-14 md:py-16">
+        <div class="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-4 sm:px-6 md:flex-row md:items-center lg:px-8">
+            <div class="reveal-left max-w-2xl">
+                <h2 class="text-3xl leading-tight text-ink-900 md:text-4xl">Need an integrated solution?</h2>
+                <p class="mt-4 text-base leading-7 text-ink-600">
+                    Our multi-disciplinary teams combine expertise across engineering disciplines to deliver seamless,
+                    end-to-end project delivery.
+                </p>
+            </div>
+            <a href="{{ route('contact') }}" class="reveal-right wf-btn-primary group shrink-0 px-6 py-3.5">
+                Discuss your project <x-icon name="arrow-long-right" class="arrow-nudge h-5 w-5" />
             </a>
         </div>
     </section>

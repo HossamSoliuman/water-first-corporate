@@ -136,7 +136,7 @@
                         @endif
                     </div>
                     <div class="reveal-right lg:col-span-5 lg:text-right">
-                        <a href="{{ route('contact') }}" class="wf-btn-light sheen group">
+                        <a href="{{ route('contact') }}" class="wf-btn-light group">
                             Talk to our engineers <x-icon name="arrow-long-right" class="h-4 w-4 arrow-nudge" />
                         </a>
                     </div>

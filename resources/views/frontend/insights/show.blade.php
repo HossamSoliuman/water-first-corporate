@@ -1,35 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="relative overflow-hidden bg-primary-950 wf-texture py-28">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900/95 to-accent-950/40"></div>
-        <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <x-breadcrumbs :items="[['name' => 'Insights', 'url' => route('insights.index')], ['name' => $blog->title]]" light />
+    <x-page-hero
+        :eyebrow="$blog->category?->name"
+        :title="$blog->title"
+        size="compact"
+        :breadcrumbs="[['name' => 'Insights', 'url' => route('insights.index')], ['name' => $blog->title]]"
+    >
+        <p class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 font-mono text-xs text-ink-500">
+            @if ($blog->author)<span class="font-medium text-ink-900">{{ $blog->author->name }}</span>@endif
+            <span>{{ $blog->published_at?->format('d M Y') }}</span>
+            <span>{{ $blog->reading_time }} min read</span>
+        </p>
+    </x-page-hero>
 
-            @if ($blog->category)
-                <a href="{{ route('insights.category', $blog->category->slug) }}"
-                    class="mt-6 inline-block text-xs font-semibold uppercase tracking-widest text-accent-300 transition-colors hover:text-white">
-                    {{ $blog->category->name }}
-                </a>
-            @endif
-
-            <h1 class="mb-6 mt-3 font-heading text-4xl leading-tight text-white md:text-5xl">{{ $blog->title }}</h1>
-
-            <div class="flex flex-wrap items-center gap-3 text-sm text-primary-300">
-                @if ($blog->author)<span class="font-medium text-primary-100">{{ $blog->author->name }}</span><span>·</span>@endif
-                <span>{{ $blog->published_at?->format('M d, Y') }}</span>
-                <span>·</span>
-                <span>{{ $blog->reading_time }} min read</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-white py-16">
+    <section class="bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid gap-12 lg:grid-cols-3">
-                <article class="reveal-left lg:col-span-2">
+            <div class="grid gap-12 lg:grid-cols-12">
+                <article class="reveal lg:col-span-8">
                     @if ($blog->featured_image)
-                        <div class="media-frame mb-8 aspect-video overflow-hidden rounded-2xl">
+                        <div class="media-frame mb-10 aspect-video rounded">
                             <img src="{{ asset($blog->featured_image) }}" alt="{{ $blog->title }}" class="h-full w-full object-cover">
                         </div>
                     @endif
@@ -37,46 +27,43 @@
                     <div class="prose prose-lg max-w-none">{!! $blog->content !!}</div>
 
                     @if ($blog->tags->count())
-                        <div class="mt-8 flex flex-wrap gap-2">
+                        <div class="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-line pt-6">
                             @foreach ($blog->tags as $tag)
-                                <a href="{{ route('insights.tag', $tag->slug) }}"
-                                    class="rounded-full bg-accent-50 px-3 py-1.5 text-xs font-medium text-accent-700 transition-colors hover:bg-accent-100">
-                                    {{ $tag->name }}
-                                </a>
+                                <a href="{{ route('insights.tag', $tag->slug) }}" class="font-mono text-xs text-primary-600 hover:underline">#{{ $tag->name }}</a>
                             @endforeach
                         </div>
                     @endif
                 </article>
 
-                <aside class="reveal-right space-y-6">
-                    <div class="wf-panel p-6">
-                        <h2 class="mb-3 font-heading text-lg text-white">Discuss a Project</h2>
-                        <p class="mb-5 text-sm text-primary-200">
-                            Speak with our engineering team about your infrastructure needs.
-                        </p>
-                        <a href="{{ route('contact') }}" class="wf-btn-primary w-full py-3 text-sm">
-                            Contact {{ $settings->get('site_name', 'WaterFirst') }}
-                        </a>
-                    </div>
-
-                    @if ($related->count())
-                        <div class="wf-panel p-6">
-                            <h2 class="mb-4 text-sm font-semibold text-white">Related Articles</h2>
-                            <div class="space-y-4">
-                                @foreach ($related as $relatedBlog)
-                                    <a href="{{ route('insights.show', $relatedBlog->slug) }}" class="group/item flex gap-3">
-                                        @if ($relatedBlog->featured_image)
-                                            <img src="{{ asset($relatedBlog->featured_image) }}" alt="{{ $relatedBlog->title }}" class="h-16 w-16 shrink-0 rounded-xl object-cover">
-                                        @endif
-                                        <div>
-                                            <p class="text-sm font-medium leading-snug text-primary-100 transition-colors group-hover/item:text-accent-300">{{ $relatedBlog->title }}</p>
-                                            <p class="mt-1 text-xs text-primary-300">{{ $relatedBlog->published_at?->format('M d, Y') }}</p>
-                                        </div>
-                                    </a>
-                                @endforeach
-                            </div>
+                <aside class="lg:col-span-4">
+                    <div class="space-y-10 lg:sticky lg:top-32">
+                        <div class="border-t-2 border-primary-600 pt-6">
+                            <h2 class="text-xl font-semibold text-ink-900">Discuss a project</h2>
+                            <p class="mt-3 text-sm leading-6 text-ink-600">Speak with our engineering team about your infrastructure needs.</p>
+                            <a href="{{ route('contact') }}" class="wf-btn-primary group mt-6 w-full">
+                                Contact {{ $settings->get('site_name', 'WaterFirst') }} <x-icon name="arrow-long-right" class="arrow-nudge h-4 w-4" />
+                            </a>
                         </div>
-                    @endif
+
+                        @if ($related->count())
+                            <div>
+                                <h2 class="font-mono text-[11px] font-medium uppercase tracking-[.14em] text-ink-500">Related articles</h2>
+                                <div class="mt-4 border-t border-line">
+                                    @foreach ($related as $relatedBlog)
+                                        <a href="{{ route('insights.show', $relatedBlog->slug) }}" class="group flex gap-4 border-b border-line py-4">
+                                            @if ($relatedBlog->featured_image)
+                                                <img src="{{ asset($relatedBlog->featured_image) }}" alt="" class="h-16 w-20 shrink-0 rounded object-cover">
+                                            @endif
+                                            <div>
+                                                <p class="text-sm font-semibold leading-snug text-ink-900 group-hover:text-primary-600">{{ $relatedBlog->title }}</p>
+                                                <p class="mt-1 font-mono text-[11px] text-ink-500">{{ $relatedBlog->published_at?->format('d M Y') }}</p>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                 </aside>
             </div>
         </div>
