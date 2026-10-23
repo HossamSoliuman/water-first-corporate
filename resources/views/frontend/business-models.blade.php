@@ -20,7 +20,7 @@
                 <div class="lg:col-span-12">
                     <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">{{ $page->title }}</h1>
                     @if ($page->subtitle)
-                        <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">{{ $page->subtitle }}</p>
+                        <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500 text-justify">{{ $page->subtitle }}</p>
                     @endif
 
                     @if (count($heroChips))
@@ -65,7 +65,7 @@
                             <p class="mt-6 max-w-lg text-base leading-7 text-ink-500">{{ $sec['benefits_body'] }}</p>
                         @endif
                         @if ($sec['benefits_footnote'] ?? '')
-                            <p class="technical-rule mt-8 pl-6 font-heading text-xl font-medium leading-8 text-ink-800">{{ $sec['benefits_footnote'] }}</p>
+                            <p class="technical-rule mt-8 pl-6 font-heading text-xl font-medium leading-8 text-ink-800 text-justify">{{ $sec['benefits_footnote'] }}</p>
                         @endif
                     </div>
 
@@ -73,7 +73,7 @@
                         @foreach ($benefits as $index => $benefit)
                             <div class="hover-row group flex flex-col bg-white p-6 reveal {{ $rowDelays[$index % 6] }}">
                                 <span class="icon-tile h-11 w-11"><x-icon name="{{ $benefit['icon'] ?? 'check-circle' }}" class="h-5 w-5" /></span>
-                                <p class="mt-6 font-heading text-base font-medium leading-6 text-ink-800">{{ $benefit['label'] ?? '' }}</p>
+                                <p class="mt-6 font-heading text-base font-medium leading-6 text-ink-800 text-justify">{{ $benefit['label'] ?? '' }}</p>
                                 <p class="mt-2 text-sm leading-6 text-ink-500">{{ $benefit['detail'] ?? '' }}</p>
                             </div>
                         @endforeach

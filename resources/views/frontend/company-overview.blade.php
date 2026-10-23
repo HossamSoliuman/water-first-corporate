@@ -6,8 +6,8 @@
             <x-breadcrumbs :items="[['name' => 'Company Overview']]" />
             <div class="mt-6 grid gap-x-8 gap-y-5 lg:grid-cols-12">
                 <div class="lg:col-span-12">
-                    <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Water Is First in Every System We Engineer</h1>
-                    <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500">WaterFirst is a multidisciplinary environmental and infrastructure engineering firm specializing in complex civil engineering infrastructure, water, wastewater, and resource management challenges. Serving clients across diverse geographies, we deliver innovative, sustainable, and technically rigorous engineering solutions that support resilient communities, industries, and ecosystems worldwide.</p>
+                    <h1 class="reveal delay-100 text-[clamp(1.75rem,3.6vw,3rem)] font-semibold leading-[1.05] text-ink-800">Water is First in Every System We Engineer</h1>
+                    <p class="reveal delay-200 mt-5 max-w-3xl text-lg leading-8 text-ink-500 text-justify">WaterFirst is a multidisciplinary environmental and infrastructure engineering firm specializing in complex civil engineering infrastructure, water, wastewater, and resource management challenges. Serving clients across diverse geographies, we deliver innovative, sustainable, and technically rigorous engineering solutions that support resilient communities, industries, and ecosystems worldwide.</p>
 
                     <div class="reveal delay-300 mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-ink-200 pt-6">
                         @foreach ([
@@ -66,7 +66,7 @@
                         <div class="mt-6 grid gap-3 border-t border-ink-200 pt-5">
                             @foreach ([
                                 ['academic-cap', 'IIT Roorkee alumna'],
-                                ['document-text', 'PG — Environmental Engineering'],
+                                ['document-text', 'M.Tech — Environmental Engineering'],
                                 ['clock', '20+ Years of Global Engineering Experience'],
                             ] as [$icon, $credential])
                                 <span class="group flex items-center gap-3">

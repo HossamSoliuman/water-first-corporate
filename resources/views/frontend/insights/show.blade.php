@@ -6,13 +6,7 @@
         :title="$blog->title"
         size="compact"
         :breadcrumbs="[['name' => 'Insights', 'url' => route('insights.index')], ['name' => $blog->title]]"
-    >
-        <p class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 font-mono text-xs text-ink-500">
-            @if ($blog->author)<span class="font-medium text-ink-900">{{ $blog->author->name }}</span>@endif
-            <span>{{ $blog->published_at?->format('d M Y') }}</span>
-            <span>{{ $blog->reading_time }} min read</span>
-        </p>
-    </x-page-hero>
+    />
 
     <section class="bg-white py-16 md:py-20">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
